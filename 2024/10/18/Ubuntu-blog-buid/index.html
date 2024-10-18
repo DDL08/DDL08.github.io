@@ -182,19 +182,27 @@
     
     <div class="content" v-pre>
         <h1 id="Ubuntu-bk搭建"><a href="#Ubuntu-bk搭建" class="headerlink" title="Ubuntu-bk搭建"></a>Ubuntu-bk搭建</h1><h2 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h2><ol>
-<li><pre><code>更新系统索引包↓
+<li><pre><code class="plaintext">更新系统索引包↓
 sudo apt update
 安装↓
 sudo apt install nodejs npm
 验证↓
 node -v
 npm -v
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## git</span><br><span class="line"></span><br><span class="line">1. ```</span><br><span class="line">   检查是否安装↓</span><br><span class="line">   git --version</span><br><span class="line">   </span><br><span class="line">   安装↓</span><br><span class="line">   sudo apt update</span><br><span class="line">   sudo apt install git</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><ol>
+<li><pre><code class="plaintext">检查是否安装↓
+git --version
+安装↓
+sudo apt update
+sudo apt install git
 </code></pre>
 </li>
 </ol>
 <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><ol>
-<li><pre><code># 安装 Hexo
+<li><pre><code class="plaintext"># 安装 Hexo
 sudo npm install -g hexo-cli
 
 # 创建新项目
@@ -204,8 +212,12 @@ hexo init
 npm install
 
 # 启动服务  //起步启动都行
-hexo server   
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 开github仓</span><br><span class="line"></span><br><span class="line">1. ```</span><br><span class="line">   打开网站https://github.com/new，直接新建，**（**下方的Add a README file记得勾上）</span><br></pre></td></tr></table></figure>
+hexo server
+</code></pre>
+</li>
+</ol>
+<h2 id="开github仓"><a href="#开github仓" class="headerlink" title="开github仓"></a>开github仓</h2><ol>
+<li><pre><code class="plaintext">打开网站https://github.com/new，直接新建，**（**下方的Add a README file记得勾上）
 </code></pre>
 </li>
 <li><p>GitHub Pages有两种类型：</p>
@@ -213,40 +225,136 @@ hexo server
 <li>在bk上使用User Pages</li>
 <li>命名DDL08.github.io</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">User Pages 是用来展示用户的，而 Project Pages 是用来展示项目的</span><br><span class="line">用于存放User Pages的仓库必须使用username.github.io 的命名规则，而 Project Pages则没有特殊的要求</span><br><span class="line">User Pages通过https://username.github.io进行访问，而Projects Pages通过https://username.github.io/projectname进行访                        </span><br><span class="line">原文链接：https://blog.csdn.net/qq_52475653/article/details/134723360</span><br></pre></td></tr></table></figure></li>
+</li>
+<li><pre><code class="plaintext">User Pages 是用来展示用户的，而 Project Pages 是用来展示项目的
+用于存放User Pages的仓库必须使用username.github.io 的命名规则，而 Project Pages则没有特殊的要求
+User Pages通过https://username.github.io进行访问，而Projects Pages通过https://username.github.io/projectname进行访                        
+原文链接：https://blog.csdn.net/qq_52475653/article/details/134723360
+</code></pre>
+</li>
 </ol>
-<h2 id="ssh连接"><a href="#ssh连接" class="headerlink" title="ssh连接"></a>ssh连接</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;</span><br><span class="line"></span><br><span class="line">进入</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="ssh连接"><a href="#ssh连接" class="headerlink" title="ssh连接"></a>ssh连接</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li><pre><code class="plaintext">git config --global user.name &quot;Github用户名&quot;
+git config --global user.email &quot;Github邮箱&quot;
 
+进入
+</code></pre>
+</li>
+</ol>
 <p>接下来进入Hexo的项目根目录的_config.yml里面修改deploy(部署)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: </span><br><span class="line">    github: git@github.com:DDL08/DDL08.github.io.git,main</span><br><span class="line"></span><br><span class="line">标注：username替换为自己的用户名，（2020年10月后github新建仓库默认分支改为main）DDL08是我自己的账户，请更换为你的</span><br></pre></td></tr></table></figure>
+<ol>
+<li><pre><code class="plaintext">deploy:
+  type: git
+  repo: 
+    github: git@github.com:DDL08/DDL08.github.io.git,main
 
-<h3 id="生成密匙"><a href="#生成密匙" class="headerlink" title="生成密匙"></a>生成密匙</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">在没有配置git环境之前，~/.ssh是不存在的↓</span><br><span class="line">cd ~/.ssh</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C &quot;Github邮箱&quot;</span><br><span class="line">生成的</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">都按空格就行</span><br><span class="line"></span><br><span class="line">最后生成Your identification has been saved in /c/Users/Kevin-TP/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/Kevin-TP/.ssh/id_rsa.pub.</span><br></pre></td></tr></table></figure>
+标注：username替换为自己的用户名，（2020年10月后github新建仓库默认分支改为main）DDL08是我自己的账户，请更换为你的
+</code></pre>
+</li>
+</ol>
+<h3 id="生成密匙"><a href="#生成密匙" class="headerlink" title="生成密匙"></a>生成密匙</h3><ol>
+<li><pre><code class="plaintext">在没有配置git环境之前，~/.ssh是不存在的↓
+cd ~/.ssh
 
+ssh-keygen -t rsa -C &quot;Github邮箱&quot;
+生成的
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+都按空格就行
+
+最后生成Your identification has been saved in /c/Users/Kevin-TP/.ssh/id_rsa.
+Your public key has been saved in /c/Users/Kevin-TP/.ssh/id_rsa.pub.
+</code></pre>
+</li>
+</ol>
 <p>然后去使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把本地公钥添加到github中；在GitHub中，点击右侧图像下拉选项，选择“Settings”，在“SSH and GPG keys”中，点击“New SSH key”，并将~/.ssh/id_rsa.pub文件里的内容复制上去，保存退出；</span><br></pre></td></tr></table></figure>
-
+<ol>
+<li><pre><code class="plaintext">把本地公钥添加到github中；在GitHub中，点击右侧图像下拉选项，选择“Settings”，在“SSH and GPG keys”中，点击“New SSH key”，并将~/.ssh/id_rsa.pub文件里的内容复制上去，保存退出；
+</code></pre>
+</li>
+</ol>
 <p>测试连接是否成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line">弹出Hi Mshrimp! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<ol>
+<li><pre><code class="plaintext">ssh -T git@github.com
 
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">部署之前要先安装个插件↓</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">部署↓</span><br><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br><span class="line">等个5分钟本地推送完成+GitHub反应</span><br><span class="line"></span><br><span class="line">访问https://ddl08.github.io/ 就是部署成功后的结果了</span><br></pre></td></tr></table></figure>
+弹出Hi Mshrimp! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+</li>
+</ol>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><ol>
+<li><pre><code class="plaintext">部署之前要先安装个插件↓
+npm install hexo-deployer-git --save
 
+部署↓
+hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy
+等个5分钟本地推送完成+GitHub反应
+
+访问https://ddl08.github.io/ 就是部署成功后的结果了
+</code></pre>
+</li>
+</ol>
 <h1 id="换主题"><a href="#换主题" class="headerlink" title="换主题"></a>换主题</h1><p>我用的particleX</p>
-<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">新建文章，在里面修改↓</span><br><span class="line">hexo new a</span><br><span class="line"></span><br><span class="line">预览</span><br><span class="line">hexo s</span><br><span class="line">如果预览无法关闭</span><br><span class="line">ps aux | grep hexo</span><br><span class="line">kill 413521</span><br><span class="line">删除</span><br><span class="line">直接rm就行，在resource的_posts里面直接删除</span><br><span class="line"></span><br><span class="line">https://www.hesiy-cnpwn.xyz</span><br></pre></td></tr></table></figure>
+<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><ol>
+<li><pre><code class="plaintext">新建文章，在里面修改↓
+hexo new a
 
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">https://hexo.io/themes/</span><br><span class="line">复制https</span><br><span class="line">根目录git clone https://111 themes/主题名</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+预览
+hexo s
+如果预览无法关闭
+ps aux | grep hexo
+kill 413521
+删除
+直接rm就行，在resource的_posts里面直接删除
+</code></pre>
+</li>
+</ol>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><ol>
+<li><pre><code class="plaintext">https://hexo.io/themes/
+复制https
+根目录git clone https://111 themes/主题名
+</code></pre>
+</li>
+</ol>
+<h3 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h3><ol>
+<li><pre><code class="plaintext">#theme: landscape   //注释掉原来的
+theme: ParticleX    //写入新的
+</code></pre>
+</li>
+</ol>
+<h1 id="内容（往下有点乱了，不整理了）"><a href="#内容（往下有点乱了，不整理了）" class="headerlink" title="内容（往下有点乱了，不整理了）"></a>内容（往下有点乱了，不整理了）</h1><h4 id="写js"><a href="#写js" class="headerlink" title="写js"></a>写js</h4><ol>
+<li><pre><code class="plaintext">themes/ParticleX/layout/layout.ejs里面进行修改
+</code></pre>
+</li>
+</ol>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ol>
+<li><pre><code class="plaintext">&lt;!-- more --&gt;
+这个标签放到文章里面之后，不点进去只会显示前半部分。
+</code></pre>
+</li>
+<li><pre><code class="plaintext">https://argvchs.github.io/2022/04/17/hexo-blog-3/
+</code></pre>
+</li>
+</ol>
+<h4 id="文章缩略"><a href="#文章缩略" class="headerlink" title="文章缩略"></a>文章缩略</h4><ol>
+<li><pre><code class="plaintext">Front-matter is a block of YAML or JSON at the beginning of the file that is used to configure settings for your writings. Front-matter is terminated by three dashes when written in YAML or three semicolons when written in JSON.
 
-<h3 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#theme: landscape   //注释掉原来的</span><br><span class="line">theme: ParticleX    //写入新的</span><br></pre></td></tr></table></figure>
+Front-matter 是文件开头的一段 YAML 或 JSON 代码，用于配置您的写作设置。如果使用 YAML 编写，Front-matter 以三个破折号结束；如果使用 JSON 编写，Front-matter 以三个分号结束。
 
-<h1 id="内容（往下有点乱了，不整理了）"><a href="#内容（往下有点乱了，不整理了）" class="headerlink" title="内容（往下有点乱了，不整理了）"></a>内容（往下有点乱了，不整理了）</h1><h4 id="写js"><a href="#写js" class="headerlink" title="写js"></a>写js</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">themes/ParticleX/layout/layout.ejs里面进行修改</span><br></pre></td></tr></table></figure>
 
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br><span class="line">这个标签放到文章里面之后，不点进去只会显示前半部分。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://argvchs.github.io/2022/04/17/hexo-blog-3/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="文章缩略"><a href="#文章缩略" class="headerlink" title="文章缩略"></a>文章缩略</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Front-matter is a block of YAML or JSON at the beginning of the file that is used to configure settings for your writings. Front-matter is terminated by three dashes when written in YAML or three semicolons when written in JSON.</span><br><span class="line"></span><br><span class="line">Front-matter 是文件开头的一段 YAML 或 JSON 代码，用于配置您的写作设置。如果使用 YAML 编写，Front-matter 以三个破折号结束；如果使用 JSON 编写，Front-matter 以三个分号结束。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">缩略方法：</span><br><span class="line">description: |</span><br><span class="line">    想在前面预览的东西</span><br><span class="line">👆写Front-matter里面</span><br></pre></td></tr></table></figure>
-
-<h1 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/qq_60587635/article/details/137465670</span><br><span class="line">github图床如下↓</span><br><span class="line">https://blog.csdn.net/qq_44231797/article/details/131658184</span><br></pre></td></tr></table></figure>
-
+缩略方法：
+description: |
+    想在前面预览的东西
+👆写Front-matter里面
+</code></pre>
+</li>
+</ol>
+<h1 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h1><ol>
+<li><pre><code class="plaintext">https://blog.csdn.net/qq_60587635/article/details/137465670
+github图床如下↓
+https://blog.csdn.net/qq_44231797/article/details/131658184
+</code></pre>
+</li>
+</ol>
 <h1 id="完语"><a href="#完语" class="headerlink" title="完语"></a>完语</h1><p>虽然搭建完了，但是我不知道该挂点什么东西好，随便挂了</p>
 
     </div>
