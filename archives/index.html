@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Archives | Hexo</title>
-    <meta name="author" content="John Doe" />
-    <meta name="description" content="" />
+    <title>Archives | DDL&#39;S BLOG</title>
+    <meta name="author" content="DDL" />
+    <meta name="description" content="WELCOME MY GARBAGE DUMP" />
     <meta name="keywords" content="" />
     <meta
         name="viewport"
@@ -46,6 +46,17 @@
 
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body>
+    <noscript>
+        <style>
+            .no-js {
+                display: none;
+            }
+            .js {
+                display: block;
+            }
+        </style>
+        <div>请启用 JavaScript 以查看此页面。</div>
+    </noscript>
     <div id="layout">
         <transition name="fade">
             <div id="loading" v-show="loading">
@@ -59,7 +70,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
-            <span>HEXO</span>
+            <span>DDL&#39;S BLOG</span>
         </a>
         
         <a href="/">
@@ -91,7 +102,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;HEXO</span>
+            <span>&emsp;DDL&#39;S BLOG</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -155,12 +166,84 @@
     
     <div id="timeline-wrap" ref="timeline">
         
-        <div class="timeline" data-title="helloworld">
+        <div class="timeline" data-title="hexomarkdown语法样式示例">
             <div class="timeline-tail"></div>
             <div class="timeline-content">
                 <div class="item-time">2024/10/14</div>
-                <a href="/2024/10/14/hello-world/">
-                    <h3>Hello World</h3>
+                <a href="/2024/10/14/sample_table/">
+                    <h3>Hexo Markdown 语法样式示例</h3>
+                </a>
+                <div class="info">
+                    
+                    
+                    <span class="tags">
+                        <span class="icon">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </span>
+                        
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/Hexo/" style="color: #00bcd4">
+                                Hexo
+                            </a>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/Markdown/" style="color: #ff7d73">
+                                Markdown
+                            </a>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/%E7%A4%BA%E4%BE%8B/" style="color: #ffa2c4">
+                                示例
+                            </a>
+                        </span>
+                        
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline" data-title="blog搭建成功！">
+            <div class="timeline-tail"></div>
+            <div class="timeline-content">
+                <div class="item-time">2024/10/14</div>
+                <a href="/2024/10/14/1/">
+                    <h3>BLOG搭建成功！</h3>
+                </a>
+                <div class="info">
+                    
+                    
+                    <span class="tags">
+                        <span class="icon">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </span>
+                        
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/01%E6%9D%82%E7%B1%BB/" style="color: #ff7d73">
+                                01杂类
+                            </a>
+                        </span>
+                        
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline" data-title="ubuntu-blog-buid">
+            <div class="timeline-tail"></div>
+            <div class="timeline-content">
+                <div class="item-time">2024/10/18</div>
+                <a href="/2024/10/18/Ubuntu-blog-buid/">
+                    <h3>Ubuntu-blog-buid</h3>
                 </a>
                 <div class="info">
                     
@@ -176,11 +259,11 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2024 Hexo
+            2024 - 2024 DDL&#39;S BLOG
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;John Doe
+            &commat;DDL
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
@@ -200,6 +283,23 @@
         
     </div>
     <script src="/js/main.js"></script>
+        <script>
+        // 禁用 F12
+        document.onkeydown = function (e) {
+            if (e.key === "F12") {
+                e.preventDefault();
+            }
+        };
+
+        // 禁用右键
+        document.oncontextmenu = function (e) {
+            e.preventDefault();
+        };
+
+        // 启用 JavaScript 时更改 body 类
+        document.body.classList.remove('no-js');
+        document.body.classList.add('js');
+    </script>
     
 </body>
 </html>
