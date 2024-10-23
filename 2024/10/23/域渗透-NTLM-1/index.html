@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>域渗透-NTLM-1 | DDL&#39;S BLOG</title>
+    <meta name="author" content="DDL" />
+    <meta name="description" content="WELCOME MY GARBAGE DUMP" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <noscript>
+        <style>
+            .no-js {
+                display: none;
+            }
+            .js {
+                display: block;
+            }
+        </style>
+        <div>请启用 JavaScript 以查看此页面。</div>
+    </noscript>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>DDL&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;DDL&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>域渗透-NTLM-1</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/10/23
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/03%E5%86%85%E7%BD%91%E5%9F%BA%E7%A1%80/" style="color: #ff7d73">
+                    03内网基础
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="域渗透-NTLM-1"><a href="#域渗透-NTLM-1" class="headerlink" title="域渗透-NTLM-1"></a>域渗透-NTLM-1</h1><p>HTTP API 服务在端口 5985 开放，通常指的是 <strong>Windows Remote Management (WinRM)</strong> 服务。WinRM 是 Microsoft 提供的用于远程管理 Windows 系统的协议和服务，它允许系统管理员通过网络远程访问和管理 Windows 机器。</p>
+<p><strong>5985</strong>：用于 HTTP 协议。</p>
+<p><strong>5986</strong>：用于 HTTPS 协议（加密的连接）。</p>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><p><strong>以下所有指令均为在域成员主机上执行的结果</strong></p>
+<ul>
+<li>得到域控制器的IP<ul>
+<li>dsquery  server</li>
+</ul>
+</li>
+<li>得到域主机名<ul>
+<li>net group “domain controllers” &#x2F;domain</li>
+<li>得到的机器后面多个$</li>
+</ul>
+</li>
+<li>查询域管理用户<ul>
+<li>net group  “domain admins”&#x2F;domain</li>
+</ul>
+</li>
+<li>查看所有域内用户<ul>
+<li>net user&#x2F;domain</li>
+<li>特殊用户krbtgt（kerberos）身份验证的账户，获取该用户的hash就可以伪造票据进行票据攻击了</li>
+</ul>
+</li>
+<li>查询当前登录域<ul>
+<li>net config workstation</li>
+</ul>
+</li>
+<li>查询域密码策略<ul>
+<li>net accounts &#x2F;domain</li>
+</ul>
+</li>
+<li>查看补丁信息<ul>
+<li>wmic qfe</li>
+</ul>
+</li>
+<li>查看操作系统类型<ul>
+<li>wmic os</li>
+</ul>
+</li>
+<li>已知密码链接<ul>
+<li>常用的做法有net use建立Ipc$连接、wmic指令连接、采用rdp方式连接、psexec链接、</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h1 id="域"><a href="#域" class="headerlink" title="域"></a>域</h1><h2 id="NTLM版本"><a href="#NTLM版本" class="headerlink" title="NTLM版本"></a>NTLM版本</h2><ol>
+<li><pre><code>NTLMv1与NTLM v2最显著的区别就是Challenge与加密算法不同，共同点就是加密的原料都是NTLM Hash，NTLM v1的Challenge有8位，NTLM v2的Challenge为16位；NTLM v1的主要加密算法是DES，NTLM v2的主要加密算法是HMAC-MD5。
+</code></pre>
+</li>
+</ol>
+<h2 id="NTLMv1"><a href="#NTLMv1" class="headerlink" title="NTLMv1"></a>NTLMv1</h2><ol start="2">
+<li><pre><code>在NTLM的身份验证过程中，涉及多个消息步骤，其中M1和M2是以下两个重要的消息：
+
+M1（客户端到服务器的消息）：
+
+客户端向服务器发送一个身份验证请求，这个请求包含客户端的随机数和NTLM标识信息。
+服务器收到M1后，会生成一个随机挑战（Challenge）并发送回客户端。
+M2（服务器到客户端的消息）：
+
+服务器将挑战和其他相关信息（如服务器标识）发送回客户端，要求客户端响应。
+客户端使用其密码生成响应，并将该响应发送回服务器
+</code></pre>
+</li>
+</ol>
+<h3 id="工作流程↓"><a href="#工作流程↓" class="headerlink" title="工作流程↓"></a>工作流程↓</h3><ol>
+<li><strong>客户端发送M1</strong>：请求身份验证并发送用户信息。<ul>
+<li>当客户端要访问服务器上某个受保护的服务时，需要输入服务器的用户名和密码进行验证。此时客户端会在本地缓存一份服务器密码的NTLM hash，然后向服务器发送协商消息。</li>
+</ul>
+</li>
+<li><strong>服务器响应M2</strong>：发送挑战及其他信息。<ul>
+<li>服务器收到客户端的协商信息后，生成并回复质询消息。该消息中包含了一个由服务端生成的16位随机值challenge，服务器也会在本地缓存该值。</li>
+</ul>
+</li>
+<li><strong>客户端计算响应</strong>：客户端使用用户密码计算出一个响应值，并将其发送回服务器进行验证。<ul>
+<li>客户端收到质询消息后，会使用步骤1中缓存的服务器的NTLM hash对Challenge进行加密生成Response，接着再生成Net-NTLM hash&#x3D;Challenge+Response+用户名等，再将Net-NTLM hash封装到身份验证消息中发往服务器。</li>
+</ul>
+</li>
+<li>服务器在收到身份验证消息后，用自己密码的NTLM hash对Challenge进行加密生成Response2，并比较Response2与Response是否一致。如果一致，就证明客户端掌握了服务器的密码，认证成功，否则认证失败。</li>
+</ol>
+<h2 id="NTLMv2"><a href="#NTLMv2" class="headerlink" title="NTLMv2"></a>NTLMv2</h2><ul>
+<li>使用更强的哈希算法（如 HMAC-MD5），并引入了会话密钥。</li>
+<li>引入了客户端和服务器之间的时间戳，增加了对重放攻击的抵抗能力。</li>
+<li>提供了更复杂的身份验证机制，支持更大的密码长度。</li>
+</ul>
+<p><strong>适用性</strong>：被广泛用于 Windows NT 4.0 和更高版本，推荐在支持的环境中使用</p>
+<h3 id="Net-NTLM-hash-v2的格式如下"><a href="#Net-NTLM-hash-v2的格式如下" class="headerlink" title="Net-NTLM hash v2的格式如下"></a>Net-NTLM hash v2的格式如下</h3><ol start="3">
+<li><pre><code>username::domain:challenge:HMAC-MD5:blob
+</code></pre>
+</li>
+</ol>
+<h2 id="NTLM-Session-v2"><a href="#NTLM-Session-v2" class="headerlink" title="NTLM Session v2"></a>NTLM Session v2</h2><p><strong>定义</strong>：NTLMv2 的一种扩展，进一步增强了会话的安全性。</p>
+<p><strong>安全性</strong>：</p>
+<ul>
+<li>结合了 NTLMv2 的特性，提供了会话级别的保护，防止会话劫持。</li>
+<li>使用了更多的随机数和时间戳信息，以提高安全性。</li>
+<li>提供了更强的抗重放攻击能力和会话密钥管理。</li>
+</ul>
+<p><strong>适用性</strong>：适用于需要额外安全性的场合，尤其是在对数据保护要求较高的环境中。</p>
+<h2 id="NTLM在域环境中的认证"><a href="#NTLM在域环境中的认证" class="headerlink" title="NTLM在域环境中的认证"></a>NTLM在域环境中的认证</h2><p>前三步和NTLM一样，就是第四步拆开了</p>
+<p>4.服务器收到客户端发来的TYPE 3消息后，会将消息通过 Netlogon协议转发给域控制器。</p>
+<p>5.域控制器根据TYPE 3消息中的用户名获取该用户名的NTLM hash，用NTLM hash对原始的Challenge进行加密并生成Response，然后将其与TYPE 3消息中Response对比。如果一致，就证明客户端掌握了服务器密码，认证成功，否则认证失败。</p>
+<p>6.服务器根据域控返回的验证结果，对客户端进行相应的回复。</p>
+<h1 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h1><h3 id="Responder-py"><a href="#Responder-py" class="headerlink" title="Responder.py"></a>Responder.py</h3><p>在 Kali Linux 中，Responder.py 是一个用于进行网络协议攻击的工具，主要针对 Windows 网络环境。它通过伪装成一个网络服务（如 SMB、HTTP、DNS 等），从而捕获和解码网络中传输的身份验证凭据。其主要功能包括：</p>
+<ol>
+<li><strong>捕获凭据</strong>：Responder 可以监听网络流量，并捕获 NTLM 和其他身份验证类型的凭据。</li>
+<li><strong>中间人攻击</strong>：它可以模拟各种服务，以诱使客户端发送认证请求，从而窃取用户名和密码。</li>
+<li><strong>DNS Spoofing</strong>：Responder 可以对 DNS 查询进行欺骗，重定向请求到攻击者控制的服务。</li>
+<li><strong>提供虚假服务</strong>：例如，可以模拟 SMB 共享，让用户误认为他们连接的是合法服务。</li>
+</ol>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ol start="4">
+<li><pre><code>git clone https://github.com/lgandx/Responder
+
+sudo python3 Responder.py -I tun0
+</code></pre>
+</li>
+</ol>
+<h3 id="john"><a href="#john" class="headerlink" title="john"></a>john</h3><p><strong>John the Ripper</strong>（通常简称为 <strong>John</strong>）是一个非常强大的密码破解工具，主要用于破解用户密码的哈希值。它最初设计用于破解 Unix 系统的密码文件（<code>/etc/passwd</code> 和 <code>/etc/shadow</code>），但随着时间的推移，它变得越来越多功能，支持多种不同的加密算法和操作系统。</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><ol>
+<li><p><strong>基础命令</strong>： 例如，你有一个包含密码哈希的文件 <code>hashes.txt</code>，可以通过以下命令开始破解：</p>
+</li>
+<li><pre><code>bash
+
+
+复制代码
+john hashes.txt
+
+
+John 会自动检测文件中的哈希类型并开始破解。
+</code></pre>
+</li>
+<li><p><strong>使用字典破解</strong>： 如果你有一个字典文件 <code>passwords.txt</code>，可以使用以下命令进行字典攻击：</p>
+</li>
+<li><pre><code>bash
+
+
+复制代码
+john --wordlist=passwords.txt hashes.txt
+</code></pre>
+</li>
+<li><p><strong>查看破解进度</strong>： John 允许你在破解的过程中查看当前的进展情况：</p>
+</li>
+<li><pre><code>bash
+
+
+复制代码
+john --status
+</code></pre>
+</li>
+<li><p><strong>显示破解结果</strong>： 破解成功后，可以使用以下命令查看破解的密码：</p>
+</li>
+<li><pre><code>bash
+
+
+复制代码
+john --show hashes.txt
+</code></pre>
+</li>
+<li><p><strong>恢复中断的破解</strong>： 如果破解中断了，可以通过以下命令继续之前的破解过程：</p>
+</li>
+<li><pre><code>bash
+
+
+复制代码
+john --restore
+</code></pre>
+</li>
+</ol>
+<h3 id="支持的哈希类型"><a href="#支持的哈希类型" class="headerlink" title="支持的哈希类型"></a>支持的哈希类型</h3><p>John the Ripper 支持破解的哈希类型非常广泛，以下是一些常见的哈希类型：</p>
+<ul>
+<li><strong>LM</strong> 和 <strong>NTLM</strong>（Windows）</li>
+<li><strong>MD5</strong>、<strong>SHA-1</strong>、<strong>SHA-256</strong>、<strong>SHA-512</strong>（Unix&#x2F;Linux）</li>
+<li><strong>bcrypt</strong>、<strong>argon2</strong></li>
+<li><strong>Kerberos 5</strong> TGT 数据包</li>
+<li><strong>MS-CHAPv2</strong> 协议</li>
+<li><strong>MySQL</strong>、<strong>PostgreSQL</strong>、<strong>Oracle</strong> 数据库密码</li>
+<li><strong>PDF</strong>、<strong>ZIP</strong>、<strong>RAR</strong> 文件密码</li>
+</ul>
+<h3 id="如何获取哈希"><a href="#如何获取哈希" class="headerlink" title="如何获取哈希"></a>如何获取哈希</h3><p>在使用 John 之前，通常需要提取系统或文件中的密码哈希。例如：</p>
+<ul>
+<li><strong>Linux&#x2F;Unix</strong> 系统的哈希可以从 <code>/etc/shadow</code> 文件中提取。</li>
+<li><strong>Windows</strong> 系统的 NTLM 哈希可以使用工具如 <strong>mimikatz</strong> 或 <strong>hashdump</strong> 提取。</li>
+<li>压缩文件（如 ZIP、RAR）密码可以使用工具来提取哈希，之后再通过 John 破解。</li>
+</ul>
+<h3 id="我的使用↓"><a href="#我的使用↓" class="headerlink" title="我的使用↓"></a>我的使用↓</h3><ol start="9">
+<li><pre><code>john -w=/usr/share/wordlists/rockyou.txt hash.txt
+
+-w : wordlist to use for cracking the hash
+</code></pre>
+</li>
+</ol>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><ol start="6">
+<li><pre><code>evil-winrm -i 10.129.8.173 -u administrator -p badminton
+</code></pre>
+</li>
+</ol>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 DDL&#39;S BLOG
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;DDL
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+        <script>
+        // 禁用 F12
+        document.onkeydown = function (e) {
+            if (e.key === "F12") {
+                e.preventDefault();
+            }
+        };
+
+        // 禁用右键
+        document.oncontextmenu = function (e) {
+            e.preventDefault();
+        };
+
+        // 启用 JavaScript 时更改 body 类
+        document.body.classList.remove('no-js');
+        document.body.classList.add('js');
+    </script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
